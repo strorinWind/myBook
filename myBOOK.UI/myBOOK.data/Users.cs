@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace myBOOK.data
 {
-   public  class Users
+    public enum Gender
+    {
+        Male,
+        Female
+    }
+
+    public class Users
     {
         public int ID { get; set; }
         public string FullName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public DateTime RegistrartionDate { get; set; }
+        public Gender Gender { get; set; }
     }
 }

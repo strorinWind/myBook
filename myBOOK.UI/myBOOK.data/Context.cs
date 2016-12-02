@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myBOOK.data
 {
-    class Context:DbContext
+    public class Context:DbContext
     {
         public DbSet<Reviews> _Review{ get; set; }
         public DbSet<Score> _Score { get; set; }

@@ -51,9 +51,14 @@
   <ItemGroup>
     <Compile Include="Books.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="keyAttribute.cs" />
     <Compile Include="Migrations\201612011434019_Initial.cs" />
     <Compile Include="Migrations\201612011434019_Initial.Designer.cs">
       <DependentUpon>201612011434019_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612021243172_changed database.cs" />
+    <Compile Include="Migrations\201612021243172_changed database.Designer.cs">
+      <DependentUpon>201612021243172_changed database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612011434019_Initial.resx">
       <DependentUpon>201612011434019_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021243172_changed database.resx">
+      <DependentUpon>201612021243172_changed database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

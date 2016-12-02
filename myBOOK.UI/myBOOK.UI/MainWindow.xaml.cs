@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myBOOK.data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace myBOOK.UI
 {
     /// <summary>
@@ -23,6 +25,10 @@ namespace myBOOK.UI
         public MainWindow()
         {
             InitializeComponent();
+            using (Context c = new Context())
+            {
+                c._User.ToList();
+            }
         }
     }
 }
