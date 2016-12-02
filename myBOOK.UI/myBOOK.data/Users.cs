@@ -18,7 +18,16 @@ namespace myBOOK.data
         public string FullName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public DateTime RegistrartionDate { get; set; }
+        public DateTime RegistrationDate { get; set; }
         public Gender Gender { get; set; }
+
+        public Users(string login, string fullname, string password,Gender gender)
+        {
+            Login = login;
+            FullName = fullname;
+            Password = password;
+            Gender = gender;
+            RegistrationDate = DateTime.Now;
+        }
     }
 }
