@@ -13,8 +13,7 @@ namespace myBOOK.data
             using (Context c = new Context())
             {
                 var result = (from s in c._User
-                              where s.Login == login
-                              where s.Password == password
+                              where s.Login == login && s.Password == password
                               select s).ToList();
 
                 if (result != null)
