@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201612021546045_AddedTables.Designer.cs">
       <DependentUpon>201612021546045_AddedTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612021752143_CorrectedMistake.cs" />
+    <Compile Include="Migrations\201612021752143_CorrectedMistake.Designer.cs">
+      <DependentUpon>201612021752143_CorrectedMistake.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PastReadBooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612021546045_AddedTables.resx">
       <DependentUpon>201612021546045_AddedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021752143_CorrectedMistake.resx">
+      <DependentUpon>201612021752143_CorrectedMistake.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

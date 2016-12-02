@@ -42,5 +42,11 @@ namespace myBOOK.UI
                 Close();
             }
         }
+
+        private void Registration_Click(object sender, RoutedEventArgs e)
+        {
+            var r = new Registration();
+            r.Show();
+        }
     }
 }
