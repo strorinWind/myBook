@@ -30,5 +30,17 @@ namespace myBOOK.UI
                 c._User.ToList();
             }
         }
+
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            var login = Username.Text;
+            var password = Password.Password;
+            //проверка корректности
+            var repo = new Repository();
+            if (repo.IsUserDataCorrect(login,password))
+            {
+                Close();
+            }
+        }
     }
 }
