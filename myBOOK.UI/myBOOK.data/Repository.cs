@@ -12,11 +12,11 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-                var result = (from s in c._User
+                var result = from s in c._User
                               where s.Login == login && s.Password == password
-                              select s).ToList();
+                              select s;
 
-                if (result != null)
+                if (result.Count() > 0)
                 {
                     return true;
                 }
@@ -30,11 +30,11 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-                var result = (from s in c._User
+                var result = from s in c._User
                               where s.Login == login
-                              select s).ToList();
+                              select s;
 
-                if (result != null)
+                if (result.Count() == 0)
                 {
                     return false;
                 }
@@ -45,7 +45,6 @@ namespace myBOOK.data
 
         public List<Favourite> ChooseUsersFavouriteBooks (string login)
         {
-
             using (Context c = new Context())
             {
                 var result = (from s in c._Favourite
@@ -53,12 +52,10 @@ namespace myBOOK.data
                               select s).ToList();
                 return result;
             }
-
         }
 
         public List<FutureReadBooks> ChooseUsersFutureBooks(string login)
         {
-
             using (Context c = new Context())
             {
                 var result = (from s in c._FutureReadBooks
@@ -66,12 +63,10 @@ namespace myBOOK.data
                               select s).ToList();
                 return result;
             }
-
         }
 
         public List<PastReadBooks> ChooseUsersPastBooks(string login)
         {
-
             using (Context c = new Context())
             {
                 var result = (from s in c._PastReadBooks
@@ -79,12 +74,10 @@ namespace myBOOK.data
                               select s).ToList();
                 return result;
             }
-
         }
 
         public List<Reviews> ChooseReviewForABook(string BookName)
         {
-
             using (Context c = new Context())
             {
                 var result = (from s in c._Review
@@ -92,23 +85,17 @@ namespace myBOOK.data
                               select s).ToList();
                 return result;
             }
-
         }
 
-        public double ViewRatingForABook(string BookName)
+        public double ViewRatingForABook(int BookId)
         {
-
             using (Context c = new Context())
             {
              var result= (from s in c._Score
-                              where s.Book.BookName == BookName
+                              where s.Book.ID == BookId
                               select s.Value).Average();
                 return result;
             }
-
         }
-
-
-
     }
 }

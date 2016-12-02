@@ -42,6 +42,20 @@ namespace myBOOK.UI
                     gender = Gender.Female;
                 }
                 Users user = new Users(login,fullname,password,gender);
+                var repo = new Repository();
+                using (Context c = new Context())
+                {
+                    if (repo.IsLoginRepeated(login))
+                    {
+                        MessageBox.Show("Этот логин уже используется");
+                    }
+                    else
+                    {
+                        c._User.Add(user);
+                        c.SaveChanges();
+                        Close();
+                    }       
+                }
             }
             else
             {

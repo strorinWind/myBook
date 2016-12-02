@@ -25,10 +25,6 @@ namespace myBOOK.UI
         public MainWindow()
         {
             InitializeComponent();
-            using (Context c = new Context())
-            {
-                c._User.ToList();
-            }
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -39,6 +35,8 @@ namespace myBOOK.UI
             var repo = new Repository();
             if (repo.IsUserDataCorrect(login,password))
             {
+                var p = new Profile();
+                p.Show();
                 Close();
             }
         }
