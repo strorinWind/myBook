@@ -51,7 +51,8 @@
   <ItemGroup>
     <Compile Include="Books.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="keyAttribute.cs" />
+    <Compile Include="Favourite.cs" />
+    <Compile Include="FutureReadBooks.cs" />
     <Compile Include="Migrations\201612011434019_Initial.cs" />
     <Compile Include="Migrations\201612011434019_Initial.Designer.cs">
       <DependentUpon>201612011434019_Initial.cs</DependentUpon>
@@ -60,10 +61,20 @@
     <Compile Include="Migrations\201612021243172_changed database.Designer.cs">
       <DependentUpon>201612021243172_changed database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612021520014_AddedTableFavourite.cs" />
+    <Compile Include="Migrations\201612021520014_AddedTableFavourite.Designer.cs">
+      <DependentUpon>201612021520014_AddedTableFavourite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612021546045_AddedTables.cs" />
+    <Compile Include="Migrations\201612021546045_AddedTables.Designer.cs">
+      <DependentUpon>201612021546045_AddedTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PastReadBooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reviews.cs" />
     <Compile Include="Score.cs" />
+    <Compile Include="UserBooks.cs" />
     <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +87,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612021243172_changed database.resx">
       <DependentUpon>201612021243172_changed database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021520014_AddedTableFavourite.resx">
+      <DependentUpon>201612021520014_AddedTableFavourite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021546045_AddedTables.resx">
+      <DependentUpon>201612021546045_AddedTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
