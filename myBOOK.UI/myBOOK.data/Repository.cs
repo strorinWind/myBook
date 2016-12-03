@@ -8,20 +8,20 @@ namespace myBOOK.data
 {
     public class Repository
     {
-        public bool IsUserDataCorrect(string login, string password)
+        public int IsUserDataCorrect(string login, string password)
         {
             using (Context c = new Context())
             {
                 var result = from s in c._User
                               where s.Login == login && s.Password == password
-                              select s;
+                              select s.ID;
 
                 if (result.Count() > 0)
                 {
-                    return true;
+                    return result.First();
                 }
                 else
-                    return false;
+                    return 0;
             }
 
         }

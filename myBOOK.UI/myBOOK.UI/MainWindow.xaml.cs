@@ -33,7 +33,7 @@ namespace myBOOK.UI
             var password = Password.Password;
             //проверка корректности
             var repo = new Repository();
-            if (repo.IsUserDataCorrect(login,password))
+            if (repo.IsUserDataCorrect(login,password)!=0)
             {
                 var p = new Profile();
                 p.Show();
