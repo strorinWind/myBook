@@ -39,6 +39,10 @@ namespace myBOOK.UI
                 p.Show();
                 Close();
             }
+            else
+            {
+                MessageBox.Show("Invalid data");
+            }
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)

@@ -10,7 +10,7 @@ namespace myBOOK.data
     public class Encryption
     {
         //ecryption method line 1-22 from http://skillcoding.com/Default.aspx?id=165
-        public static string GetHashString(string s)
+        public static Guid GetHashString(string s)
         {
             //переводим строку в байт-массим  
             byte[] bytes = Encoding.Unicode.GetBytes(s);
@@ -27,7 +27,7 @@ namespace myBOOK.data
             foreach (byte b in byteHash)
                 hash += string.Format("{0:x2}", b);
 
-            return hash;
+            return new Guid(hash);
         }
     }
 }
