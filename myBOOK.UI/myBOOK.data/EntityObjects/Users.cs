@@ -25,7 +25,7 @@ namespace myBOOK.data
         {
             Login = login;
             FullName = fullname;
-            Password = password;
+            Password = Encryption.GetHashString(password);
             Gender = gender;
             RegistrationDate = DateTime.Now;
         }

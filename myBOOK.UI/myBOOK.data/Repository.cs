@@ -12,8 +12,9 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
+                password = Encryption.GetHashString(password);
                 var result = from s in c._User
-                              where s.Login == login && s.Password == password
+                             where s.Login == login && s.Password == password
                               select s.ID;
 
                 if (result.Count() > 0)
