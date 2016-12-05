@@ -19,7 +19,7 @@ namespace myBOOK.UI
     /// </summary>
     public partial class Profile : Window
     {
-        public Profile()
+        public Profile(int id)
         {
             InitializeComponent();
         }
