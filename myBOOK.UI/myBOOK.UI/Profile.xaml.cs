@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myBOOK.data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace myBOOK.UI
         public Profile(int id)
         {
             InitializeComponent();
+            using (Context c = new Context())
+            {
+                PastBookList.ItemsSource = c._Book.ToList();
+                FutureBookList.ItemsSource = c._Book.ToList();
+            }
         }
     }
 }

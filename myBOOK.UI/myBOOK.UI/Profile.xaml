@@ -7,19 +7,62 @@
         mc:Ignorable="d"
         Title="Profile" Height="700" Width="1000">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="1">    
+            <TabItem Header="PastRead">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
+            Прочитано
+                    </TextBlock>
+                    <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="local:Books">
+                                <Grid Margin="0 5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
+                                    <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
+            Хочу прочитать
+                    </TextBlock>
+                    <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="local:Books">
+                                <Grid Margin="0 5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
+                                    <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </TabItem>     
+            <TabItem Header="FutureRead"></TabItem>
+        </TabControl>
+
+
+        
     </Grid>
 </Window>
