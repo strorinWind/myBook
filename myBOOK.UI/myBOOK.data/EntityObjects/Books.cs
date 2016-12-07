@@ -17,11 +17,38 @@ namespace myBOOK.data
         [Key]
         [Column(Order = 2)]
         public string Author { get; set; }
-        public string Genre { get; set; }
+        public Genres Genre { get; set; }
         public string Description { get; set; }
         public string LoadingLink { get; set; }
 
-        
+       public enum Genres
+        {
+            Fiction,
+            Comedy,
+            Drama,
+            Horror,
+            RomanceNovel,
+            Satire,
+            Tragedy,
+            Tragicomedy,
+            Fantasy,
+            FairyTale,
+            Mystery,
+            ScienceFiction,
+            PictureBook,
+            Western,
+            ShortStory,
+            Biography,
+            Essay,
+            Memoir,
+            NonFiction,
+            Action,
+            SelfHelp,
+            History,
+            Poetry
+        }
+
+
 
     }
 }
