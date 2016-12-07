@@ -47,8 +47,5 @@ namespace myBOOK.data
             History,
             Poetry
         }
-
-
-
     }
 }

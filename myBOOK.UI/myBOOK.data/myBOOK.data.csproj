@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201612071820580_FixDescription.Designer.cs">
       <DependentUpon>201612071820580_FixDescription.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612071925202_genreType.cs" />
+    <Compile Include="Migrations\201612071925202_genreType.Designer.cs">
+      <DependentUpon>201612071925202_genreType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EntityObjects\PastReadBooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612071820580_FixDescription.resx">
       <DependentUpon>201612071820580_FixDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071925202_genreType.resx">
+      <DependentUpon>201612071925202_genreType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
