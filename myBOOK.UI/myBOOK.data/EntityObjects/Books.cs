@@ -20,5 +20,8 @@ namespace myBOOK.data
         public string Genre { get; set; }
         public int Description { get; set; }
         public string LoadingLink { get; set; }
+
+        
+
     }
 }
