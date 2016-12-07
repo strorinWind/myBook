@@ -106,8 +106,8 @@ namespace myBOOK.data
 
                 var result = (from s in c._Book
                              where (s.BookName==name && s.Author==author|| 
-                             s.Author==author  ||
-                             s.BookName == name )
+                             s.Author==author && name=="" ||
+                             s.BookName == name && author == "" )
                              select s).ToList();
 
                 return result;
