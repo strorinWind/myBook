@@ -66,12 +66,12 @@ namespace myBOOK.data
             }
         }
 
-        public List<PastReadBooks> ChooseUsersPastBooks(string login)
+        public List<PastReadBooks> ChooseUsersPastBooks(int id)
         {
             using (Context c = new Context())
             {
                 var result = (from s in c._PastReadBooks
-                              where s.User.Login == login
+                              where s.User.ID == id
                               select s).ToList();
                 return result;
             }

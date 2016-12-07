@@ -5,28 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="Profile" Height="700" Width="1000">
+        Title="Profile" Height="700" Width="1000"
+        Name="window" SizeChanged="window_SizeChanged">
     <Grid>
-        <TabControl Grid.Column="1">    
+        <TabControl Grid.Column="1" Name="tabcontrol">    
             <TabItem Header="PastRead">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
+                    <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
             Прочитано
                     </TextBlock>
-                    <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                    <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:Books">
                                 <Grid Margin="0 5">
@@ -40,29 +40,87 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10">
-            Хочу прочитать
-                    </TextBlock>
-                    <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="local:Books">
-                                <Grid Margin="0 5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
-                                    <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <Button Name="AddPastRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddPastRead_Click">Добавить прочитанную книгу
+                    </Button>
                 </Grid>
             </TabItem>     
-            <TabItem Header="FutureRead"></TabItem>
+            <TabItem Header="FutureRead">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+            Хочу прочитать
+                    </TextBlock>
+                    <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="local:Books">
+                                <Grid Margin="0 5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
+                                    <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddFutureRead_Click">Добавить книгу в список желаний
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Favourite Books">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="61*"/>
+                        <ColumnDefinition Width="22*"/>
+                        <ColumnDefinition Width="822*"/>
+                        <ColumnDefinition Width="82*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+            Любимые книги
+                    </TextBlock>
+                    <ListBox Name="FavouriteBookList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="local:Books">
+                                <Grid Margin="0 5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
+                                    <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Name="AddFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddFavourite_Click">
+                        Добавить любимую книгу
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Scores and Reviews">
+            </TabItem>
         </TabControl>
 
 
-        
+
     </Grid>
 </Window>

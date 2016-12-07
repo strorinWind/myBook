@@ -25,6 +25,10 @@ namespace myBOOK.UI
         public MainWindow()
         {
             InitializeComponent();
+            using (Context c = new Context())
+            {
+                //c._PastReadBooks.Add(new PastReadBooks {Book = c._Book.First(), User = c._User.First() });
+            }
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)

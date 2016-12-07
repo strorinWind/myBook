@@ -20,14 +20,47 @@ namespace myBOOK.UI
     /// </summary>
     public partial class Profile : Window
     {
+        private void TabItemSizeRegulation()
+        {
+            foreach (var item in tabcontrol.Items)
+            {
+                var i = (TabItem)item;
+                i.Width = window.Width / tabcontrol.Items.Count - 5;
+            }
+        }
+
+
         public Profile(int id)
         {
             InitializeComponent();
-            using (Context c = new Context())
-            {
-                PastBookList.ItemsSource = c._Book.ToList();
-                FutureBookList.ItemsSource = c._Book.ToList();
-            }
+            //using (Context c = new Context())
+            //{
+            //    PastBookList.ItemsSource = c._Book.ToList();
+            //    FutureBookList.ItemsSource = c._Book.ToList();
+            //}
+            //TabItemSizeRegulation();
+            var repo = new Repository();
+            PastBookList.ItemsSource = repo.ChooseUsersPastBooks(id);
+        }
+
+        private void window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            TabItemSizeRegulation();
+        }
+
+        private void AddPastRead_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddFavourite_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddFutureRead_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
