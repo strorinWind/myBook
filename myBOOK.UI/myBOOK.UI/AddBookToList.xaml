@@ -19,8 +19,17 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">Название:</TextBlock>
+        <TextBox Name="bookname" Grid.Row="1" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center">
+        </TextBox>
+        <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">Автор:</TextBlock>
+        <TextBox Name="author" Grid.Row="2" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center">
+        </TextBox>
+        <Button Name="Search" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Height="22" Width="80" HorizontalAlignment="Center" >Поиск
+        </Button>
     </Grid>
 </Window>
