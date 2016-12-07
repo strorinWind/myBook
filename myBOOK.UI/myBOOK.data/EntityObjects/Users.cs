@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,20 +15,12 @@ namespace myBOOK.data
 
     public class Users
     {
-        public int ID { get; set; }
-        public string FullName { get; set; }
+        //public int ID { get; set; }
+        [Key]
         public string Login { get; set; }
+        public string FullName { get; set; }
         public Guid Password { get; set; }
         public DateTime RegistrationDate { get; set; }
         public Gender Gender { get; set; }
-
-        public Users(string login, string fullname, string password,Gender gender)
-        {
-            Login = login;
-            FullName = fullname;
-            Password = Encryption.GetHashString(password);
-            Gender = gender;
-            RegistrationDate = DateTime.Now;
-        }
     }
 }

@@ -8,21 +8,21 @@ namespace myBOOK.data
 {
     public class Repository
     {
-        public int IsUserDataCorrect(string login, string password)
+        public Users IsUserDataCorrect(string login, string password)
         {
             using (Context c = new Context())
             {
                 Guid passwordnum = Encryption.GetHashString(password);
-                var result = from s in c._User
+                var result = from s in c.User
                              where s.Login == login && s.Password == passwordnum
-                              select s.ID;
+                             select s;
 
                 if (result.Count() > 0)
                 {
                     return result.First();
                 }
                 else
-                    return 0;
+                    return null;
             }
 
         }
@@ -31,7 +31,7 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-                var result = from s in c._User
+                var result = from s in c.User
                               where s.Login == login
                               select s;
 
@@ -44,35 +44,35 @@ namespace myBOOK.data
             }
         }
 
-        public List<Favourite> ChooseUsersFavouriteBooks (string login)
+        public List<Books> ChooseUsersFavouriteBooks (string login)
         {
             using (Context c = new Context())
             {
                 var result = (from s in c._Favourite
                               where s.User.Login == login
-                              select s).ToList();
+                              select s.Book).ToList();
                 return result;
             }
         }
 
-        public List<FutureReadBooks> ChooseUsersFutureBooks(string login)
+        public List<Books> ChooseUsersFutureBooks(string login)
         {
             using (Context c = new Context())
             {
                 var result = (from s in c._FutureReadBooks
                               where s.User.Login == login
-                              select s).ToList();
+                              select s.Book).ToList();
                 return result;
             }
         }
 
-        public List<PastReadBooks> ChooseUsersPastBooks(int id)
+        public List<Books> ChooseUsersPastBooks(string login)
         {
             using (Context c = new Context())
             {
                 var result = (from s in c._PastReadBooks
-                              where s.User.ID == id
-                              select s).ToList();
+                              where s.User.Login == login
+                              select s.Book).ToList();
                 return result;
             }
         }
@@ -88,12 +88,12 @@ namespace myBOOK.data
             }
         }
 
-        public double ViewRatingForABook(int BookId)
+        public double ViewRatingForABook(string name,string author)
         {
             using (Context c = new Context())
             {
              var result= (from s in c._Score
-                              where s.Book.ID == BookId
+                              where s.Book.BookName == name && s.Book.Author == author
                               select s.Value).Average();
                 return result;
             }

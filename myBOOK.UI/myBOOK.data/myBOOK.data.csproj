@@ -55,6 +55,14 @@
     <Compile Include="EntityObjects\Favourite.cs" />
     <Compile Include="EntityObjects\FutureReadBooks.cs" />
     <Compile Include="EntityObjects\UserBooks.cs" />
+    <Compile Include="Migrations\201612071403390_Composkeys.cs" />
+    <Compile Include="Migrations\201612071403390_Composkeys.Designer.cs">
+      <DependentUpon>201612071403390_Composkeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612071455185_Second.cs" />
+    <Compile Include="Migrations\201612071455185_Second.Designer.cs">
+      <DependentUpon>201612071455185_Second.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EntityObjects\PastReadBooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +74,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612071403390_Composkeys.resx">
+      <DependentUpon>201612071403390_Composkeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071455185_Second.resx">
+      <DependentUpon>201612071455185_Second.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

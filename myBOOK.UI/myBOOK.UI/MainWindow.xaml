@@ -26,7 +26,7 @@
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Password:</TextBlock>
         <PasswordBox Name="Password" Grid.Row="2" Grid.Column="1" Height="20" Width="130" HorizontalAlignment="Left" VerticalAlignment="Center">
         </PasswordBox>
-        <Button Name="Enter" Grid.Row="3" Grid.Column="1" Height="20" Width="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30 0" Click="Enter_Click">Войти
+        <Button Name="Enter" Grid.Row="3" Grid.Column="1" Height="20" Width="80" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30 0" Click="Enter_Click">Войти
         </Button>
         <Button Name="Registration" Grid.Row="3" Grid.Column="0" Height="20" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="30 0" Click="Registration_Click">Регистрация
         </Button>

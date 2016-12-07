@@ -41,7 +41,14 @@ namespace myBOOK.UI
                 {
                     gender = Gender.Female;
                 }
-                Users user = new Users(login,fullname,password,gender);
+                Users user = new Users
+                {
+                    Login = login,
+                    FullName = fullname,
+                    Password = Encryption.GetHashString(password),
+                    Gender = gender,
+                    RegistrationDate = DateTime.Now,
+                };
                 var repo = new Repository();
                 using (Context c = new Context())
                 {
@@ -51,7 +58,7 @@ namespace myBOOK.UI
                     }
                     else
                     {
-                        c._User.Add(user);
+                        c.User.Add(user);
                         c.SaveChanges();
                         Close();
                     }       

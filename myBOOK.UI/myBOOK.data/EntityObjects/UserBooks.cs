@@ -8,7 +8,7 @@ namespace myBOOK.data.EntityObjects
 {
     public interface UserBooks
     {
-        int ID { get; set; }
+        //int ID { get; set; }
         Users User { get; set; }
         Books Book { get; set; }
     }

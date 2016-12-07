@@ -27,7 +27,10 @@ namespace myBOOK.UI
             InitializeComponent();
             using (Context c = new Context())
             {
-                //c._PastReadBooks.Add(new PastReadBooks {Book = c._Book.First(), User = c._User.First() });
+                //c._User.Where(k => k.Login=="user").ToList();
+                //c._FutureReadBooks.Add(new FutureReadBooks {Book = c._Book.First(), User = c.User.First() });
+                //c._Favourite.Add(new Favourite { Book = c._Book.First(), User = c.User.First() });
+                //c.SaveChanges();
             }
         }
 
@@ -37,10 +40,10 @@ namespace myBOOK.UI
             var password = Password.Password;
             //проверка корректности
             var repo = new Repository();
-            var id = repo.IsUserDataCorrect(login, password);
-            if (id!=0)
+            var user = repo.IsUserDataCorrect(login, password);
+            if (user!=null)
             {
-                var p = new Profile(id);
+                var p = new Profile(user);
                 p.Show();
                 Close();
             }

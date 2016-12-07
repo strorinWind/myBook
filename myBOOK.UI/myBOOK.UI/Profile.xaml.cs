@@ -30,17 +30,13 @@ namespace myBOOK.UI
         }
 
 
-        public Profile(int id)
+        public Profile(Users user)
         {
             InitializeComponent();
-            //using (Context c = new Context())
-            //{
-            //    PastBookList.ItemsSource = c._Book.ToList();
-            //    FutureBookList.ItemsSource = c._Book.ToList();
-            //}
-            //TabItemSizeRegulation();
             var repo = new Repository();
-            PastBookList.ItemsSource = repo.ChooseUsersPastBooks(id);
+            PastBookList.ItemsSource = repo.ChooseUsersPastBooks(user.Login);
+            FutureBookList.ItemsSource = repo.ChooseUsersFutureBooks(user.Login);
+            FavouriteBookList.ItemsSource = repo.ChooseUsersFavouriteBooks(user.Login);
         }
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e)
