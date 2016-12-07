@@ -98,5 +98,22 @@ namespace myBOOK.data
                 return result;
             }
         }
+
+        public List<Books> SearchABook (string name, string author)
+        {
+            using (Context c = new Context())
+            {
+
+                var result = (from s in c._Book
+                             where (s.BookName==name && s.Author==author|| 
+                             s.Author==author  ||
+                             s.BookName == name )
+                             select s).ToList();
+
+                return result;
+            }
+        }
+
+       
     }
 }
