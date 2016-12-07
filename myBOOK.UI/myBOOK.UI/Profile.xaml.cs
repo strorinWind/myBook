@@ -20,6 +20,8 @@ namespace myBOOK.UI
     /// </summary>
     public partial class Profile : Window
     {
+        public Users User { get; set; }
+
         private void TabItemSizeRegulation()
         {
             foreach (var item in tabcontrol.Items)
@@ -33,6 +35,7 @@ namespace myBOOK.UI
         public Profile(Users user)
         {
             InitializeComponent();
+            User = user;
             var repo = new Repository();
             PastBookList.ItemsSource = repo.ChooseUsersPastBooks(user.Login);
             FutureBookList.ItemsSource = repo.ChooseUsersFutureBooks(user.Login);
@@ -46,7 +49,10 @@ namespace myBOOK.UI
 
         private void AddPastRead_Click(object sender, RoutedEventArgs e)
         {
-
+            var w = new AddBookToList(User);
+            w.Show();
+            
+            //Close();
         }
 
         private void AddFavourite_Click(object sender, RoutedEventArgs e)

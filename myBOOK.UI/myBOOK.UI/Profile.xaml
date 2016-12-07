@@ -119,8 +119,5 @@
             <TabItem Header="Scores and Reviews">
             </TabItem>
         </TabControl>
-
-
-
     </Grid>
 </Window>

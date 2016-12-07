@@ -18,7 +18,7 @@ namespace myBOOK.data
         [Column(Order = 2)]
         public string Author { get; set; }
         public string Genre { get; set; }
-        public int Description { get; set; }
+        public string Description { get; set; }
         public string LoadingLink { get; set; }
     }
 }

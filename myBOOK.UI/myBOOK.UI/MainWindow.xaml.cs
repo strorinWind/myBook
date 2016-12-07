@@ -1,6 +1,7 @@
 ﻿using myBOOK.data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace myBOOK.UI
             {
                 //c._User.Where(k => k.Login=="user").ToList();
                 //c._FutureReadBooks.Add(new FutureReadBooks {Book = c._Book.First(), User = c.User.First() });
-                //c._Favourite.Add(new Favourite { Book = c._Book.First(), User = c.User.First() });
+                //c._Book.Add(new Books {BookName= "Рассказы",Author= "Агата Кристи",Genre="детектив",Description="Здесь есть описание" });
                 //c.SaveChanges();
             }
         }
