@@ -30,5 +30,14 @@
         </Button>
         <Button Name="Registration" Grid.Row="3" Grid.Column="0" Height="20" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="30 0" Click="Registration_Click">Регистрация
         </Button>
+        <Menu x:Name="menu" Height="25" VerticalAlignment="Top" Width="258" RenderTransformOrigin="0.497,0.538">
+            <MenuItem Header="About" Width="64"></MenuItem>
+            <MenuItem Header="Help" Width="64"></MenuItem>
+            <MenuItem Header="Autors" Width="64"></MenuItem>
+            <MenuItem Header="Lenguage" Width="66">
+                <MenuItem Header="Russian"></MenuItem>
+                <MenuItem Header="English"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
