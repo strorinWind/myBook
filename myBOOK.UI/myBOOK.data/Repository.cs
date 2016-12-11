@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace myBOOK.data
 {
     public class Repository
@@ -114,6 +115,28 @@ namespace myBOOK.data
             }
         }
 
+        public List<Books>  ShowRecommendations (string login)
+        {
+
+            using (Context c = new Context())
+            {
+
+                var result = from s in c._PastReadBooks
+                             where s.User.Login == login
+                             group s by s.Book.Genre into g
+                             select new SearchGenreForRecommendationsViewModel
+                             {
+
+                                 //MaxCount = g.Max(s => g.Count()),
+                              //  FavouriteGenre = from p in g
+                                                  //where p.Count() == p.Max(s => p.Count())
+                                                  // select p
+                    
+                             };
+                             
+                
+            }
+        }
        
     }
 }
