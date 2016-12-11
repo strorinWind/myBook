@@ -79,7 +79,6 @@
     <Compile Include="EntityObjects\Reviews.cs" />
     <Compile Include="EntityObjects\Score.cs" />
     <Compile Include="EntityObjects\Users.cs" />
-    <Compile Include="SearchGenreForRecommendationsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

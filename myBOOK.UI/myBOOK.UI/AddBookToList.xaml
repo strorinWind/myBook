@@ -53,7 +53,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Name="Choose" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Width="100" Height="22">Выбрать
+        <Button Name="Choose" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Width="100" Height="22" Click="Choose_Click">Выбрать
         </Button>
     </Grid>
 </Window>

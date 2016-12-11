@@ -31,6 +31,29 @@ namespace myBOOK.UI
             }
         }
 
+        private void GetPastBookFromAddingForm(Books book)
+        {
+            using (Context c = new Context())
+            {
+                var repo = new Repository();
+                if (!repo.SearchInPastBooks(User, book))
+                {
+                    var b = new PastReadBooks
+                    {
+                        User = c.User.Find(User.Login),
+                        Book = c._Book.Find(book.BookName, book.Author),
+                    };
+                    c._PastReadBooks.Add(b);
+                    c.SaveChanges();
+                    MessageBox.Show("Книга успешно добавлена");
+                    PastBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                }
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            }
+        }
 
         public Profile(Users user)
         {
@@ -50,6 +73,7 @@ namespace myBOOK.UI
         private void AddPastRead_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddBookToList(User);
+            w.AddFoundBook += GetPastBookFromAddingForm;
             w.Show();
             
             //Close();

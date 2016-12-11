@@ -28,9 +28,11 @@ namespace myBOOK.UI
             InitializeComponent();
             using (Context c = new Context())
             {
+                //c._Book.Add(new Books {Author="Булгаков", BookName="Мастер и Маргарита", Genre=Books.Genres.Fiction, Description="крутая книга" });
                 //c._User.Where(k => k.Login=="user").ToList();
                 //c._FutureReadBooks.Add(new FutureReadBooks {Book = c._Book.First(), User = c.User.First() });
                 //c._Book.Add(new Books {BookName= "Рассказы",Author= "Агата Кристи",Genre="детектив",Description="Здесь есть описание" });
+                //c._PastReadBooks.Add(new PastReadBooks { Book = c._Book.First(), User = c.User.First() });
                 //c.SaveChanges();
             }
         }
