@@ -28,13 +28,13 @@ namespace myBOOK.data
 
         }
 
-        public bool IsLoginRepeated (string login)
+        public bool IsLoginRepeated(string login)
         {
             using (Context c = new Context())
             {
                 var result = from s in c.User
-                              where s.Login == login
-                              select s;
+                             where s.Login == login
+                             select s;
 
                 if (result.Count() == 0)
                 {
@@ -45,7 +45,7 @@ namespace myBOOK.data
             }
         }
 
-        public List<Books> ChooseUsersFavouriteBooks (string login)
+        public List<Books> ChooseUsersFavouriteBooks(string login)
         {
             using (Context c = new Context())
             {
@@ -89,54 +89,67 @@ namespace myBOOK.data
             }
         }
 
-        public double ViewRatingForABook(string name,string author)
+        public double ViewRatingForABook(string name, string author)
         {
             using (Context c = new Context())
             {
-             var result= (from s in c._Score
+                var result = (from s in c._Score
                               where s.Book.BookName == name && s.Book.Author == author
                               select s.Value).Average();
                 return result;
             }
         }
 
-        public List<Books> SearchABook (string name, string author)
+        public List<Books> SearchABook(string name, string author)
         {
             using (Context c = new Context())
             {
 
                 var result = (from s in c._Book
-                             where (s.BookName==name && s.Author==author|| 
-                             s.Author==author && name=="" ||
-                             s.BookName == name && author == "" )
-                             select s).ToList();
+                              where (s.BookName == name && s.Author == author ||
+                              s.Author == author && name == "" ||
+                              s.BookName == name && author == "")
+                              select s).ToList();
 
                 return result;
             }
         }
 
-        public List<Books>  ShowRecommendations (string login)
+        public List<Books> ShowRecommendations(string login)
         {
 
             using (Context c = new Context())
             {
+                var count_genres = (from s in c._PastReadBooks
+                                    where s.User.Login == login
+                                    group s by s.Book.Genre into g
+                                    select new
+                                    {
+                                        Count = g.Count(),
+                                        FavouriteGenre = g.Key
+                                    });
+                var favourite_genre = from s in count_genres
+                                      where s.Count == count_genres.Max(p => p.Count)
+                                      select s.FavouriteGenre;
 
-                var result = from s in c._PastReadBooks
-                             where s.User.Login == login
-                             group s by s.Book.Genre into g
-                             select new SearchGenreForRecommendationsViewModel
-                             {
+                var list_of_books = (from s in c._Book
+                                     where s.Genre == favourite_genre.First()
+                                     select s).ToList();
 
-                                 //MaxCount = g.Max(s => g.Count()),
-                              //  FavouriteGenre = from p in g
-                                                  //where p.Count() == p.Max(s => p.Count())
-                                                  // select p
-                    
-                             };
-                             
-                
+                for (int i = 0; i < list_of_books.Count(); i++)
+                {
+                    if (c._PastReadBooks.Any(s => s.Book == list_of_books[i]))
+                    {
+
+                        list_of_books.RemoveAt(i);
+                        i--;
+                    }
+                }
+
+                return list_of_books;
+
             }
         }
-       
+
     }
 }
