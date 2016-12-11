@@ -9,7 +9,7 @@ namespace myBOOK.data
     public class SearchGenreForRecommendationsViewModel
     {
         public int NumberOfRepeatedGenres{ get; set; }
-        public int MaxCount{ get; set; }
+        public int Count{ get; set; }
         public PastReadBooks FavouriteGenre { get; set; }
     }
 }
