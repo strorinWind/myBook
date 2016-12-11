@@ -33,5 +33,11 @@ namespace myBOOK.UI
             //var p = new Profile(User);
             //p.Show();
         }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            var repo = new Repository();
+            BookList.ItemsSource = repo.SearchABook(bookname.Text,author.Text);
+        }
     }
 }
