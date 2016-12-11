@@ -21,6 +21,7 @@ namespace myBOOK.UI
     public partial class AddBookToList : Window
     {
         public Users User { get; set; }
+        public Action<Books> AddFoundBook { get; set; }
 
         public AddBookToList(Users user)
         {
@@ -38,6 +39,15 @@ namespace myBOOK.UI
         {
             var repo = new Repository();
             BookList.ItemsSource = repo.SearchABook(bookname.Text,author.Text);
+        }
+
+        private void Choose_Click(object sender, RoutedEventArgs e)
+        {
+            if (BookList.SelectedItem != null)
+            {
+                AddFoundBook?.Invoke((Books)BookList.SelectedItem);
+                Close();
+            }
         }
     }
 }

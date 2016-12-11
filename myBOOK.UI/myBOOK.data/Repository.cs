@@ -25,7 +25,6 @@ namespace myBOOK.data
                 else
                     return null;
             }
-
         }
 
         public bool IsLoginRepeated(string login)
@@ -117,7 +116,6 @@ namespace myBOOK.data
 
         public List<Books> ShowRecommendations(string login)
         {
-
             using (Context c = new Context())
             {
                 var count_genres = (from s in c._PastReadBooks
@@ -138,18 +136,69 @@ namespace myBOOK.data
 
                 for (int i = 0; i < list_of_books.Count(); i++)
                 {
-                    if (c._PastReadBooks.Any(s => s.Book == list_of_books[i]))
+                    if (c._PastReadBooks.Any(s => s.Book.BookName == list_of_books[i].BookName 
+                                                   && s.Book.Author==list_of_books[i].Author))
                     {
-
                         list_of_books.RemoveAt(i);
                         i--;
                     }
                 }
-
                 return list_of_books;
-
             }
         }
 
+        public bool SearchInPastBooks(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                if (c._PastReadBooks.Any(b => b.User.Login==user.Login 
+                                            && b.Book.BookName == book.BookName 
+                                            && b.Book.Author==book.Author))
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool SearchInFutureBooks(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                if (c._FutureReadBooks.Any(b => b.User.Login == user.Login
+                                            && b.Book.BookName == book.BookName
+                                            && b.Book.Author == book.Author))
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool SearchInFavouriteBooks(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                if (c._Favourite.Any(b => b.User.Login == user.Login
+                                            && b.Book.BookName == book.BookName
+                                            && b.Book.Author == book.Author))
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public PastReadBooks GetPastReadBooksTuple(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._PastReadBooks.Where(b => b.User.Login == user.Login
+                                                    && b.Book.BookName == book.BookName
+                                                    && b.Book.Author == book.Author)
+                                                    .First();
+                return result;
+            }
+        }
     }
 }
