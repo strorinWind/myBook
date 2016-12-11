@@ -66,5 +66,31 @@ namespace myBOOK.UI
         {
 
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void MenuHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("HI! Can I help you?");
+        }
+        private void MenuClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void MenuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Здесь будет инфа о приложении");
+        }
+        private void MenuAuthors_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Девочки клевые. ну и я тут за компанию");
+        }
     }
 }

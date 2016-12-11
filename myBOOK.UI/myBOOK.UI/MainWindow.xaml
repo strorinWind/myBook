@@ -32,10 +32,10 @@
         <Button Name="Registration" Grid.Row="6" Width="80" HorizontalAlignment="Left" Margin="46,0,0,10" Click="Registration_Click" Grid.Column="1" Background="Transparent" BorderBrush="Chocolate" Height="20" VerticalAlignment="Bottom">Регистрация
         </Button>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top" RenderTransformOrigin="0.497,0.538" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Chocolate">
-            <MenuItem Header="About" Width="70"></MenuItem>
-            <MenuItem Header="Help" Width="70"></MenuItem>
-            <MenuItem Header="Autors" Width="70"></MenuItem>
-            <MenuItem Header="Close" Width="70"></MenuItem>
+            <MenuItem Header="About" Width="70" Click="MenuAbout_Click" InputGestureText="Ctrl+A"></MenuItem>
+            <MenuItem Header="Help" Width="70" InputGestureText="Ctrl+h" Click="MenuHelp_Click"></MenuItem>
+            <MenuItem Header="Authors" Width="70" Click="MenuAuthors_Click"></MenuItem>
+            <MenuItem Header="Close" Width="70" InputGestureText="Ctrl+Q" Click="MenuClose_Click"></MenuItem>
             <MenuItem Header="Language" Width="69" RenderTransformOrigin="0.476,0.5">
                 <MenuItem Header="Russian"/>
                 <MenuItem Header="English"/>
