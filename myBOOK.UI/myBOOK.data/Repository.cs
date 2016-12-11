@@ -25,7 +25,6 @@ namespace myBOOK.data
                 else
                     return null;
             }
-
         }
 
         public bool IsLoginRepeated(string login)
@@ -162,5 +161,44 @@ namespace myBOOK.data
             }
         }
 
+        public bool SearchInFutureBooks(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                if (c._FutureReadBooks.Any(b => b.User.Login == user.Login
+                                            && b.Book.BookName == book.BookName
+                                            && b.Book.Author == book.Author))
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool SearchInFavouriteBooks(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                if (c._Favourite.Any(b => b.User.Login == user.Login
+                                            && b.Book.BookName == book.BookName
+                                            && b.Book.Author == book.Author))
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public PastReadBooks GetPastReadBooksTuple(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._PastReadBooks.Where(b => b.User.Login == user.Login
+                                                    && b.Book.BookName == book.BookName
+                                                    && b.Book.Author == book.Author)
+                                                    .First();
+                return result;
+            }
+        }
     }
 }

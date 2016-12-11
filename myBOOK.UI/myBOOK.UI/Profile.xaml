@@ -20,13 +20,15 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+                    <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
             Прочитано
                     </TextBlock>
-                    <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                    <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:Books">
                                 <Grid Margin="0 5">
@@ -41,6 +43,9 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Button Name="AddPastRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddPastRead_Click">Добавить прочитанную книгу
+                    </Button>
+                    <Button Name="DeletePastRead" Grid.Column="3" Grid.Row="4" Width="100" Height="30" VerticalAlignment="Top" Margin="0 20" Click="DeletePastRead_Click">
+                        Удалить
                     </Button>
                 </Grid>
             </TabItem>     

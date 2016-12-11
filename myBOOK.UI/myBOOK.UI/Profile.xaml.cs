@@ -1,6 +1,7 @@
 ﻿using myBOOK.data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,54 @@ namespace myBOOK.UI
             }
         }
 
+        private void GetFutureBookFromAddingForm(Books book)
+        {
+            using (Context c = new Context())
+            {
+                var repo = new Repository();
+                if (!repo.SearchInFutureBooks(User, book))
+                {
+                    var b = new FutureReadBooks
+                    {
+                        User = c.User.Find(User.Login),
+                        Book = c._Book.Find(book.BookName, book.Author),
+                    };
+                    c._FutureReadBooks.Add(b);
+                    c.SaveChanges();
+                    MessageBox.Show("Книга успешно добавлена");
+                    FutureBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                }
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            }
+        }
+
+        private void GetFavouriteBookFromAddingForm(Books book)
+        {
+            using (Context c = new Context())
+            {
+                var repo = new Repository();
+                if (!repo.SearchInFavouriteBooks(User, book))
+                {
+                    var b = new Favourite
+                    {
+                        User = c.User.Find(User.Login),
+                        Book = c._Book.Find(book.BookName, book.Author),
+                    };
+                    c._Favourite.Add(b);
+                    c.SaveChanges();
+                    MessageBox.Show("Книга успешно добавлена");
+                    FavouriteBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                }
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            }
+        }
+
         public Profile(Users user)
         {
             InitializeComponent();
@@ -75,18 +124,36 @@ namespace myBOOK.UI
             var w = new AddBookToList(User);
             w.AddFoundBook += GetPastBookFromAddingForm;
             w.Show();
-            
-            //Close();
         }
 
         private void AddFavourite_Click(object sender, RoutedEventArgs e)
         {
-
+            var w = new AddBookToList(User);
+            w.AddFoundBook += GetFavouriteBookFromAddingForm;
+            w.Show();
         }
 
         private void AddFutureRead_Click(object sender, RoutedEventArgs e)
         {
+            var w = new AddBookToList(User);
+            w.AddFoundBook += GetFutureBookFromAddingForm;
+            w.Show();
+        }
 
+        private void DeletePastRead_Click(object sender, RoutedEventArgs e)
+        {
+            if (PastBookList.SelectedItem != null)
+            {
+                using (Context c = new Context())
+                {
+                    var BookToDelete = (Books)PastBookList.SelectedItem;
+                    var repo = new Repository();
+                    var pastBookToDelete = repo.GetPastReadBooksTuple(User,BookToDelete);
+                    c.Entry(pastBookToDelete).State = EntityState.Deleted;
+                    c.SaveChanges();
+                    PastBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                }
+            }
         }
     }
 }
