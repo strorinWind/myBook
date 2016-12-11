@@ -59,5 +59,10 @@ namespace myBOOK.UI
             var r = new Registration();
             r.Show();
         }
+
+        private void Username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
