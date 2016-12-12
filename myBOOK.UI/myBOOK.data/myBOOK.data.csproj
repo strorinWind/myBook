@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookView.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="EntityObjects\Books.cs" />
     <Compile Include="Context.cs" />
@@ -72,6 +71,14 @@
     <Compile Include="Migrations\201612071925202_genreType.cs" />
     <Compile Include="Migrations\201612071925202_genreType.Designer.cs">
       <DependentUpon>201612071925202_genreType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612120744052_BookView.cs" />
+    <Compile Include="Migrations\201612120744052_BookView.Designer.cs">
+      <DependentUpon>201612120744052_BookView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612120747053_BookView1.cs" />
+    <Compile Include="Migrations\201612120747053_BookView1.Designer.cs">
+      <DependentUpon>201612120747053_BookView1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EntityObjects\PastReadBooks.cs" />
@@ -97,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612071925202_genreType.resx">
       <DependentUpon>201612071925202_genreType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612120744052_BookView.resx">
+      <DependentUpon>201612120744052_BookView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612120747053_BookView1.resx">
+      <DependentUpon>201612120747053_BookView1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

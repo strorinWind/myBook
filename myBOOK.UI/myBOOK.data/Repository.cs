@@ -92,10 +92,14 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-                var result = (from s in c._Score
+                var result = from s in c._Score
                               where s.Book.BookName == name && s.Book.Author == author
-                              select s.Value).Average();
-                return result;
+                              select s.Value;
+                if (result.Count()>0)
+                {
+                    return result.Average();
+                }
+                return 0;
             }
         }
 

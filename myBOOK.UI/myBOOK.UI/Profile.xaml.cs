@@ -109,7 +109,20 @@ namespace myBOOK.UI
             InitializeComponent();
             User = user;
             var repo = new Repository();
-            PastBookList.ItemsSource = repo.ChooseUsersPastBooks(user.Login);
+            var pastbooks = repo.ChooseUsersPastBooks(user.Login);
+            for (int i = 0; i < pastbooks.Count; i++)
+            {
+                pastbooks[i] = new BookView
+                {
+                    BookName = pastbooks[i].BookName,
+                    Author = pastbooks[i].Author,
+                    Description = pastbooks[i].Description,
+                    Genre = pastbooks[i].Genre,
+                    LoadingLink = pastbooks[i].LoadingLink,
+                    Rating = repo.ViewRatingForABook(pastbooks[i].BookName, pastbooks[i].Author)
+                };
+            }
+            PastBookList.ItemsSource = pastbooks;
             FutureBookList.ItemsSource = repo.ChooseUsersFutureBooks(user.Login);
             FavouriteBookList.ItemsSource = repo.ChooseUsersFavouriteBooks(user.Login);
         }

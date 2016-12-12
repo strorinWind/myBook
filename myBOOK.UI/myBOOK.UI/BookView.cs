@@ -1,10 +1,11 @@
-﻿using System;
+﻿using myBOOK.data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myBOOK.data
+namespace myBOOK.UI
 {
     class BookView:Books
     {

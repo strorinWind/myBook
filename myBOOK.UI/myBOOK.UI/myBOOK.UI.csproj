@@ -67,6 +67,7 @@
     <Compile Include="AddBookToList.xaml.cs">
       <DependentUpon>AddBookToList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BookView.cs" />
     <Compile Include="Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
