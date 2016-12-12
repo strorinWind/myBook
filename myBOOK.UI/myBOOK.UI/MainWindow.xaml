@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="400">
     <Window.Background>
-        <ImageBrush ImageSource=" C:\Users\Nati\Source\Repos\myBook\myBOOK.UI\myBOOK.data\image\background.jpg"/>
+        <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
