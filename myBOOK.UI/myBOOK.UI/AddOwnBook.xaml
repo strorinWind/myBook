@@ -5,19 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="AddOwnBook" Height="300" Width="300">
-    <Grid>
+        Title="AddOwnBook" Height="300" Width="500">
+    <Grid Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10 0">Автор:</TextBlock>
         <TextBox Name="AuthorName" Grid.Row="1" Grid.Column="1" Height="20" Width="150" VerticalAlignment="Center" HorizontalAlignment="Left">
@@ -26,8 +28,14 @@
         <TextBox Name="BookName" Grid.Row="2" Grid.Column="1" Height="20" Width="150" VerticalAlignment="Center" HorizontalAlignment="Left">
         </TextBox>
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10 0">Жанр:</TextBlock>
-        <ComboBox Name="Genre" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0">
+        <ComboBox Name="Genre" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0" Width="150">
         </ComboBox>
-        
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10 0">Описание:</TextBlock>
+        <TextBox Name="Description" Grid.Row="4" Grid.Column="1" Margin="0 5" Width="270" HorizontalAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10 0">Ссылка для загрузки:</TextBlock>
+        <TextBox Name="LoadingLink" Grid.Row="5" Grid.Column="1" Height="20" Width="270" VerticalAlignment="Center" HorizontalAlignment="Left">
+        </TextBox>
+        <Button Name="Add" Grid.Row="6" Grid.Column="1" Height="20" Width="90" HorizontalAlignment="Left" Margin="30 0" Click="Add_Click">Сохранить
+        </Button>
     </Grid>
 </Window>
