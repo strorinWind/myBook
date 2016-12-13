@@ -29,12 +29,6 @@ namespace myBOOK.UI
             User = user;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            //var p = new Profile(User);
-            //p.Show();
-        }
-
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             var repo = new Repository();
@@ -48,6 +42,12 @@ namespace myBOOK.UI
                 AddFoundBook?.Invoke((Books)BookList.SelectedItem);
                 Close();
             }
+        }
+
+        private void AddOwnBook_Click(object sender, RoutedEventArgs e)
+        {
+            var w = new AddOwnBook();
+            w.Show();
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="AddBookToList" Height="300" Width="500" Closing="Window_Closing">
+        Title="AddBookToList" Height="300" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -36,7 +36,7 @@
         <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="10">
             Если в базе нет подходящей книги, то можно добавить ее в базу и список.
         </TextBlock>
-        <Button Name="AddOwnBook" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Width="120" Height="22">Добавить книгу
+        <Button Name="AddOwnBook" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Width="120" Height="22" Click="AddOwnBook_Click">Добавить книгу
         </Button>
         <TextBlock Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Center">Результаты поиска</TextBlock>
         <ListBox Name="BookList" Grid.Row="1" Grid.Column="3" Grid.RowSpan="5" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" Padding="2">
