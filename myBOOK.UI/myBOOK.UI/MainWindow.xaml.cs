@@ -23,27 +23,33 @@ namespace myBOOK.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
-            InitializeComponent();
             using (Context c = new Context())
             {
-                //c._Book.Add(new Books {Author="Булгаков", BookName="Мастер и Маргарита", Genre=Books.Genres.Fiction, Description="крутая книга" });
-                //c._User.Where(k => k.Login=="user").ToList();
-                //c._FutureReadBooks.Add(new FutureReadBooks {Book = c._Book.First(), User = c.User.First() });
-                //c._Book.Add(new Books {BookName= "Рассказы",Author= "Агата Кристи",Genre="детектив",Description="Здесь есть описание" });
-                //c._PastReadBooks.Add(new PastReadBooks { Book = c._Book.First(), User = c.User.First() });
+            //    //c.User.ToList();
+            //    //c._Book.Add(new Books {Author="Булгаков", BookName="Мастер и Маргарита", Genre=Books.Genres.Fiction, Description="крутая книга" });
+            //    //c._User.Where(k => k.Login=="user").ToList();
+            //    //c._FutureReadBooks.Add(new FutureReadBooks {Book = c._Book.First(), User = c.User.First() });
+                //c._Book.Add(new Books {BookName= "Рассказы",Author= "Агата Кристи",Genre=Books.Genres.Action,Description="Здесь есть описание" });
+            //    //c._PastReadBooks.Add(new PastReadBooks { Book = c._Book.First(), User = c.User.First() });
                 //c.SaveChanges();
             }
+            InitializeComponent();
+            //InitialLoad();
         }
 
-        private void Enter_Click(object sender, RoutedEventArgs e)
+        Repository repo = new Repository();
+
+        private async void Enter_Click(object sender, RoutedEventArgs e)
         {
             var login = Username.Text;
             var password = Password.Password;
             //проверка корректности
-            var repo = new Repository();
-            var user = repo.IsUserDataCorrect(login, password);
+            
+            var user = await repo.IsUserDataCorrect(login, password);
             if (user!=null)
             {
                 var p = new Profile(user);

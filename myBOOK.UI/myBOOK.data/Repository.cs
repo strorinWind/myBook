@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.Entity;
 
 namespace myBOOK.data
 {
     public class Repository
     {
-        public Users IsUserDataCorrect(string login, string password)
+        public async Task FirstRequest()
+        {
+            using (Context c = new Context())
+            {
+                await c.User.FirstOrDefaultAsync();
+            }
+        }
+
+        public async Task<Users> IsUserDataCorrect(string login, string password)
         {
             using (Context c = new Context())
             {
                 Guid passwordnum = Encryption.GetHashString(password);
-                var result = from s in c.User
-                             where s.Login == login && s.Password == passwordnum
-                             select s;
-
-                if (result.Count() > 0)
-                {
-                    return result.First();
-                }
-                else
-                    return null;
+                return await c.User.FirstOrDefaultAsync(s => s.Login == login && s.Password == passwordnum);
             }
         }
 

@@ -10,6 +10,7 @@ namespace myBOOK.data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "myBOOK.data.Context";
         }
 
         protected override void Seed(myBOOK.data.Context context)

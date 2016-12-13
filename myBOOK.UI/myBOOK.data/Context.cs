@@ -18,7 +18,7 @@ namespace myBOOK.data
         public DbSet<FutureReadBooks> _FutureReadBooks { get; set; }
 
         public Context()
-            : base("localsql")
+            : base("azuresql")
         {
         }
     }
