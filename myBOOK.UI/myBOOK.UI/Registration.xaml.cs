@@ -69,5 +69,10 @@ namespace myBOOK.UI
                 MessageBox.Show("Пароли не совпадают");
             }
         }
+
+        private void Female_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
