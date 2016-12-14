@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Profile" Height="700" Width="1000"
         Name="window" SizeChanged="window_SizeChanged">
+        <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
+    </Window.Background>
     <Grid>
         <TabControl Grid.Column="1" Name="tabcontrol">    
             <TabItem Header="PastRead">
