@@ -75,9 +75,11 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
                                     <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Rating}" Margin="5 0"/>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -111,9 +113,11 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
                                     <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Rating}" Margin="5 0"/>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

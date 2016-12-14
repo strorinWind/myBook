@@ -47,7 +47,7 @@ namespace myBOOK.UI
                     c._PastReadBooks.Add(b);
                     c.SaveChanges();
                     MessageBox.Show("Книга успешно добавлена");
-                    PastBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                    Updatebookboxes();
                 }
                 else
                 {
@@ -71,7 +71,7 @@ namespace myBOOK.UI
                     c._FutureReadBooks.Add(b);
                     c.SaveChanges();
                     MessageBox.Show("Книга успешно добавлена");
-                    FutureBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                    Updatebookboxes();
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace myBOOK.UI
                     c._Favourite.Add(b);
                     c.SaveChanges();
                     MessageBox.Show("Книга успешно добавлена");
-                    FavouriteBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                    Updatebookboxes();
                 }
                 else
                 {
@@ -104,27 +104,58 @@ namespace myBOOK.UI
             }
         }
 
+        private void Updatebookboxes()
+        {
+            var repo = new Repository();
+            var list = repo.ChooseUsersPastBooks(User.Login);
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i] = new BookView
+                {
+                    BookName = list[i].BookName,
+                    Author = list[i].Author,
+                    Description = list[i].Description,
+                    Genre = list[i].Genre,
+                    LoadingLink = list[i].LoadingLink,
+                    Rating = repo.ViewRatingForABook(list[i].BookName, list[i].Author)
+                };
+            }
+            PastBookList.ItemsSource = list;
+            list = repo.ChooseUsersFutureBooks(User.Login);
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i] = new BookView
+                {
+                    BookName = list[i].BookName,
+                    Author = list[i].Author,
+                    Description = list[i].Description,
+                    Genre = list[i].Genre,
+                    LoadingLink = list[i].LoadingLink,
+                    Rating = repo.ViewRatingForABook(list[i].BookName, list[i].Author)
+                };
+            }
+            FutureBookList.ItemsSource = list;
+            list = repo.ChooseUsersFavouriteBooks(User.Login);
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i] = new BookView
+                {
+                    BookName = list[i].BookName,
+                    Author = list[i].Author,
+                    Description = list[i].Description,
+                    Genre = list[i].Genre,
+                    LoadingLink = list[i].LoadingLink,
+                    Rating = repo.ViewRatingForABook(list[i].BookName, list[i].Author)
+                };
+            }
+            FavouriteBookList.ItemsSource = list;
+        }
+
         public Profile(Users user)
         {
             InitializeComponent();
             User = user;
-            var repo = new Repository();
-            var pastbooks = repo.ChooseUsersPastBooks(user.Login);
-            for (int i = 0; i < pastbooks.Count; i++)
-            {
-                pastbooks[i] = new BookView
-                {
-                    BookName = pastbooks[i].BookName,
-                    Author = pastbooks[i].Author,
-                    Description = pastbooks[i].Description,
-                    Genre = pastbooks[i].Genre,
-                    LoadingLink = pastbooks[i].LoadingLink,
-                    Rating = repo.ViewRatingForABook(pastbooks[i].BookName, pastbooks[i].Author)
-                };
-            }
-            PastBookList.ItemsSource = pastbooks;
-            FutureBookList.ItemsSource = repo.ChooseUsersFutureBooks(user.Login);
-            FavouriteBookList.ItemsSource = repo.ChooseUsersFavouriteBooks(user.Login);
+            Updatebookboxes();
         }
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -164,7 +195,7 @@ namespace myBOOK.UI
                     var pastBookToDelete = repo.GetPastReadBooksTuple(User,BookToDelete);
                     c.Entry(pastBookToDelete).State = EntityState.Deleted;
                     c.SaveChanges();
-                    PastBookList.ItemsSource = repo.ChooseUsersPastBooks(User.Login);
+                    Updatebookboxes();
                 }
             }
         }

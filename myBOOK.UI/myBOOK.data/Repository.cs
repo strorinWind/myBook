@@ -9,14 +9,6 @@ namespace myBOOK.data
 {
     public class Repository
     {
-        public async Task FirstRequest()
-        {
-            using (Context c = new Context())
-            {
-                await c.User.FirstOrDefaultAsync();
-            }
-        }
-
         public async Task<Users> IsUserDataCorrect(string login, string password)
         {
             using (Context c = new Context())
@@ -33,13 +25,24 @@ namespace myBOOK.data
                 var result = from s in c.User
                              where s.Login == login
                              select s;
-
                 if (result.Count() == 0)
                 {
                     return false;
                 }
                 else
                     return true;
+            }
+        }
+
+        public bool DoesBookExists(string bookname,string author)
+        {
+            using (Context c = new Context())
+            {
+                if (c._Book.Find(bookname,author) != null)
+                {
+                    return true;
+                }
+                return false;
             }
         }
 

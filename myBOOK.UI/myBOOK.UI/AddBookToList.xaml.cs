@@ -23,6 +23,27 @@ namespace myBOOK.UI
         public Users User { get; set; }
         public Action<Books> AddFoundBook { get; set; }
 
+        private void AddBookToDatabase(Books book)
+        {
+            using (Context c = new Context())
+            {
+                var repo = new Repository();
+                if (!repo.DoesBookExists(book.BookName,book.Author))
+                {
+                    c._Book.Add(book);
+                    c.SaveChanges();
+                    //MessageBox.Show("Книга успешно добавлена");
+                    AddFoundBook?.Invoke(book);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Такая книга этого автора уже есть в базе, воспользуйтесь поиском, чтобы найти ее.");
+                    return;
+                }
+            }
+        }
+
         public AddBookToList(Users user)
         {
             InitializeComponent();
@@ -47,6 +68,7 @@ namespace myBOOK.UI
         private void AddOwnBook_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddOwnBook();
+            w.AddBook += AddBookToDatabase;
             w.Show();
         }
     }

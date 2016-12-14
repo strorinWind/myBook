@@ -33,8 +33,9 @@ namespace myBOOK.UI
         {
             var author = AuthorName.Text;
             var bookname = BookName.Text;
-            var genre = (Books.Genres)Genre.SelectedItem;
+            var genre = (Books.Genres)Genre.SelectedIndex;
             var desc = Description.Text;
+            var link = LoadingLink.Text;
             if (author=="")
             {
                 MessageBox.Show("Укажите автора");
@@ -43,7 +44,18 @@ namespace myBOOK.UI
             if (bookname=="")
             {
                 MessageBox.Show("Укажите название книги");
+                return;
             }
+            var b = new Books
+            {
+                Author = author,
+                BookName = bookname,
+                Description = desc,
+                Genre = genre,
+                LoadingLink = link
+            };
+            AddBook?.Invoke(b);
+            Close();
         }
     }
 }
