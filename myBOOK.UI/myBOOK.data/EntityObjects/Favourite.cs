@@ -1,4 +1,4 @@
-﻿using myBOOK.data.EntityObjects;
+﻿using myBOOK.data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace myBOOK.data
 {
-    public class Favourite:UserBooks
+    public class Favourite:IUserBooks
     {
         public int ID { get; set; }
         public Users User { get; set; }

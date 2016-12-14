@@ -55,8 +55,10 @@
     <Compile Include="Context.cs" />
     <Compile Include="EntityObjects\Favourite.cs" />
     <Compile Include="EntityObjects\FutureReadBooks.cs" />
-    <Compile Include="EntityObjects\UserBooks.cs" />
     <Compile Include="EntityObjects\PastReadBooks.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Interfaces\IUserBooks.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Migrations\201612121035051_InitialCreate.cs" />
     <Compile Include="Migrations\201612121035051_InitialCreate.Designer.cs">
       <DependentUpon>201612121035051_InitialCreate.cs</DependentUpon>

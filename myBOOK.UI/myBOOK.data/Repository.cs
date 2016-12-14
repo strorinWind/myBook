@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using myBOOK.data.Interfaces;
 
 namespace myBOOK.data
 {
-    public class Repository
+  public class Repository:IRepository
     {
         public async Task<Users> IsUserDataCorrect(string login, string password)
         {

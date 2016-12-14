@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using myBOOK.data;
 
-namespace myBOOK.data.EntityObjects
+namespace myBOOK.data.Interfaces
 {
-    public interface UserBooks
+   public interface IUserBooks
     {
         //int ID { get; set; }
-        Users User { get; set; }
-        Books Book { get; set; }
+        Users User { get; }
+        Books Book { get; }
     }
 }

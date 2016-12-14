@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using myBOOK.data.Interfaces;
 
 
 namespace myBOOK.UI
@@ -41,7 +42,8 @@ namespace myBOOK.UI
             //InitialLoad();
         }
 
-        Repository repo = new Repository();
+        IRepository repository = Factory.Default.GetRepository();
+        //IUserBooks userbooks = Factory.Default.GetUserBooks(); понадобится в другом месте мб
 
         private async void Enter_Click(object sender, RoutedEventArgs e)
         {
@@ -49,7 +51,7 @@ namespace myBOOK.UI
             var password = Password.Password;
             //проверка корректности
             
-            var user = await repo.IsUserDataCorrect(login, password);
+            var user = await repository.IsUserDataCorrect(login, password);
             if (user!=null)
             {
                 var p = new Profile(user);
