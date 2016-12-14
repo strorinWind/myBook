@@ -186,6 +186,7 @@ namespace myBOOK.UI
 
         private void DeletePastRead_Click(object sender, RoutedEventArgs e)
         {
+            //((TabItem)tabcontrol.SelectedItem).Header
             if (PastBookList.SelectedItem != null)
             {
                 using (Context c = new Context())
@@ -197,6 +198,14 @@ namespace myBOOK.UI
                     c.SaveChanges();
                     Updatebookboxes();
                 }
+            }
+        }
+
+        private void PastBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (PastBookList.SelectedItem != null)
+            {
+
             }
         }
     }
