@@ -63,6 +63,14 @@
     <Compile Include="Migrations\201612121035051_InitialCreate.Designer.cs">
       <DependentUpon>201612121035051_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612151216071_ChangeBookView.cs" />
+    <Compile Include="Migrations\201612151216071_ChangeBookView.Designer.cs">
+      <DependentUpon>201612151216071_ChangeBookView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612151218121_ChangeBookViewLocate.cs" />
+    <Compile Include="Migrations\201612151218121_ChangeBookViewLocate.Designer.cs">
+      <DependentUpon>201612151218121_ChangeBookViewLocate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -77,6 +85,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612121035051_InitialCreate.resx">
       <DependentUpon>201612121035051_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151216071_ChangeBookView.resx">
+      <DependentUpon>201612151216071_ChangeBookView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151218121_ChangeBookViewLocate.resx">
+      <DependentUpon>201612151218121_ChangeBookViewLocate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -106,49 +106,19 @@ namespace myBOOK.UI
 
         private void Updatebookboxes()
         {
+            var converter = new Converter();
             var repo = new Repository();
-            var list = repo.ChooseUsersPastBooks(User.Login);
-            for (int i = 0; i < list.Count; i++)
-            {
-                list[i] = new BookView
-                {
-                    BookName = list[i].BookName,
-                    Author = list[i].Author,
-                    Description = list[i].Description,
-                    Genre = list[i].Genre,
-                    LoadingLink = list[i].LoadingLink,
-                    Rating = repo.ViewRatingForABook(list[i].BookName, list[i].Author)
-                };
-            }
-            PastBookList.ItemsSource = list;
-            list = repo.ChooseUsersFutureBooks(User.Login);
-            for (int i = 0; i < list.Count; i++)
-            {
-                list[i] = new BookView
-                {
-                    BookName = list[i].BookName,
-                    Author = list[i].Author,
-                    Description = list[i].Description,
-                    Genre = list[i].Genre,
-                    LoadingLink = list[i].LoadingLink,
-                    Rating = repo.ViewRatingForABook(list[i].BookName, list[i].Author)
-                };
-            }
-            FutureBookList.ItemsSource = list;
-            list = repo.ChooseUsersFavouriteBooks(User.Login);
-            for (int i = 0; i < list.Count; i++)
-            {
-                list[i] = new BookView
-                {
-                    BookName = list[i].BookName,
-                    Author = list[i].Author,
-                    Description = list[i].Description,
-                    Genre = list[i].Genre,
-                    LoadingLink = list[i].LoadingLink,
-                    Rating = repo.ViewRatingForABook(list[i].BookName, list[i].Author)
-                };
-            }
-            FavouriteBookList.ItemsSource = list;
+            var res = converter.ConvertToBookView(repo.ChooseUsersPastBooks(User.Login));
+            PastBookList.ItemsSource = res;
+
+            res = converter.ConvertToBookView(repo.ChooseUsersFutureBooks(User.Login));
+            FutureBookList.ItemsSource = res;
+
+            res = converter.ConvertToBookView(repo.ChooseUsersFavouriteBooks(User.Login));
+            FavouriteBookList.ItemsSource = res;
+
+            res = converter.ConvertToScore(repo.ChooseUserScores(User),User);
+            ScoreList.ItemsSource = res;
         }
 
         public Profile(Users user)
@@ -205,7 +175,9 @@ namespace myBOOK.UI
         {
             if (PastBookList.SelectedItem != null)
             {
-
+                var w = new BookInfo((Books)PastBookList.SelectedItem,User);
+                w.Show();
+                w.Closing += (a, a1) => { Updatebookboxes(); };
             }
         }
     }

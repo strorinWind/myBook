@@ -74,6 +74,7 @@
       <DependentUpon>BookInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="BookView.cs" />
+    <Compile Include="Converter.cs" />
     <Compile Include="Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>

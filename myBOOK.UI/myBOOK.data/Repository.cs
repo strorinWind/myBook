@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using myBOOK.data.Interfaces;
+//using myBOOK.UI;
 
 namespace myBOOK.data
 {
@@ -207,5 +208,52 @@ namespace myBOOK.data
                 return result;
             }
         }
+
+        public void AddOrChangeScore(Users user,Books book,int score)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._Score.Where(s => s.User.Login == user.Login 
+                                            && s.Book.Author == book.Author 
+                                            && s.Book.BookName == book.BookName);
+                if (result.Count() == 0)
+                {
+                    Score Bookscore = new Score
+                    {
+                        Book = c._Book.Find(book.BookName, book.Author),
+                        User = c.User.Find(user.Login),
+                        Value = score
+                    };
+                    c._Score.Add(Bookscore);
+                }
+                else
+                {
+                    c._Score.Find(result.First().ID).Value = score;
+                }
+                c.SaveChanges();
+            }
+        }
+
+        public List<Books> ChooseUserScores(Users user)
+        {
+            using (Context c = new Context())
+            {
+               var result = c._Score.Where(s => s.User.Login == user.Login)
+                            .Select(s =>  s.Book).ToList();
+                return result;
+            }
+        }
+        
+        public int GetScore(Users user,Books book)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._Score.Where(s => s.User.Login == user.Login
+                                && s.Book.Author == book.Author
+                                && s.Book.BookName == book.BookName).First();
+                             
+                return result.Value;
+            }
+        } 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myBOOK.UI
 {
-    class BookView:Books
+    public class BookView:Books
     {
         public double Rating { get; set; }
     }

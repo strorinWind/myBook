@@ -147,7 +147,7 @@
                     </TextBlock>
                     <ListBox Name="ScoreList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="local:Books">
+                            <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
