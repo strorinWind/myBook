@@ -27,24 +27,24 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="0" Margin="0 5" HorizontalAlignment="Center" VerticalAlignment="Bottom">Автор</TextBlock>
-        <TextBox Name="Author" Grid.Column="1" Grid.Row="1" Margin="0 5" HorizontalAlignment="Center" Width="150" Height="20" IsEnabled="False">
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="0 5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White">Автор</TextBlock>
+        <TextBox Name="Author" Grid.Column="1" Grid.Row="1" Margin="0 5" HorizontalAlignment="Center" Width="150" Height="20" IsEnabled="False" BorderBrush="BurlyWood" Background="Cornsilk">
         </TextBox>
-        <TextBlock Grid.Column="2" Grid.Row="0" Margin="0 5" HorizontalAlignment="Center" VerticalAlignment="Bottom">Название</TextBlock>
-        <TextBox Name="Bookname" Grid.Column="2" Grid.Row="1" Margin="0 5" HorizontalAlignment="Center" Width="150" Height="20" IsEnabled="False">
+        <TextBlock Grid.Column="2" Grid.Row="0" Margin="0 5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White">Название</TextBlock>
+        <TextBox Name="Bookname" Grid.Column="2" Grid.Row="1" Margin="0 5" HorizontalAlignment="Center" Width="150" Height="20" IsEnabled="False"  BorderBrush="BurlyWood" Background="Cornsilk">
         </TextBox>
         <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" HorizontalAlignment="Center">Название и автор не могут быть изменены</TextBlock>
-             <ComboBox Name="Genre" Grid.Row="1" Width="200" Height="30" IsEnabled="False">
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Foreground="White">Название и автор не могут быть изменены</TextBlock>
+            <ComboBox Name="Genre" Grid.Row="1" Width="200" Height="30" IsEnabled="False"  BorderBrush="BurlyWood" Background="Cornsilk">
             </ComboBox>
         </Grid>
-        <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">Описание</TextBlock>
-        <TextBox Name="Description" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="5 5" Width="300" HorizontalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="False"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">Ссылка для загрузки
+        <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Foreground="White" >Описание</TextBlock>
+        <TextBox Name="Description" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="5 5" Width="300" HorizontalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="False" BorderBrush="BurlyWood" Background="Cornsilk" />
+        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" BorderBrush="BurlyWood" Background="Transparent" Foreground="White">Ссылка для загрузки
         </TextBox>
         <TextBox Name="Link" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Width="300" Height="20" VerticalAlignment="Top" IsEnabled="False">
         </TextBox>
@@ -61,16 +61,16 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <RadioButton GroupName="Score" Name="b1" Content="1" IsChecked="True" Grid.Column="0"/>
-            <RadioButton GroupName="Score" Name="b2" Content="2" Grid.Column="1"/>
-            <RadioButton GroupName="Score" Name="b3" Content="3" Grid.Column="2"/>
-            <RadioButton GroupName="Score" Name="b4" Content="4" Grid.Column="3"/>
-            <RadioButton GroupName="Score" Name="b5" Content="5" Grid.Column="4"/>
-            <RadioButton GroupName="Score" Name="b6" Content="6" Grid.Column="5"/>
-            <RadioButton GroupName="Score" Name="b7" Content="7" Grid.Column="6"/>
-            <RadioButton GroupName="Score" Name="b8" Content="8" Grid.Column="7"/>
-            <RadioButton GroupName="Score" Name="b9" Content="9" Grid.Column="8"/>
-            <RadioButton GroupName="Score" Name="b10" Content="10" Grid.Column="9"/>
+            <RadioButton GroupName="Score" Name="b1" Content="1" IsChecked="True" Grid.Column="0" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b2" Content="2" Grid.Column="1" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b3" Content="3" Grid.Column="2" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b4" Content="4" Grid.Column="3" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b5" Content="5" Grid.Column="4" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b6" Content="6" Grid.Column="5" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b7" Content="7" Grid.Column="6" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b8" Content="8" Grid.Column="7" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b9" Content="9" Grid.Column="8" Foreground="White"/>
+            <RadioButton GroupName="Score" Name="b10" Content="10" Grid.Column="9" Foreground="White"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -78,11 +78,11 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Name="Correct" Grid.Column="0"  Height="20" Width="100" Click="Correct_Click">Редактировать
+            <Button Name="Correct" Grid.Column="0" Click="Correct_Click" Background="Transparent" BorderBrush="Chocolate" Foreground="White" Margin="29,10,38,19">Редактировать
             </Button>
-            <Button Name="WriteReview" Grid.Column="1" Height="20" Width="100">Написать отзыв
+            <Button Name="WriteReview" Grid.Column="1" Background="Transparent" BorderBrush="Chocolate" Foreground="White" Margin="22,10,38,19">Написать отзыв
             </Button>
-            <Button Name="GiveScore" Grid.Column="2"  Height="20" Width="100" Click="GiveScore_Click">Оценить
+            <Button Name="GiveScore" Grid.Column="2" Click="GiveScore_Click" Background="Transparent" BorderBrush="Chocolate" Foreground="White" Margin="33,10,38,19">Оценить
             </Button>
         </Grid>
     </Grid>
