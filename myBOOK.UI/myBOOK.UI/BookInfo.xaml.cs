@@ -121,5 +121,10 @@ namespace myBOOK.UI
         {
 
         }
+
+        private void Author_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
