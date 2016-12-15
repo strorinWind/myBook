@@ -27,8 +27,6 @@ namespace myBOOK.UI
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            var repo = new Repository();
-            BookList.ItemsSource = repo.SearchABook(bookname.Text, author.Text);
         }
 
         private void Choose_Click(object sender, RoutedEventArgs e)

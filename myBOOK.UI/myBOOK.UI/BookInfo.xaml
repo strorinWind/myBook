@@ -18,34 +18,50 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">Название:</TextBlock>
-        <TextBox Name="bookname" Grid.Row="1" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="0 5" HorizontalAlignment="Center" VerticalAlignment="Bottom">Автор</TextBlock>
+        <TextBox Name="Author" Grid.Column="1" Grid.Row="1" Margin="0 5" HorizontalAlignment="Center" Width="150" Height="20" IsEnabled="False">
         </TextBox>
-        <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">Автор:</TextBlock>
-        <TextBox Name="author" Grid.Row="2" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <TextBlock Grid.Column="2" Grid.Row="0" Margin="0 5" HorizontalAlignment="Center" VerticalAlignment="Bottom">Название</TextBlock>
+        <TextBox Name="Bookname" Grid.Column="2" Grid.Row="1" Margin="0 5" HorizontalAlignment="Center" Width="150" Height="20" IsEnabled="False">
         </TextBox>
-        <Button Name="Search" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Height="22" Width="80" HorizontalAlignment="Center" Click="Search_Click">Поиск
+        <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">Описание</TextBlock>
+        <TextBox Name="Description" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5 5" Width="300" HorizontalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="False"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">Ссылка для загрузки
+        </TextBox>
+        <TextBox Name="Link" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Width="300" Height="20" VerticalAlignment="Top" IsEnabled="False">
+        </TextBox>
+        <Grid Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <RadioButton GroupName="Score"  Content="1" IsChecked="True" Grid.Column="0"/>
+            <RadioButton GroupName="Score"  Content="2" Grid.Column="1"/>
+            <RadioButton GroupName="Score"  Content="3" Grid.Column="2"/>
+            <RadioButton GroupName="Score"  Content="4" Grid.Column="3"/>
+            <RadioButton GroupName="Score"  Content="5" Grid.Column="4"/>
+            <RadioButton GroupName="Score"  Content="6" Grid.Column="5"/>
+            <RadioButton GroupName="Score"  Content="7" Grid.Column="6"/>
+            <RadioButton GroupName="Score"  Content="8" Grid.Column="7"/>
+            <RadioButton GroupName="Score"  Content="9" Grid.Column="8"/>
+            <RadioButton GroupName="Score"  Content="10" Grid.Column="9"/>
+        </Grid>
+        <Button Name="Correct" Grid.Column="1" Grid.Row="7" Height="20" Width="100">Редактировать
         </Button>
-        <ListBox Name="BookList" Grid.Row="1" Grid.Column="3" Grid.RowSpan="5" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" Padding="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="local:Books">
-                    <Grid Margin="0 5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Margin="5 0 20 0" FontSize="18" Text="{Binding BookName}"/>
-                        <TextBlock Grid.Column="1" FontSize="18" Text="{Binding Author}"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Button Name="GiveScore" Grid.Column="2" Grid.Row="7" Height="20" Width="100">Оценить
+        </Button>
     </Grid>
 </Window>
