@@ -9,6 +9,7 @@
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
     </Window.Background>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -85,5 +86,14 @@
             <Button Name="GiveScore" Grid.Column="2" Click="GiveScore_Click" Background="Transparent" BorderBrush="Chocolate" Foreground="White" Margin="33,10,38,19">Оценить
             </Button>
         </Grid>
+        <Menu x:Name="menu" Height="31" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Chocolate" HorizontalAlignment="Left" Width="395">
+            <MenuItem Header="About" Width="98" Click="MenuAbout_Click" InputGestureText="Ctrl+A"></MenuItem>
+            <MenuItem Header="Help" Width="98" InputGestureText="Ctrl+h" Click="MenuHelp_Click"></MenuItem>
+            <MenuItem Header="Authors" Width="98" Click="MenuAuthors_Click"></MenuItem>
+            <MenuItem Header="Close" Width="98" InputGestureText="Ctrl+Q" Click="MenuClose_Click"></MenuItem>
+            <Menu.BitmapEffect>
+                <DropShadowBitmapEffect/>
+            </Menu.BitmapEffect>
+        </Menu>
     </Grid>
 </Window>

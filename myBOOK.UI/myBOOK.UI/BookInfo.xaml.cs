@@ -124,5 +124,25 @@ namespace myBOOK.UI
         {
 
         }
+        private void MenuHelp_Click(object sender, RoutedEventArgs e)
+        {
+            Help help = new Help();
+            help.ShowDialog();
+        }
+        private void MenuClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
+        private void MenuAuthors_Click(object sender, RoutedEventArgs e)
+        {
+            Authors authors = new Authors();
+            authors.ShowDialog();
+        }
     }
 }
