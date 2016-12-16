@@ -84,7 +84,8 @@ namespace myBOOK.UI
         }
         private void MenuAuthors_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Девочки клевые. ну и я тут за компанию");
+            Authors a = new Authors();
+            a.ShowDialog();
         }
     }
 }

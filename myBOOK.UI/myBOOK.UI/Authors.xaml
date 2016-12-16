@@ -1,11 +1,11 @@
-﻿<Window x:Class="myBOOK.UI.About"
+﻿<Window x:Class="myBOOK.UI.Authors"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="About" Height="390" Width="600">
+        Title="Authors" Height="390" Width="600">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/image/cats_book.jpg"/>
     </Window.Background>
@@ -20,12 +20,13 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="label"  Grid.Column="1" Margin="10,44,10,0" Height="93" 
                VerticalAlignment="Top">
-            <TextBlock TextWrapping="WrapWithOverflow" Height="83">
-            MyBOOK предназначена для поиска информации о книгах, добавления их в личный кабинет, выставления оценок, написания рецензий
+            <TextBlock TextWrapping="WrapWithOverflow" Height="83" Width="188">
+            Алина Вельниковская (ББИ155-2)
+            Анастасия Сакунова (ББИ155-1)
+             Наталья Аникина (ББИ155-1)   
             </TextBlock>
         </Label>
-        <Label x:Name="label1" Content="О программе:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="276"/>
+        <Label x:Name="label1" Content="Авторы:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="276"/>
         <Button x:Name="button"  Grid.Column="1" HorizontalAlignment="Left" Margin="211,0,0,148" Grid.Row="1" VerticalAlignment="Bottom" Width="75" Click="button_Click" Background="Transparent" BorderBrush="Chocolate" >Закрыть</Button>
     </Grid>
-
 </Window>
