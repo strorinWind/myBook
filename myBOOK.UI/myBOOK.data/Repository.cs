@@ -9,7 +9,7 @@ using myBOOK.data.Interfaces;
 
 namespace myBOOK.data
 {
-  public class Repository: IRepository
+    public class Repository : IRepository
     {
         public async Task<Users> IsUserDataCorrect(string login, string password)
         {
@@ -36,11 +36,11 @@ namespace myBOOK.data
             }
         }
 
-        public bool DoesBookExists(string bookname,string author)
+        public bool DoesBookExists(string bookname, string author)
         {
             using (Context c = new Context())
             {
-                if (c._Book.Find(bookname,author) != null)
+                if (c._Book.Find(bookname, author) != null)
                 {
                     return true;
                 }
@@ -97,9 +97,9 @@ namespace myBOOK.data
             using (Context c = new Context())
             {
                 var result = from s in c._Score
-                              where s.Book.BookName == name && s.Book.Author == author
-                              select s.Value;
-                if (result.Count()>0)
+                             where s.Book.BookName == name && s.Book.Author == author
+                             select s.Value;
+                if (result.Count() > 0)
                 {
                     return result.Average();
                 }
@@ -135,44 +135,49 @@ namespace myBOOK.data
                                         FavouriteGenre = g.Key
                                     });
                 var favourite_genre = (from s in count_genres
-                                      where s.Count == count_genres.Max(p => p.Count)
-                                      select s.FavouriteGenre).FirstOrDefault();
+                                       where s.Count == count_genres.Max(p => p.Count)
+                                       select s.FavouriteGenre).FirstOrDefault();
 
                 var list_of_books = (from s in c._Book
                                      where s.Genre == favourite_genre
                                      select s).ToList();
 
                 var count_genres2 = (from s in c._Favourite
-                                    where s.User.Login == login
-                                    group s by s.Book.Genre into g
-                                    select new
-                                    {
-                                        Count = g.Count(),
-                                        FavouriteGenre = g.Key
-                                    });
+                                     where s.User.Login == login
+                                     group s by s.Book.Genre into g
+                                     select new
+                                     {
+                                         Count = g.Count(),
+                                         FavouriteGenre = g.Key
+                                     });
                 var favourite_genre2 = (from s in count_genres2
-                                       where s.Count == count_genres2.Max(p => p.Count)
-                                       select s.FavouriteGenre).FirstOrDefault();
-
-                list_of_books.AddRange((from s in c._Book
-                                  where s.Genre == favourite_genre2
-                                  select s).ToList());
+                                        where s.Count == count_genres2.Max(p => p.Count)
+                                        select s.FavouriteGenre).FirstOrDefault();
+                if (favourite_genre2 != favourite_genre)
+                {
+                    list_of_books.AddRange((from s in c._Book
+                                            where s.Genre == favourite_genre2
+                                            select s).ToList());
+                }
 
                 var count_genres3 = (from s in c._FutureReadBooks
-                                    where s.User.Login == login
-                                    group s by s.Book.Genre into g
-                                    select new
-                                    {
-                                        Count = g.Count(),
-                                        FavouriteGenre = g.Key
-                                    });
-                var favourite_genre3 = (from s in count_genres3
-                                       where s.Count == count_genres3.Max(p => p.Count)
-                                       select s.FavouriteGenre).FirstOrDefault();
+                                     where s.User.Login == login
+                                     group s by s.Book.Genre into g
+                                     select new
+                                     {
+                                         Count = g.Count(),
+                                         FavouriteGenre = g.Key
+                                     });
 
-                list_of_books.AddRange((from s in c._Book
-                                       where s.Genre == favourite_genre3
-                                       select s).ToList());
+                var favourite_genre3 = (from s in count_genres3
+                                        where s.Count == count_genres3.Max(p => p.Count)
+                                        select s.FavouriteGenre).FirstOrDefault();
+                if ((favourite_genre3 != favourite_genre) && (favourite_genre3 != favourite_genre2))
+                {
+                    list_of_books.AddRange((from s in c._Book
+                                            where s.Genre == favourite_genre3
+                                            select s).ToList());
+                }
                 Books b;
                 for (int i = 0; i < list_of_books.Count(); i++)
                 {
@@ -184,17 +189,52 @@ namespace myBOOK.data
                         i--;
                     }
                 }
-                return list_of_books;
+
+                Random ran = new Random();
+
+                List<Books> RandomRecommentations = new List<Books>();
+                for (int i = 0; i < list_of_books.Count; i++)
+                {
+                    int index = ran.Next(0, list_of_books.Count);
+                    RandomRecommentations.Add(list_of_books[index]);
+
+                    if (RandomRecommentations.Count == 7)
+                    {
+                        break;
+                    }
+
+                }
+
+                return RandomRecommentations;
             }
         }
+        /*
+        public void MakeRecommendations(string login, DbSet database)
+        {
+            using (Context c = new Context())
+            {
+                var count_genres = (from s in _database
+                                    where s.User.Login == login
+                                    group s by s.Book.Genre into g
+                                    select new
+                                    {
+                                        Count = g.Count(),
+                                        FavouriteGenre = g.Key
+                                    });
+                var favourite_genre = (from s in count_genres
+                                       where s.Count == count_genres.Max(p => p.Count)
+                                       select s.FavouriteGenre).FirstOrDefault();
+            }
+        }
+        */
 
         public bool SearchInPastBooks(Users user, Books book)
         {
             using (Context c = new Context())
             {
-                if (c._PastReadBooks.Any(b => b.User.Login==user.Login 
-                                            && b.Book.BookName == book.BookName 
-                                            && b.Book.Author==book.Author))
+                if (c._PastReadBooks.Any(b => b.User.Login == user.Login
+                                            && b.Book.BookName == book.BookName
+                                            && b.Book.Author == book.Author))
                 {
                     return true;
                 }
@@ -242,12 +282,12 @@ namespace myBOOK.data
             }
         }
 
-        public void AddOrChangeScore(Users user,Books book,int score)
+        public void AddOrChangeScore(Users user, Books book, int score)
         {
             using (Context c = new Context())
             {
-                var result = c._Score.Where(s => s.User.Login == user.Login 
-                                            && s.Book.Author == book.Author 
+                var result = c._Score.Where(s => s.User.Login == user.Login
+                                            && s.Book.Author == book.Author
                                             && s.Book.BookName == book.BookName);
                 if (result.Count() == 0)
                 {
@@ -271,25 +311,25 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-               var result = c._Score.Where(s => s.User.Login == user.Login)
-                            .Select(s =>  s.Book).ToList();
+                var result = c._Score.Where(s => s.User.Login == user.Login)
+                             .Select(s => s.Book).ToList();
                 return result;
             }
         }
-        
-        public int GetScore(Users user,Books book)
+
+        public int GetScore(Users user, Books book)
         {
             using (Context c = new Context())
             {
                 var result = c._Score.Where(s => s.User.Login == user.Login
                                 && s.Book.Author == book.Author
                                 && s.Book.BookName == book.BookName).First();
-                             
+
                 return result.Value;
             }
         }
-        
-        public Reviews ExistsReview(Users user,Books book)
+
+        public Reviews ExistsReview(Users user, Books book)
         {
             using (Context c = new Context())
             {
@@ -299,8 +339,8 @@ namespace myBOOK.data
                 return result;
             }
         }
-        
-        public void AddOrChangeReview(Users user, Books book,string reviewText)
+
+        public void AddOrChangeReview(Users user, Books book, string reviewText)
         {
             using (Context c = new Context())
             {
