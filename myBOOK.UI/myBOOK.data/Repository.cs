@@ -81,14 +81,18 @@ namespace myBOOK.data
             }
         }
 
-        public List<Reviews> ChooseReviewForABook(string BookName)
+        public List<ReviewView> ChooseReviewForABook(string BookName, string author)
         {
             using (Context c = new Context())
             {
-                var result = (from s in c._Review
-                              where s.Book.BookName == BookName
-                              select s).ToList();
-                return result;
+                var list = (from s in c._Review
+                              where s.Book.BookName == BookName && s.Book.Author == author
+                              select new ReviewView
+                              {
+                                  FullName = s.User.FullName,
+                                  ReviewText = s.ReviewText
+                              }).ToList();
+                return list;
             }
         }
 

@@ -185,13 +185,13 @@
                         <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" >Автор:</TextBlock>
                         <TextBox Name="author" Grid.Row="3" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                         </TextBox>
-                        <Button Name="Search" Grid.Row="4" Width="80" HorizontalAlignment="Center"  Height="22" VerticalAlignment="Center">Поиск
+                        <Button Name="Search" Grid.Row="4" Width="80" HorizontalAlignment="Center"  Height="22" VerticalAlignment="Center" Click="Search_Click">Поиск
                         </Button>
                         <TextBlock Grid.Row="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom">Результаты поиска. Выберите книгу</TextBlock>
-                        <ListBox Name="BookList" Grid.Row="6" Padding="2" Margin="0,5">
+                        <ListBox Name="BookList" Grid.Row="6" Padding="2" Margin="0,5" MouseDoubleClick="BookList_Selected">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="local:Books">
-                                    <Grid Margin="0 5">
+                                    <Grid Margin="0 5" Height="auto">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition/>
@@ -203,13 +203,27 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
-                    <Grid>
+                    <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock></TextBlock>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Отзывы на выбранную книгу</TextBlock>
+                        <ListBox Name="ReviewList" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="local:ReviewView">
+                                    <Grid Margin="0 5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Margin="5 0 20 0" FontSize="18" Text="{Binding FullName}"/>
+                                        <TextBlock Grid.Column="1" FontSize="14" TextWrapping="Wrap" Text="{Binding ReviewText}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Grid>
                 </Grid>
             </TabItem>
