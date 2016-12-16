@@ -1,0 +1,30 @@
+﻿<Window x:Class="myBOOK.UI.Help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:myBOOK.UI"
+        mc:Ignorable="d"
+        Title="Help" Height="390" Width="600">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/image/cats_book.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label" Margin="0,26,10,0" Height="144" 
+               VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="356">
+            <TextBlock TextWrapping="WrapWithOverflow" Height="134" Width="346">
+            Если у вас уже есть аккаунт, введите свое имя пользователя и пароль и нажмите на кнопку "вход". Регистрация осуществяется по одноименной кнопке. После успешного входа вы перейдете в "Профиль", в нем в разных вкладках расположены классификации ваших книг. Добавить новую книгу можно по соответствующей кнопке. Для выставления оценки двойным щелчком нажмите на книгу из "Профиля".
+            </TextBlock>
+        </Label>
+        <Label x:Name="label1" Content="Помощь:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="276"/>
+        <Button x:Name="button"  Grid.Column="1" Margin="0,0,10,148" Grid.Row="1" VerticalAlignment="Bottom" Click="button_Click" Background="Transparent" BorderBrush="Chocolate" HorizontalAlignment="Right" Width="75" >Закрыть</Button>
+    </Grid>
+</Window>

@@ -70,7 +70,8 @@ namespace myBOOK.UI
 
         private void MenuHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("HI! Can I help you?");
+            Help help = new Help();
+            help.ShowDialog();
         }
         private void MenuClose_Click(object sender, RoutedEventArgs e)
         {
@@ -79,12 +80,13 @@ namespace myBOOK.UI
 
         private void MenuAbout_Click(object sender, RoutedEventArgs e)
         {
-            About a = new About();
-            a.ShowDialog();
+            About about = new About();
+            about.ShowDialog();
         }
         private void MenuAuthors_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Девочки клевые. ну и я тут за компанию");
+            Authors authors = new Authors();
+            authors.ShowDialog();
         }
     }
 }
