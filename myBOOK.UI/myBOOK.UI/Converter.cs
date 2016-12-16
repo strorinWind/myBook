@@ -38,9 +38,6 @@ namespace myBOOK.UI
                 {
                     BookName = list[i].BookName,
                     Author = list[i].Author,
-                    //Description = list[i].Book.Description,
-                    //Genre = list[i].Book.Genre,
-                    //LoadingLink = list[i].Book.LoadingLink,
                     Rating = repo.GetScore(user,list[i]),
                 };
                 resultList.Add(b);

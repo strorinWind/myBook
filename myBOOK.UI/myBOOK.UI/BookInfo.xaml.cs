@@ -109,17 +109,15 @@ namespace myBOOK.UI
             {
                 score = 10;
             }
-            //Score BookScore = new Score { Book = Book,User = User,Value = score };
-            //c._Score.Add(BookScore);
-            //c.SaveChanges();
             var repo = new Repository();
             repo.AddOrChangeScore(User,Book,score);
             MessageBox.Show("Спасибо, что оценили книгу!");
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void WriteReview_Click(object sender, RoutedEventArgs e)
         {
-
+            var w = new WriteReview(User, Book);
+            w.Show();
         }
     }
 }

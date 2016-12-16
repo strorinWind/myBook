@@ -80,7 +80,7 @@
             </Grid.ColumnDefinitions>
             <Button Name="Correct" Grid.Column="0"  Height="20" Width="100" Click="Correct_Click">Редактировать
             </Button>
-            <Button Name="WriteReview" Grid.Column="1" Height="20" Width="100">Написать отзыв
+            <Button Name="WriteReview" Grid.Column="1" Height="20" Width="100" Click="WriteReview_Click">Написать отзыв
             </Button>
             <Button Name="GiveScore" Grid.Column="2"  Height="20" Width="100" Click="GiveScore_Click">Оценить
             </Button>

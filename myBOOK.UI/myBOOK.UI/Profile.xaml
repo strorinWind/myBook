@@ -166,6 +166,37 @@
             <TabItem Header="Reviews">
             </TabItem>
             <TabItem Header="Recomendations">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+            Рекомендации для вас
+                    </TextBlock>
+                    <ListBox Name="RecomendationList" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Stretch" Padding="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="local:BookView">
+                                <Grid Margin="0 5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="5 0 20 0" FontFamily="Arial" FontSize="18" Text="{Binding BookName}"/>
+                                    <TextBlock Grid.Column="1" FontFamily="Helvetica" FontSize="18" Text="{Binding Author}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Rating}" Margin="5 0"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="myBOOK.UI.WriteReview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:myBOOK.UI"
+        mc:Ignorable="d"
+        Title="WriteReview" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="Author" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">sadfas</TextBlock>
+            <TextBlock Name="Bookname" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">asdsad</TextBlock>
+        </Grid>
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Текст отзыва</TextBlock>
+        <TextBox Name="Review" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True">
+        </TextBox>
+        <Button Name="SendReview" Grid.Column="1" Grid.Row="3" Width="100" Height="20" Click="SendReview_Click">Отправить отзыв
+        </Button>
+    </Grid>
+</Window>

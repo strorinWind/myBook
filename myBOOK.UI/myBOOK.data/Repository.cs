@@ -134,18 +134,20 @@ namespace myBOOK.data
                                         Count = g.Count(),
                                         FavouriteGenre = g.Key
                                     });
-                var favourite_genre = from s in count_genres
+                var favourite_genre = (from s in count_genres
                                       where s.Count == count_genres.Max(p => p.Count)
-                                      select s.FavouriteGenre;
+                                      select s.FavouriteGenre).FirstOrDefault();
 
                 var list_of_books = (from s in c._Book
-                                     where s.Genre == favourite_genre.First()
+                                     where s.Genre == favourite_genre
                                      select s).ToList();
 
+                Books b;
                 for (int i = 0; i < list_of_books.Count(); i++)
                 {
-                    if (c._PastReadBooks.Any(s => s.Book.BookName == list_of_books[i].BookName 
-                                                   && s.Book.Author==list_of_books[i].Author))
+                    b = list_of_books[i];
+                    if (c._PastReadBooks.Any(s => s.Book.BookName == b.BookName 
+                                                   && s.Book.Author == b.Author))
                     {
                         list_of_books.RemoveAt(i);
                         i--;
@@ -254,6 +256,42 @@ namespace myBOOK.data
                              
                 return result.Value;
             }
-        } 
+        }
+        
+        public Reviews ExistsReview(Users user,Books book)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._Review.Where(s => s.User.Login == user.Login
+                                            && s.Book.BookName == book.BookName
+                                            && s.Book.Author == book.Author).FirstOrDefault();
+                return result;
+            }
+        }
+        
+        public void AddOrChangeReview(Users user, Books book,string reviewText)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._Review.Where(s => s.User.Login == user.Login
+                                            && s.Book.Author == book.Author
+                                            && s.Book.BookName == book.BookName);
+                if (result.Count() == 0)
+                {
+                    var review = new Reviews
+                    {
+                        User = c.User.Find(user.Login),
+                        Book = c._Book.Find(book.BookName, book.Author),
+                        ReviewText = reviewText
+                    };
+                    c._Review.Add(review);
+                }
+                else
+                {
+                    c._Review.Find(result.First().ID).ReviewText = reviewText;
+                }
+                c.SaveChanges();
+            }
+        }
     }
 }

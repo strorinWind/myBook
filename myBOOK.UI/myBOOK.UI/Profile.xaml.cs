@@ -119,6 +119,9 @@ namespace myBOOK.UI
 
             res = converter.ConvertToScore(repo.ChooseUserScores(User),User);
             ScoreList.ItemsSource = res;
+
+            res = converter.ConvertToBookView(repo.ShowRecommendations(User.Login));
+            RecomendationList.ItemsSource = res;
         }
 
         public Profile(Users user)
