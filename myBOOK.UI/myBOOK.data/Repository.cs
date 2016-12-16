@@ -208,25 +208,8 @@ namespace myBOOK.data
                 return RandomRecommentations;
             }
         }
-        /*
-        public void MakeRecommendations(string login, DbSet database)
-        {
-            using (Context c = new Context())
-            {
-                var count_genres = (from s in _database
-                                    where s.User.Login == login
-                                    group s by s.Book.Genre into g
-                                    select new
-                                    {
-                                        Count = g.Count(),
-                                        FavouriteGenre = g.Key
-                                    });
-                var favourite_genre = (from s in count_genres
-                                       where s.Count == count_genres.Max(p => p.Count)
-                                       select s.FavouriteGenre).FirstOrDefault();
-            }
-        }
-        */
+        
+      
 
         public bool SearchInPastBooks(Users user, Books book)
         {
