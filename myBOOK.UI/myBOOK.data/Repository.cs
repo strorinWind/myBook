@@ -9,7 +9,7 @@ using myBOOK.data.Interfaces;
 
 namespace myBOOK.data
 {
-  public class Repository:IRepository
+  public class Repository: IRepository
     {
         public async Task<Users> IsUserDataCorrect(string login, string password)
         {
@@ -142,11 +142,42 @@ namespace myBOOK.data
                                      where s.Genre == favourite_genre
                                      select s).ToList();
 
+                var count_genres2 = (from s in c._Favourite
+                                    where s.User.Login == login
+                                    group s by s.Book.Genre into g
+                                    select new
+                                    {
+                                        Count = g.Count(),
+                                        FavouriteGenre = g.Key
+                                    });
+                var favourite_genre2 = (from s in count_genres2
+                                       where s.Count == count_genres2.Max(p => p.Count)
+                                       select s.FavouriteGenre).FirstOrDefault();
+
+                list_of_books.AddRange((from s in c._Book
+                                  where s.Genre == favourite_genre2
+                                  select s).ToList());
+
+                var count_genres3 = (from s in c._FutureReadBooks
+                                    where s.User.Login == login
+                                    group s by s.Book.Genre into g
+                                    select new
+                                    {
+                                        Count = g.Count(),
+                                        FavouriteGenre = g.Key
+                                    });
+                var favourite_genre3 = (from s in count_genres3
+                                       where s.Count == count_genres3.Max(p => p.Count)
+                                       select s.FavouriteGenre).FirstOrDefault();
+
+                list_of_books.AddRange((from s in c._Book
+                                       where s.Genre == favourite_genre3
+                                       select s).ToList());
                 Books b;
                 for (int i = 0; i < list_of_books.Count(); i++)
                 {
                     b = list_of_books[i];
-                    if (c._PastReadBooks.Any(s => s.Book.BookName == b.BookName 
+                    if (c._PastReadBooks.Any(s => s.Book.BookName == b.BookName
                                                    && s.Book.Author == b.Author))
                     {
                         list_of_books.RemoveAt(i);

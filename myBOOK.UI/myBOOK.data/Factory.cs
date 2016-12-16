@@ -26,13 +26,28 @@ namespace myBOOK.data
             return _repository;
         }
 
-       
         public IUserBooks GetUserBooks()
         {
             if (_userbooks == null)
                 _userbooks = new PastReadBooks();
             return _userbooks;
         }
+        public IUserBooks GetFutureBooks()
+        {
+            if (_userbooks == null)
+                _userbooks = new FutureReadBooks();
+            return _userbooks;
+        }
+
+        public IUserBooks GetFavouriteBooks()
+        {
+            if (_userbooks == null)
+                _userbooks = new Favourite();
+            return _userbooks;
+        }
+
+  
+
 
     }
 }
