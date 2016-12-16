@@ -24,8 +24,6 @@ namespace myBOOK.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
         public MainWindow()
         {
             using (Context c = new Context())
@@ -70,15 +68,6 @@ namespace myBOOK.UI
             r.Show();
         }
 
-        private void Username_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void MenuHelp_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("HI! Can I help you?");
@@ -88,10 +77,6 @@ namespace myBOOK.UI
             Close();
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void MenuAbout_Click(object sender, RoutedEventArgs e)
         {
             About a = new About();
