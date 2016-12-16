@@ -61,14 +61,21 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="82*"/>
+                        <ColumnDefinition Width="149*"/>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="11"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="170*"/>
+                        <ColumnDefinition Width="437*"/>
+                        <ColumnDefinition Width="82*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+                    <TextBlock Grid.Row="0" Grid.Column="7"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="138,0,353,9" FontSize="16" Grid.ColumnSpan="2">
             Хочу прочитать
                     </TextBlock>
-                    <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                    <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2" Grid.ColumnSpan="8">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:Books">
                                 <Grid Margin="0 5">
@@ -84,7 +91,10 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddFutureRead_Click">Добавить книгу в список желаний
+                    <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0,20,15,0" Click="AddFutureRead_Click" Grid.ColumnSpan="6">Добавить книгу в список желаний
+                    </Button>
+                    <Button Name="DeleteFutureRead" Grid.Column="8" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="237,20,0,0" Click="DeleteFutureBook_Click">
+                        Удалить книгу из списка желаний
                     </Button>
                 </Grid>
             </TabItem>
@@ -122,8 +132,11 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddFavourite_Click">
+                    <Button Name="AddFavourite" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0,20,621,0" Click="AddFavourite_Click" Grid.Column="2">
                         Добавить любимую книгу
+                    </Button>
+                    <Button Name="DeleteFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="621,20,0,0" Click="DeleteFavourite_Click">
+                        Удалить любимую книгу
                     </Button>
                 </Grid>
             </TabItem>

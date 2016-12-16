@@ -209,5 +209,37 @@ namespace myBOOK.UI
             }
 
         }
+
+        private void DeleteFutureBook_Click(object sender, RoutedEventArgs e)
+        {
+            if (FutureBookList.SelectedItem != null)
+            {
+                using (Context c = new Context())
+                {
+                    var BookToDelete = (Books)FutureBookList.SelectedItem;
+                    var repo = new Repository();
+                    var futureBookToDelete = repo.GetFutureReadBooksTuple(User, BookToDelete);
+                    c.Entry(futureBookToDelete).State = EntityState.Deleted;
+                    c.SaveChanges();
+                    Updatebookboxes();
+                }
+            }
+        }
+
+        private void DeleteFavourite_Click(object sender, RoutedEventArgs e)
+        {
+            if (FavouriteBookList.SelectedItem != null)
+            {
+                using (Context c = new Context())
+                {
+                    var BookToDelete = (Books)FavouriteBookList.SelectedItem;
+                    var repo = new Repository();
+                    var favouriteBookToDelete = repo.GetFavouriteBooksTuple(User, BookToDelete);
+                    c.Entry(favouriteBookToDelete).State = EntityState.Deleted;
+                    c.SaveChanges();
+                    Updatebookboxes();
+                }
+            }
+        }
     }
 }

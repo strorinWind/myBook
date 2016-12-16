@@ -268,6 +268,29 @@ namespace myBOOK.data
                 return result;
             }
         }
+        public FutureReadBooks GetFutureReadBooksTuple(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._FutureReadBooks.Where(b => b.User.Login == user.Login
+                                                    && b.Book.BookName == book.BookName
+                                                    && b.Book.Author == book.Author)
+                                                    .First();
+                return result;
+            }
+        }
+
+        public Favourite GetFavouriteBooksTuple(Users user, Books book)
+        {
+            using (Context c = new Context())
+            {
+                var result = c._Favourite.Where(b => b.User.Login == user.Login
+                                                    && b.Book.BookName == book.BookName
+                                                    && b.Book.Author == book.Author)
+                                                    .First();
+                return result;
+            }
+        }
 
         public void AddOrChangeScore(Users user, Books book, int score)
         {
