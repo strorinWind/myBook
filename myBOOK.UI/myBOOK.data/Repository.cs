@@ -142,7 +142,7 @@ namespace myBOOK.data
                                      where s.Genre == favourite_genre
                                      select s).ToList();
 
-                var count_genres2 = (from s in c._Favourite
+                count_genres = (from s in c._Favourite
                                      where s.User.Login == login
                                      group s by s.Book.Genre into g
                                      select new
@@ -150,8 +150,8 @@ namespace myBOOK.data
                                          Count = g.Count(),
                                          FavouriteGenre = g.Key
                                      });
-                var favourite_genre2 = (from s in count_genres2
-                                        where s.Count == count_genres2.Max(p => p.Count)
+                var favourite_genre2 = (from s in count_genres
+                                        where s.Count == count_genres.Max(p => p.Count)
                                         select s.FavouriteGenre).FirstOrDefault();
                 if (favourite_genre2 != favourite_genre)
                 {
@@ -160,7 +160,7 @@ namespace myBOOK.data
                                             select s).ToList());
                 }
 
-                var count_genres3 = (from s in c._FutureReadBooks
+                count_genres = (from s in c._FutureReadBooks
                                      where s.User.Login == login
                                      group s by s.Book.Genre into g
                                      select new
@@ -169,8 +169,8 @@ namespace myBOOK.data
                                          FavouriteGenre = g.Key
                                      });
 
-                var favourite_genre3 = (from s in count_genres3
-                                        where s.Count == count_genres3.Max(p => p.Count)
+                var favourite_genre3 = (from s in count_genres
+                                        where s.Count == count_genres.Max(p => p.Count)
                                         select s.FavouriteGenre).FirstOrDefault();
                 if ((favourite_genre3 != favourite_genre) && (favourite_genre3 != favourite_genre2))
                 {
