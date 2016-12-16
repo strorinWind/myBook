@@ -188,5 +188,26 @@ namespace myBOOK.UI
         {
 
         }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            var a = author.Text;
+            var b = bookname.Text;
+            var repo = new Repository();
+            BookList.ItemsSource = repo.SearchABook(b, a);
+        }
+
+        private void BookList_Selected(object sender, RoutedEventArgs e)
+        {
+            var repo = new Repository();
+            //var converter = new Converter();
+            if (BookList.SelectedItem != null)
+            {
+                var b = (Books)BookList.SelectedItem;
+                var lst = repo.ChooseReviewForABook(b.BookName, b.Author);
+                ReviewList.ItemsSource = lst;
+            }
+
+        }
     }
 }

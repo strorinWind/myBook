@@ -12,7 +12,7 @@ namespace myBOOK.data.Interfaces
         List<Books> ChooseUsersFavouriteBooks(string login);
         List<Books> ChooseUsersFutureBooks(string login);
         List<Books> ChooseUsersPastBooks(string login);
-        List<Reviews> ChooseReviewForABook(string BookName);
+        List<ReviewView> ChooseReviewForABook(string BookName,string Author);
         double ViewRatingForABook(string name, string author);
         List<Books> SearchABook(string name, string author);
         List<Books> ShowRecommendations(string login);

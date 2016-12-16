@@ -44,5 +44,23 @@ namespace myBOOK.UI
             }
             return resultList;
         }
+
+        public List<ReviewView> ConvertToReviewView(List<Reviews> list)
+        {
+            var repo = new Repository();
+            var resultList = new List<ReviewView>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                var b = new ReviewView
+                {
+                    FullName = list[i].User.FullName,
+                    //Author = list[i].Author,
+                    //Rating = repo.GetScore(user, list[i]),
+                    ReviewText = list[i].ReviewText
+                };
+                resultList.Add(b);
+            }
+            return resultList;
+        }
     }
 }
