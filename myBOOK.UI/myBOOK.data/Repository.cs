@@ -147,13 +147,13 @@ namespace myBOOK.data
                                      select s).ToList();
 
                 count_genres = (from s in c._Favourite
-                                     where s.User.Login == login
-                                     group s by s.Book.Genre into g
-                                     select new
-                                     {
-                                         Count = g.Count(),
-                                         FavouriteGenre = g.Key
-                                     });
+                                where s.User.Login == login
+                                group s by s.Book.Genre into g
+                                select new
+                                {
+                                    Count = g.Count(),
+                                    FavouriteGenre = g.Key
+                                });
                 var favourite_genre2 = (from s in count_genres
                                         where s.Count == count_genres.Max(p => p.Count)
                                         select s.FavouriteGenre).FirstOrDefault();
@@ -165,13 +165,13 @@ namespace myBOOK.data
                 }
 
                 count_genres = (from s in c._FutureReadBooks
-                                     where s.User.Login == login
-                                     group s by s.Book.Genre into g
-                                     select new
-                                     {
-                                         Count = g.Count(),
-                                         FavouriteGenre = g.Key
-                                     });
+                                where s.User.Login == login
+                                group s by s.Book.Genre into g
+                                select new
+                                {
+                                    Count = g.Count(),
+                                    FavouriteGenre = g.Key
+                                });
 
                 var favourite_genre3 = (from s in count_genres
                                         where s.Count == count_genres.Max(p => p.Count)
@@ -186,8 +186,12 @@ namespace myBOOK.data
                 for (int i = 0; i < list_of_books.Count(); i++)
                 {
                     b = list_of_books[i];
-                    if (c._PastReadBooks.Any(s => s.Book.BookName == b.BookName
-                                                   && s.Book.Author == b.Author))
+                    if ((c._PastReadBooks.Any(s => s.Book.BookName == b.BookName
+                                                   && s.Book.Author == b.Author)) ||
+                            (c._FutureReadBooks.Any(s => s.Book.BookName == b.BookName
+                                                   && s.Book.Author == b.Author)) ||
+                                                   (c._Favourite.Any(s => s.Book.BookName == b.BookName
+                                                  && s.Book.Author == b.Author)))
                     {
                         list_of_books.RemoveAt(i);
                         i--;
