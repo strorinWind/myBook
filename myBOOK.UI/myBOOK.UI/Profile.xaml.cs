@@ -241,5 +241,32 @@ namespace myBOOK.UI
                 }
             }
         }
+
+       /*private void MarkAsFavourite_Click(object sender, RoutedEventArgs e) //не работает, исключение выдает
+        {
+            if (PastBookList.SelectedItem != null)
+            {
+                using (Context c = new Context())
+                {
+                    var BookToMark = (Books)PastBookList.SelectedItem;
+                    var b = new Favourite
+                    {
+                        Book = BookToMark,
+                        User=User
+                    };
+                    c._Favourite.Add(b);
+                    c.SaveChanges();
+                    MessageBox.Show("Книга успешно добавлена");
+                    Updatebookboxes();
+
+                }
+
+            }
+        }
+        */
+        private void MoveToFutureBooks_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
