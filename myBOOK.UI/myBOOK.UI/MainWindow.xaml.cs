@@ -94,7 +94,8 @@ namespace myBOOK.UI
         }
         private void MenuAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Здесь будет инфа о приложении");
+            About a = new About();
+            a.ShowDialog();
         }
         private void MenuAuthors_Click(object sender, RoutedEventArgs e)
         {

@@ -119,5 +119,10 @@ namespace myBOOK.UI
             var w = new WriteReview(User, Book);
             w.Show();
         }
+
+        private void Author_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

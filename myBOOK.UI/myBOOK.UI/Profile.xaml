@@ -106,7 +106,7 @@
                     <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
             Любимые книги
                     </TextBlock>
-                    <ListBox Name="FavouriteBookList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
+                    <ListBox Name="FavouriteBookList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2" SelectionChanged="FavouriteBookList_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:Books">
                                 <Grid Margin="0 5">

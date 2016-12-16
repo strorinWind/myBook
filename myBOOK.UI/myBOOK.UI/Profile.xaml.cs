@@ -183,5 +183,10 @@ namespace myBOOK.UI
                 w.Closing += (a, a1) => { Updatebookboxes(); };
             }
         }
+
+        private void FavouriteBookList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
