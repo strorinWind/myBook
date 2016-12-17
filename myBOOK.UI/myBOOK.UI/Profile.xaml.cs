@@ -121,18 +121,6 @@ namespace myBOOK.UI
             w.Show();
         }
 
-        private void PastBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (PastBookList.SelectedItem != null)
-            {
-                //var converter = new Converter();
-                var b = converter.ConvertToBook((BookView)PastBookList.SelectedItem);
-                var w = new BookInfo(b,User);
-                w.Show();
-                w.Closing += (a, a1) => { Updatebookboxes(); };
-            }
-        }
-
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             var a = author.Text;
@@ -181,31 +169,78 @@ namespace myBOOK.UI
             }
         }
 
-        private void MarkAsFavourite_Click(object sender, RoutedEventArgs e) //не работает, исключение выдает
+        private void MarkAsFavourite_Click(object sender, RoutedEventArgs e)
         {
-            /*if (PastBookList.SelectedItem != null)
+            if (PastBookList.SelectedItem != null)
             {
-                using (Context c = new Context())
+                var b = converter.ConvertToBook((BookView)PastBookList.SelectedItem);
+                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.Favourite))
                 {
-                    var BookToMark = (Books)PastBookList.SelectedItem;
-                    var b = new Favourite
-                    {
-                        Book = BookToMark,
-                        User=User
-                    };
-                    c._Favourite.Add(b);
-                    c.SaveChanges();
-                    MessageBox.Show("Книга успешно добавлена");
                     Updatebookboxes();
-
+                    MessageBox.Show("Книга успешно добавлена");
                 }
-
-            }*/
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            }
         }
 
         private void MoveToFutureBooks_Click(object sender, RoutedEventArgs e)
         {
+            if (RecomendationList.SelectedItem != null)
+            {
+                var b = converter.ConvertToBook((BookView)RecomendationList.SelectedItem);
+                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.FutureRead))
+                {
+                    Updatebookboxes();
+                    MessageBox.Show("Книга успешно добавлена");
+                }
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            }
+        }
 
+        private void ShowBookInfo(Books b)
+        {
+            var w = new BookInfo(b, User);
+            w.Show();
+            w.Closing += (a, a1) => { Updatebookboxes(); };
+        }
+
+        private void PastBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (PastBookList.SelectedItem != null)
+            {
+                var b = converter.ConvertToBook((BookView)PastBookList.SelectedItem);
+                ShowBookInfo(b);
+            }
+        }
+
+        private void FutureBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var b = converter.ConvertToBook((BookView)FutureBookList.SelectedItem);
+            ShowBookInfo(b);
+        }
+
+        private void FavouriteBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var b = converter.ConvertToBook((BookView)FavouriteBookList.SelectedItem);
+            ShowBookInfo(b);
+        }
+
+        private void ScoreList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var b = converter.ConvertToBook((BookView)ScoreList.SelectedItem);
+            ShowBookInfo(b);
+        }
+
+        private void RecomendationList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var b = converter.ConvertToBook((BookView)RecomendationList.SelectedItem);
+            ShowBookInfo(b);
         }
     }
 }
