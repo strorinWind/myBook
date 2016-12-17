@@ -31,7 +31,7 @@ namespace myBOOK.data
             Tragedy,
             Tragicomedy,
             Fantasy,
-            FairyTale,
+            ChildrenLiterature,
             Mystery,
             ScienceFiction,
             PictureBook,
@@ -46,5 +46,10 @@ namespace myBOOK.data
             History,
             Poetry
         }
+
+        //public static implicit operator Books(Books v)
+        //{
+            //throw new NotImplementedException();
+        //}
     }
 }

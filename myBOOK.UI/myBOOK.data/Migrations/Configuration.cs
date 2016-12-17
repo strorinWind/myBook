@@ -3,7 +3,11 @@ namespace myBOOK.data.Migrations
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using static Books;
 
     internal sealed class Configuration : DbMigrationsConfiguration<myBOOK.data.Context>
     {
@@ -13,20 +17,45 @@ namespace myBOOK.data.Migrations
             ContextKey = "myBOOK.data.Context";
         }
 
-        protected override void Seed(myBOOK.data.Context context)
+        protected override void Seed(Context context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourceName = "myBook.data.Books.csv";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    string LineToRead;
+                    while ((LineToRead = reader.ReadLine()) != null)
+                    {
+                        string[] a = LineToRead.Split(';');
+                        var column = a[0];
+                        var bookCheck = context._Book.Where(c => c.BookName == column);
+                        Books book;
+                        if (bookCheck.Count() == 0)
+                        {
+                            book = new Books
+                            {
+                                BookName = a[0],
+                                Author = a[1],
+                                Genre = (Books.Genres)(Convert.ToInt32(a[2]))
+
+                            };
+                            context._Book.AddOrUpdate(book);
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            book = bookCheck.First();
+                        }
+
+
+                    }
+                }
+            }
+
         }
     }
 }

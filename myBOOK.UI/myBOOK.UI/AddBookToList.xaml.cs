@@ -50,6 +50,7 @@ namespace myBOOK.UI
         {
             var repo = new Repository();
             BookList.ItemsSource = repo.SearchABook(bookname.Text,author.Text);
+            
         }
 
         private void Choose_Click(object sender, RoutedEventArgs e)
