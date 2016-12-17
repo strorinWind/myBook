@@ -7,9 +7,12 @@
         mc:Ignorable="d"
         Title="Profile" Height="700" Width="1000"
         Name="window" SizeChanged="window_SizeChanged">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
+    </Window.Background>
     <Grid Name="grid">
-        <TabControl Grid.Column="1" Name="tabcontrol">    
-            <TabItem Header="PastRead">
+        <TabControl Name="tabcontrol" Margin="0,40,0,0" Background="Transparent" SelectionChanged="tabcontrol_SelectionChanged">    
+            <TabItem Header="PastRead"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -25,10 +28,10 @@
                         <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+                    <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16"  Foreground="White">
             Прочитано
                     </TextBlock>
-                    <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="PastBookList_MouseDoubleClick">
+                    <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="PastBookList_MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk" Margin="10,0">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
@@ -44,17 +47,17 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddPastRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddPastRead_Click">Добавить прочитанную книгу
+                    <Button Name="AddPastRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddPastRead_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">Добавить прочитанную книгу
                     </Button>
-                    <Button Name="DeletePastRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="DeletePastRead_Click">
+                    <Button Name="DeletePastRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="DeletePastRead_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                         Удалить
                     </Button>
-                    <Button Name="MarkAsFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="MarkAsFavourite_Click">
+                    <Button Name="MarkAsFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="MarkAsFavourite_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                         Отметить как любимую
                     </Button>
                 </Grid>
             </TabItem>     
-            <TabItem Header="FutureRead">
+            <TabItem Header="FutureRead"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -70,10 +73,10 @@
                         <ColumnDefinition Width="7*" MinWidth="200"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16">
+                    <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16"  Foreground="White">
             Хочу прочитать
                     </TextBlock>
-                    <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="FutureBookList_MouseDoubleClick">
+                    <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="FutureBookList_MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk" Margin="10,0">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
@@ -89,14 +92,14 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20" Click="AddFutureRead_Click">Добавить книгу в список желаний
+                    <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20" Click="AddFutureRead_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">Добавить книгу в список желаний
                     </Button>
-                    <Button Name="DeleteFutureRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 20" Click="DeleteFutureBook_Click">
+                    <Button Name="DeleteFutureRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 20" Click="DeleteFutureBook_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                         Удалить книгу из списка желаний
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Favourite Books">
+            <TabItem Header="Favourite Books"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -112,10 +115,10 @@
                         <ColumnDefinition Width="7*" MinWidth="200"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+                    <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16"  Foreground="White">
             Любимые книги
                     </TextBlock>
-                    <ListBox Name="FavouriteBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="FavouriteBookList_MouseDoubleClick">
+                    <ListBox Name="FavouriteBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="FavouriteBookList_MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk" Margin="10,0">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
@@ -131,15 +134,15 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddFavourite" Grid.Row="4" Grid.Column="1" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Right" Click="AddFavourite_Click">
+                    <Button Name="AddFavourite" Grid.Row="4" Grid.Column="1" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Right" Click="AddFavourite_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                         Добавить любимую книгу
                     </Button>
-                    <Button Name="DeleteFavourite" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Left" Click="DeleteFavourite_Click">
+                    <Button Name="DeleteFavourite" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Left" Click="DeleteFavourite_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                         Удалить любимую книгу
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Scores">
+            <TabItem Header="Scores" HorizontalAlignment="Right" Width="52"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -154,10 +157,10 @@
                         <ColumnDefinition Width="822*"/>
                         <ColumnDefinition Width="82*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+                    <TextBlock Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16"  Foreground="White">
             Мои оценки
                     </TextBlock>
-                    <ListBox Name="ScoreList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="ScoreList_MouseDoubleClick">
+                    <ListBox Name="ScoreList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="ScoreList_MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
@@ -175,32 +178,47 @@
                     </ListBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Reviews">
+            <TabItem Header="Reviews"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,27,578,4" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.196"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="12*"/>
+                            <RowDefinition Height="27*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="24*"/>
+                            <RowDefinition Height="38*"/>
+                            <RowDefinition Height="42*"/>
+                            <RowDefinition Height="23*"/>
+                            <RowDefinition Height="378*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" >Название:</TextBlock>
-                        <TextBox Name="bookname" Grid.Row="1" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="174,1,174,10" Width="56"  Foreground="White">Название:</TextBlock>
+                        <TextBox Name="bookname" Grid.Row="1" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="BurlyWood" Background="Cornsilk" Margin="152,9,152,6">
                         </TextBox>
-                        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" >Автор:</TextBlock>
-                        <TextBox Name="author" Grid.Row="3" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        </TextBox>
-                        <Button Name="Search" Grid.Row="4" Width="80" HorizontalAlignment="Center"  Height="22" VerticalAlignment="Center" Click="Search_Click">Поиск
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="186,0,174,0" Width="44"  Foreground="White">Автор:</TextBlock>
+                        <TextBox Name="author" Grid.Row="3" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="BurlyWood" Background="Cornsilk" Margin="152,10,152,8"/>
+                        <Button Name="Search" Grid.Row="4" Width="80" HorizontalAlignment="Center"  Height="22" VerticalAlignment="Center" Click="Search_Click" Margin="162,10"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">Поиск
                         </Button>
-                        <TextBlock Grid.Row="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom">Результаты поиска. Выберите книгу</TextBlock>
-                        <ListBox Name="BookList" Grid.Row="6" Padding="2" Margin="0,5" MouseDoubleClick="BookList_Selected">
+                        <TextBlock Grid.Row="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="21" Margin="72,0" Width="260"  Foreground="White">Результаты поиска. Выберите книгу</TextBlock>
+                        <ListBox Name="BookList" Grid.Row="6" Padding="2" Margin="0,5,0,30" MouseDoubleClick="BookList_Selected" BorderBrush="BurlyWood" Background="Cornsilk" RenderTransformOrigin="0.5,0.5">
+                            <ListBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0.274"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ListBox.RenderTransform>
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="local:Books">
                                     <Grid Margin="0 5" Height="auto">
@@ -221,7 +239,7 @@
                             <RowDefinition Height="15*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Отзывы на выбранную книгу</TextBlock>
-                        <ListBox Name="ReviewList" Grid.Row="1">
+                        <ListBox Name="ReviewList" Grid.Row="1" BorderBrush="BurlyWood" Background="Cornsilk" Margin="0,24,0,34">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="local:ReviewView">
                                     <Grid Margin="0 5">
@@ -238,7 +256,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Recomendations">
+            <TabItem Header="Recomendations"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -246,14 +264,14 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="21*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="28*"/>
+                        <ColumnDefinition Width="434*"/>
+                        <ColumnDefinition Width="29*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="16">
+                    <TextBlock Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="356,0,344,10" FontSize="16"  Foreground="White" Height="21" Width="168">
             Рекомендации для вас
                     </TextBlock>
-                    <ListBox Name="RecomendationList" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="RecomendationList_MouseDoubleClick">
+                    <ListBox Name="RecomendationList" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="RecomendationList_MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
@@ -269,11 +287,20 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="MoveToFutureRead" Grid.Column="1" Grid.Row="2" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="MoveToFutureBooks_Click">
+                    <Button Name="MoveToFutureRead" Grid.Column="1" Grid.Row="2" Height="30" VerticalAlignment="Top" Margin="348,20,348,0" Click="MoveToFutureBooks_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                         Переместить в список желаний
                     </Button>
                 </Grid>
             </TabItem>
         </TabControl>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="333" Background="Transparent" BorderBrush="Chocolate">
+            <MenuItem Header="About" Width="83" Click="MenuAbout_Click" InputGestureText="Ctrl+A"></MenuItem>
+            <MenuItem Header="Help" Width="83" InputGestureText="Ctrl+h" Click="MenuHelp_Click"></MenuItem>
+            <MenuItem Header="Authors" Width="83" Click="MenuAuthors_Click"></MenuItem>
+            <MenuItem Header="Close" Width="83" InputGestureText="Ctrl+Q" Click="MenuClose_Click"></MenuItem>
+            <Menu.BitmapEffect>
+                <DropShadowBitmapEffect/>
+            </Menu.BitmapEffect>
+        </Menu>
     </Grid>
 </Window>
