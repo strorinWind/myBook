@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myBOOK.data.EntityObjects;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace myBOOK.data
         public DbSet<Favourite> _Favourite { get; set; }
         public DbSet<PastReadBooks> _PastReadBooks { get; set; }
         public DbSet<FutureReadBooks> _FutureReadBooks { get; set; }
+        public DbSet<UserToBook> UserToBook { get; set; }
 
         public Context()
             : base("azuresql")

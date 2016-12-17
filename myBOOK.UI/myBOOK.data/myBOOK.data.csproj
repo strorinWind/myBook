@@ -56,6 +56,7 @@
     <Compile Include="EntityObjects\Favourite.cs" />
     <Compile Include="EntityObjects\FutureReadBooks.cs" />
     <Compile Include="EntityObjects\PastReadBooks.cs" />
+    <Compile Include="EntityObjects\UserToBook.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Interfaces\IUserBooks.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -70,6 +71,10 @@
     <Compile Include="Migrations\201612151218121_ChangeBookViewLocate.cs" />
     <Compile Include="Migrations\201612151218121_ChangeBookViewLocate.Designer.cs">
       <DependentUpon>201612151218121_ChangeBookViewLocate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612170636457_AddedUserToBookClass.cs" />
+    <Compile Include="Migrations\201612170636457_AddedUserToBookClass.Designer.cs">
+      <DependentUpon>201612170636457_AddedUserToBookClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612151218121_ChangeBookViewLocate.resx">
       <DependentUpon>201612151218121_ChangeBookViewLocate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612170636457_AddedUserToBookClass.resx">
+      <DependentUpon>201612170636457_AddedUserToBookClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

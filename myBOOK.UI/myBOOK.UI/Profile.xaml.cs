@@ -1,4 +1,5 @@
 ﻿using myBOOK.data;
+using myBOOK.data.EntityObjects;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -32,92 +33,20 @@ namespace myBOOK.UI
             }
         }
 
-        private void GetPastBookFromAddingForm(Books book)
-        {
-            using (Context c = new Context())
-            {
-                var repo = new Repository();
-                if (!repo.SearchInPastBooks(User, book))
-                {
-                    var b = new PastReadBooks
-                    {
-                        User = c.User.Find(User.Login),
-                        Book = c._Book.Find(book.BookName, book.Author),
-                    };
-                    c._PastReadBooks.Add(b);
-                    c.SaveChanges();
-                    MessageBox.Show("Книга успешно добавлена");
-                    Updatebookboxes();
-                }
-                else
-                {
-                    MessageBox.Show("Эта книга уже есть в вашем списке");
-                }
-            }
-        }
-
-        private void GetFutureBookFromAddingForm(Books book)
-        {
-            using (Context c = new Context())
-            {
-                var repo = new Repository();
-                if (!repo.SearchInFutureBooks(User, book))
-                {
-                    var b = new FutureReadBooks
-                    {
-                        User = c.User.Find(User.Login),
-                        Book = c._Book.Find(book.BookName, book.Author),
-                    };
-                    c._FutureReadBooks.Add(b);
-                    c.SaveChanges();
-                    MessageBox.Show("Книга успешно добавлена");
-                    Updatebookboxes();
-                }
-                else
-                {
-                    MessageBox.Show("Эта книга уже есть в вашем списке");
-                }
-            }
-        }
-
-        private void GetFavouriteBookFromAddingForm(Books book)
-        {
-            using (Context c = new Context())
-            {
-                var repo = new Repository();
-                if (!repo.SearchInFavouriteBooks(User, book))
-                {
-                    var b = new Favourite
-                    {
-                        User = c.User.Find(User.Login),
-                        Book = c._Book.Find(book.BookName, book.Author),
-                    };
-                    c._Favourite.Add(b);
-                    c.SaveChanges();
-                    MessageBox.Show("Книга успешно добавлена");
-                    Updatebookboxes();
-                }
-                else
-                {
-                    MessageBox.Show("Эта книга уже есть в вашем списке");
-                }
-            }
-        }
-
         private void Updatebookboxes()
         {
             var converter = new Converter();
             var repo = new Repository();
-            var res = converter.ConvertToBookView(repo.ChooseUsersPastBooks(User.Login));
+            var res = converter.ConvertToBookView(repo.ChooseUserBooksOfCategory(User.Login, UserToBook.Categories.PastRead));
             PastBookList.ItemsSource = res;
 
-            res = converter.ConvertToBookView(repo.ChooseUsersFutureBooks(User.Login));
+            res = converter.ConvertToBookView(repo.ChooseUserBooksOfCategory(User.Login, UserToBook.Categories.FutureRead));
             FutureBookList.ItemsSource = res;
 
-            res = converter.ConvertToBookView(repo.ChooseUsersFavouriteBooks(User.Login));
+            res = converter.ConvertToBookView(repo.ChooseUserBooksOfCategory(User.Login, UserToBook.Categories.Favourite));
             FavouriteBookList.ItemsSource = res;
 
-            res = converter.ConvertToScore(repo.ChooseUserScores(User),User);
+            res = converter.ConvertToScore(repo.ChooseUserScores(User), User);
             ScoreList.ItemsSource = res;
 
             res = converter.ConvertToBookView(repo.ShowRecommendations(User.Login));
@@ -139,54 +68,68 @@ namespace myBOOK.UI
         private void AddPastRead_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddBookToList(User);
-            w.AddFoundBook += GetPastBookFromAddingForm;
+            var repo = new Repository();
+            w.AddFoundBook += (b) =>
+            {
+                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.PastRead))
+                {
+                    MessageBox.Show("Книга успешно добавлена");
+                    Updatebookboxes();
+                }
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            };
             w.Show();
         }
 
         private void AddFavourite_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddBookToList(User);
-            w.AddFoundBook += GetFavouriteBookFromAddingForm;
+            var repo = new Repository();
+            w.AddFoundBook += (b) =>
+            {
+                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.Favourite))
+                {
+                    MessageBox.Show("Книга успешно добавлена");
+                    Updatebookboxes();
+                }
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            };
             w.Show();
         }
 
         private void AddFutureRead_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddBookToList(User);
-            w.AddFoundBook += GetFutureBookFromAddingForm;
-            w.Show();
-        }
-
-        private void DeletePastRead_Click(object sender, RoutedEventArgs e)
-        {
-            //((TabItem)tabcontrol.SelectedItem).Header
-            if (PastBookList.SelectedItem != null)
+            var repo = new Repository();
+            w.AddFoundBook += (b) =>
             {
-                using (Context c = new Context())
+                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.FutureRead))
                 {
-                    var BookToDelete = (Books)PastBookList.SelectedItem;
-                    var repo = new Repository();
-                    var pastBookToDelete = repo.GetPastReadBooksTuple(User,BookToDelete);
-                    c.Entry(pastBookToDelete).State = EntityState.Deleted;
-                    c.SaveChanges();
+                    MessageBox.Show("Книга успешно добавлена");
                     Updatebookboxes();
                 }
-            }
+                else
+                {
+                    MessageBox.Show("Эта книга уже есть в вашем списке");
+                }
+            };
+            w.Show();
         }
 
         private void PastBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (PastBookList.SelectedItem != null)
             {
-                var w = new BookInfo((Books)PastBookList.SelectedItem,User);
+                var w = new BookInfo((Books)PastBookList.SelectedItem, User);
                 w.Show();
                 w.Closing += (a, a1) => { Updatebookboxes(); };
             }
-        }
-
-        private void FavouriteBookList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
@@ -200,7 +143,6 @@ namespace myBOOK.UI
         private void BookList_Selected(object sender, RoutedEventArgs e)
         {
             var repo = new Repository();
-            //var converter = new Converter();
             if (BookList.SelectedItem != null)
             {
                 var b = (Books)BookList.SelectedItem;
@@ -210,19 +152,23 @@ namespace myBOOK.UI
 
         }
 
+        private void DeletePastRead_Click(object sender, RoutedEventArgs e)
+        {
+            if (PastBookList.SelectedItem != null)
+            {
+                var repo = new Repository();
+                repo.DeleteUserToBook(User, (Books)PastBookList.SelectedItem, UserToBook.Categories.PastRead);
+                Updatebookboxes();
+            }
+        }
+
         private void DeleteFutureBook_Click(object sender, RoutedEventArgs e)
         {
             if (FutureBookList.SelectedItem != null)
             {
-                using (Context c = new Context())
-                {
-                    var BookToDelete = (Books)FutureBookList.SelectedItem;
-                    var repo = new Repository();
-                    var futureBookToDelete = repo.GetFutureReadBooksTuple(User, BookToDelete);
-                    c.Entry(futureBookToDelete).State = EntityState.Deleted;
-                    c.SaveChanges();
-                    Updatebookboxes();
-                }
+                var repo = new Repository();
+                repo.DeleteUserToBook(User, (Books)FutureBookList.SelectedItem, UserToBook.Categories.FutureRead);
+                Updatebookboxes();
             }
         }
 
@@ -230,21 +176,15 @@ namespace myBOOK.UI
         {
             if (FavouriteBookList.SelectedItem != null)
             {
-                using (Context c = new Context())
-                {
-                    var BookToDelete = (Books)FavouriteBookList.SelectedItem;
-                    var repo = new Repository();
-                    var favouriteBookToDelete = repo.GetFavouriteBooksTuple(User, BookToDelete);
-                    c.Entry(favouriteBookToDelete).State = EntityState.Deleted;
-                    c.SaveChanges();
-                    Updatebookboxes();
-                }
+                var repo = new Repository();
+                repo.DeleteUserToBook(User, (Books)FavouriteBookList.SelectedItem, UserToBook.Categories.Favourite);
+                Updatebookboxes();
             }
         }
 
-       /*private void MarkAsFavourite_Click(object sender, RoutedEventArgs e) //не работает, исключение выдает
+        private void MarkAsFavourite_Click(object sender, RoutedEventArgs e) //не работает, исключение выдает
         {
-            if (PastBookList.SelectedItem != null)
+            /*if (PastBookList.SelectedItem != null)
             {
                 using (Context c = new Context())
                 {
@@ -261,9 +201,9 @@ namespace myBOOK.UI
 
                 }
 
-            }
+            }*/
         }
-        */
+
         private void MoveToFutureBooks_Click(object sender, RoutedEventArgs e)
         {
 
