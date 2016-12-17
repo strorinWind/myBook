@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recomendations.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="EntityObjects\Reviews.cs" />
     <Compile Include="EntityObjects\Score.cs" />

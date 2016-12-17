@@ -24,9 +24,6 @@ namespace myBOOK.data.Interfaces
         List<BookView> ChooseUserScoresToShow(Users user);
         List<Books> SearchABook(string name, string author);
 
-        //Search with logic
-        List<Books> ShowRecommendations(string login);
-
         //Updating requests
         void AddOrChangeReview(Users user, Books book, string reviewText);
         void AddOrChangeScore(Users user, Books book, int score);

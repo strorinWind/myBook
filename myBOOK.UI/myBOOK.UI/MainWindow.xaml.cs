@@ -24,12 +24,15 @@ namespace myBOOK.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        IRepository repository = Factory.Default.GetRepository();
+
         public MainWindow()
         {
+            //first request to make faster others
+            repository.DoesBookExists("","");
             InitializeComponent();
         }
 
-        IRepository repository = Factory.Default.GetRepository();
         //IUserBooks userbooks = Factory.Default.GetUserBooks(); понадобится в другом месте мб
 
         private async void Enter_Click(object sender, RoutedEventArgs e)
