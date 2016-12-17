@@ -25,23 +25,6 @@ namespace myBOOK.UI
             return resultList;
         }
 
-        public List<BookView> ConvertToScore(List<Books> list,Users user)
-        {
-            var repo = new Repository();
-            var resultList = new List<BookView>();
-            for (int i = 0; i < list.Count; i++)
-            {
-                var b = new BookView
-                {
-                    BookName = list[i].BookName,
-                    Author = list[i].Author,
-                    Rating = repo.GetScore(user,list[i]),
-                };
-                resultList.Add(b);
-            }
-            return resultList;
-        }
-
         public Books ConvertToBook(BookView bv)
         {
             var b = new Books

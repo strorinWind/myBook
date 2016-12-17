@@ -8,21 +8,13 @@ namespace myBOOK.data.Interfaces
    public interface IRepository
     {
         Task<Users> IsUserDataCorrect(string login, string password);
-        bool IsLoginRepeated(string login);
         bool DoesBookExists(string bookname, string author);
-        //List<Books> ChooseUsersFavouriteBooks(string login);
-        //List<Books> ChooseUsersFutureBooks(string login);
-        //List<Books> ChooseUsersPastBooks(string login);
         List<Books> ChooseUserBooksOfCategory(string login, UserToBook.Categories category);
         List<ReviewView> ChooseReviewForABook(string BookName,string Author);
         double ViewRatingForABook(string name, string author);
         List<Books> SearchABook(string name, string author);
         List<Books> ShowRecommendations(string login);
-        //bool SearchInPastBooks(Users user, Books book);
-        //bool SearchInFutureBooks(Users user, Books book);
-        //bool SearchInFavouriteBooks(Users user, Books book);
         bool SearchInUserToBookOfCategory(Users user, Books book, UserToBook.Categories category);
-        //PastReadBooks GetPastReadBooksTuple(Users user, Books book);
         UserToBook GetUserToBookTuple(Users user, Books book, UserToBook.Categories category);
         bool GetBookFromAddingForm(Users user, Books book, UserToBook.Categories category);
         void DeleteUserToBook(Users user, Books book, UserToBook.Categories category);
@@ -31,5 +23,7 @@ namespace myBOOK.data.Interfaces
         bool AddBookToDatabase(Books book);
         void AddOrChangeScore(Users user, Books book, int score);
         Users ActualUser(Users user);
+        void Registrate(Users user);
+        List<BookView> ChooseUserScoresToShow(Users user);
     }
 }
