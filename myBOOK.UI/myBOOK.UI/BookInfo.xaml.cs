@@ -34,6 +34,7 @@ namespace myBOOK.UI
         {
             InitializeComponent();
             Book = repo.ActualBooks(book);
+            User = repo.ActualUser(user);
             Author.Text = Book.Author;
             Bookname.Text = Book.BookName;
             Description.Text = Book.Description;
@@ -109,7 +110,7 @@ namespace myBOOK.UI
             {
                 score = 10;
             }
-            var repo = new Repository();
+            //var repo = new Repository();
             repo.AddOrChangeScore(User,Book,score);
             MessageBox.Show("Спасибо, что оценили книгу!");
         }

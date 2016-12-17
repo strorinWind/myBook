@@ -28,5 +28,8 @@ namespace myBOOK.data.Interfaces
         void DeleteUserToBook(Users user, Books book, UserToBook.Categories category);
         Books ActualBooks(Books book);
         void UpdateBook(Books book);
+        bool AddBookToDatabase(Books book);
+        void AddOrChangeScore(Users user, Books book, int score);
+        Users ActualUser(Users user);
     }
 }

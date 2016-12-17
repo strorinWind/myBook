@@ -325,6 +325,14 @@ namespace myBOOK.data
             }
         }
 
+        public Users ActualUser(Users user)
+        {
+            using (Context c = new Context())
+            {
+                return c.User.Find(user.Login);
+            }
+        }
+
         public void UpdateBook(Books book)
         {
             using (Context c = new Context())
@@ -334,6 +342,20 @@ namespace myBOOK.data
                 b.Genre = book.Genre;
                 b.LoadingLink = book.LoadingLink;
                 c.SaveChanges();
+            }
+        }
+
+        public bool AddBookToDatabase(Books book)
+        {
+            using (Context c = new Context())
+            {
+                if (!DoesBookExists(book.BookName, book.Author))
+                {
+                    c._Book.Add(book);
+                    c.SaveChanges();
+                    return true;
+                }
+                return false;
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using myBOOK.data;
+using myBOOK.data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +23,12 @@ namespace myBOOK.UI
     {
         public Users User { get; set; }
         public Action<Books> AddFoundBook { get; set; }
+        IRepository repo = Factory.Default.GetRepository();
 
         private void AddBookToDatabase(Books book)
         {
-            using (Context c = new Context())
-            {
-                var repo = new Repository();
-                if (!repo.DoesBookExists(book.BookName,book.Author))
+                if (repo.AddBookToDatabase(book))
                 {
-                    c._Book.Add(book);
-                    c.SaveChanges();
                     //MessageBox.Show("Книга успешно добавлена");
                     AddFoundBook?.Invoke(book);
                     Close();
@@ -41,7 +38,6 @@ namespace myBOOK.UI
                     MessageBox.Show("Такая книга этого автора уже есть в базе, воспользуйтесь поиском, чтобы найти ее.");
                     return;
                 }
-            }
         }
 
         public AddBookToList(Users user)
