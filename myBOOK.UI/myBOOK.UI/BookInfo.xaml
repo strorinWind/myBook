@@ -79,11 +79,11 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Name="Correct" Grid.Column="0" Click="Correct_Click" Background="Transparent" BorderBrush="Chocolate" Foreground="White" Margin="29,10,38,19">Редактировать
+            <Button Name="Correct" Grid.Column="0" Click="Correct_Click" Background="Tan" BorderBrush="Chocolate" Foreground="White" Margin="29,10,38,19">Редактировать
             </Button>
-            <Button Name="WriteReview" Grid.Column="1" Background="Transparent" BorderBrush="Chocolate" Foreground="White" Margin="22,10,38,19" Click="WriteReview_Click">Написать отзыв
+            <Button Name="WriteReview" Grid.Column="1" Background="Tan" BorderBrush="Chocolate" Foreground="White" Margin="22,10,38,19" Click="WriteReview_Click">Написать отзыв
             </Button>
-            <Button Name="GiveScore" Grid.Column="2" Click="GiveScore_Click" Background="Transparent" BorderBrush="Chocolate" Foreground="White" Margin="33,10,38,19">Оценить
+            <Button Name="GiveScore" Grid.Column="2" Click="GiveScore_Click" Background="Tan" BorderBrush="Chocolate" Foreground="White" Margin="33,10,38,19">Оценить
             </Button>
         </Grid>
         <Menu x:Name="menu" Height="31" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Chocolate" HorizontalAlignment="Left" Width="395">

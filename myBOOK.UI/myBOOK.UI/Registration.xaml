@@ -45,7 +45,7 @@
             <RadioButton GroupName="Gender" x:Name="Female" Content="Female" IsChecked="True" Foreground="White"/>
             <RadioButton GroupName="Gender" x:Name="Male" Content="Male" Foreground="White" />
         </StackPanel>
-        <Button Name="Registrarion" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Click="Registrarion_Click" Margin="87,0,89,3" HorizontalAlignment="Center" Width="80" BorderBrush="BurlyWood" Background="Transparent" Foreground="White" Height="26" VerticalAlignment="Bottom">Регистрация
+        <Button Name="Registrarion" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Click="Registrarion_Click" Margin="87,0,89,3" HorizontalAlignment="Center" Width="80" BorderBrush="BurlyWood" Background="Tan" Foreground="White" Height="26" VerticalAlignment="Bottom">Регистрация
         </Button>
     </Grid>
 </Window>

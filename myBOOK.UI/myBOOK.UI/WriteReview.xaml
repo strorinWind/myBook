@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
         Title="WriteReview" Height="600" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,18 +21,43 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="0">
+        <Grid Grid.Column="1" Grid.Row="0" Margin="0,38,0,21" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Name="Author" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">sadfas</TextBlock>
-            <TextBlock Name="Bookname" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">asdsad</TextBlock>
+            <TextBlock Name="Author" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">sadfas</TextBlock>
+            <TextBlock Name="Bookname" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">asdsad</TextBlock>
         </Grid>
-        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">Текст отзыва</TextBlock>
-        <TextBox Name="Review" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True">
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="White">Текст отзыва</TextBlock>
+        <TextBox Name="Review" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True"  BorderBrush="BurlyWood" Background="Cornsilk">
         </TextBox>
-        <Button Name="SendReview" Grid.Column="1" Grid.Row="3" Width="100" Height="20" Click="SendReview_Click">Отправить отзыв
+        <Button Name="SendReview" Grid.Column="1" Grid.Row="3" Click="SendReview_Click" BorderBrush="BurlyWood" Background="Tan" Foreground="White" Margin="250,10,249,22">Отправить отзыв
         </Button>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="394" Grid.ColumnSpan="2"  Background="Transparent" BorderBrush="Chocolate">
+            <MenuItem Header="About" Width="73" Click="MenuAbout_Click" InputGestureText="Ctrl+A" RenderTransformOrigin="0.496,0.467">
+                <MenuItem.Icon>
+                    <Image Source="pack://application:,,,/image/info.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Help" Width="73" InputGestureText="Ctrl+H" Click="MenuHelp_Click">
+                <MenuItem.Icon>
+                    <Image Source="pack://application:,,,/image/help.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Authors" Width="78" Click="MenuAuthors_Click">
+                <MenuItem.Icon>
+                    <Image Source="pack://application:,,,/image/author.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Close" Width="73" InputGestureText="Ctrl+Q" Click="MenuClose_Click">
+                <MenuItem.Icon>
+                    <Image Source="pack://application:,,,/image/close.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Menu.BitmapEffect>
+                <DropShadowBitmapEffect/>
+            </Menu.BitmapEffect>
+        </Menu>
     </Grid>
 </Window>
