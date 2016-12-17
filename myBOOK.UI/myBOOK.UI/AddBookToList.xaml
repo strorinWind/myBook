@@ -31,7 +31,7 @@
         <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,18,5,0" Height="16" Width="55" Foreground="White">Название:</TextBlock>
         <TextBox Name="bookname" Grid.Row="1" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,14,0,0" BorderBrush="BurlyWood" Background="Cornsilk">
         </TextBox>
-        <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,18,5,0" Height="16" Width="36" Foreground="White">Автор:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,59,5,69" Height="16" Width="36" Foreground="White" Grid.RowSpan="2">Автор:</TextBlock>
         <TextBox Name="author" Grid.Row="2" Grid.Column="2" Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,19,0,29" Grid.RowSpan="2" BorderBrush="BurlyWood" Background="Cornsilk">
         </TextBox>
         <Button Name="Search" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Width="80" HorizontalAlignment="Center" Click="Search_Click" Margin="53,0,52,2" Foreground="White" BorderBrush="BurlyWood" Background="Transparent" Height="22" VerticalAlignment="Bottom">Поиск
@@ -39,7 +39,7 @@
         <TextBlock Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="10" Foreground="White" Grid.Column="1" Height="29" VerticalAlignment="Bottom">
             Если в базе нет подходящей книги, то можно добавить ее в базу и список.
         </TextBlock>
-        <Button Name="AddOwnBook" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Click="AddOwnBook_Click" Margin="33,0,32,7" BorderBrush="BurlyWood" Background="Transparent" Foreground="White" Height="21" VerticalAlignment="Bottom">Добавить книгу
+        <Button Name="AddOwnBook" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Click="AddOwnBook_Click" Margin="52,0,52,10" BorderBrush="BurlyWood" Background="Transparent" Foreground="White" Height="21" VerticalAlignment="Bottom">Добавить книгу
         </Button>
         <TextBlock Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="19" Margin="63,0" Width="120" Foreground="White" >Результаты поиска</TextBlock>
         <ListBox Name="BookList" Grid.Row="1" Grid.Column="3" Grid.RowSpan="5" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" Padding="2" Margin="0,5">
@@ -56,7 +56,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Name="Choose" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Click="Choose_Click" Margin="73,6" Foreground="White" BorderBrush="BurlyWood" Background="Transparent" >Выбрать
+        <Button Name="Choose" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Click="Choose_Click" Margin="85,21,85,0" Foreground="White" BorderBrush="BurlyWood" Background="Transparent" Height="28" VerticalAlignment="Top" >Выбрать
         </Button>
         <Menu x:Name="menu" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="215" Background="Transparent" BorderBrush="Chocolate">
             <MenuItem Header="About" Width="53" Click="MenuAbout_Click" InputGestureText="Ctrl+A"></MenuItem>

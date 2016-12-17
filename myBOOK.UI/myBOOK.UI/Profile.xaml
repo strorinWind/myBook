@@ -268,8 +268,8 @@
                         <ColumnDefinition Width="434*"/>
                         <ColumnDefinition Width="29*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="356,0,344,10" FontSize="16"  Foreground="White" Height="21" Width="168">
-            Рекомендации для вас
+                    <TextBlock Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="348,0,335,10" FontSize="16"  Foreground="White" Height="21" Width="185">
+             Рекомендации для вас
                     </TextBlock>
                     <ListBox Name="RecomendationList" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="RecomendationList_MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk">
                         <ListBox.ItemTemplate>
@@ -287,7 +287,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="MoveToFutureRead" Grid.Column="1" Grid.Row="2" Height="30" VerticalAlignment="Top" Margin="348,20,348,0" Click="MoveToFutureBooks_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+                    <Button Name="MoveToFutureRead" Grid.Column="1" Grid.Row="2" Height="30" VerticalAlignment="Top" Margin="339,21,335,0" Click="MoveToFutureBooks_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                         Переместить в список желаний
                     </Button>
                 </Grid>
