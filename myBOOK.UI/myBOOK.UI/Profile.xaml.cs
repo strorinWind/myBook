@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,7 +37,7 @@ namespace myBOOK.UI
             }
         }
 
-        private void Updatebookboxes()
+        private async void Updatebookboxes()
         {
             var converter = new Converter();
             var res = converter.ConvertToBookView(repo.ChooseUserBooksOfCategory(User.Login, UserToBook.Categories.PastRead));
@@ -51,7 +52,12 @@ namespace myBOOK.UI
             res = repo.ChooseUserScoresToShow(User);
             ScoreList.ItemsSource = res;
 
-            res = converter.ConvertToBookView(repo.ShowRecommendations(User.Login));
+            var lst = Task.Run(() => repo.ShowRecommendations(User.Login));
+            while (!lst.IsCompleted)
+            {
+                await Task.Delay(1000);
+            }
+            res = converter.ConvertToBookView(lst.Result);
             RecomendationList.ItemsSource = res;
         }
 
