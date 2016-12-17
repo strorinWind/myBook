@@ -1,4 +1,5 @@
 ﻿using myBOOK.data;
+using myBOOK.data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,15 +26,14 @@ namespace myBOOK.UI
         // false - form is not enabled; true - form is enabled
         bool correct = false;
         public Books Book { get; set; }
-        Context c = new Context();
+        IRepository repo = Factory.Default.GetRepository();
         public Users User { get; set; }
 
 
         public BookInfo(Books book, Users user)
         {
             InitializeComponent();
-            Book = c._Book.Find(book.BookName, book.Author);
-            User = c.User.Find(user.Login);
+            Book = repo.ActualBooks(book);
             Author.Text = Book.Author;
             Bookname.Text = Book.BookName;
             Description.Text = Book.Description;
@@ -53,11 +53,11 @@ namespace myBOOK.UI
             }
             else
             {
-                //Book = c._Book.Find(Book.BookName, Book.Author);
                 Book.Description = Description.Text;
                 Book.Genre = (Books.Genres)Genre.SelectedIndex;
                 Book.LoadingLink = Link.Text;
-                c.SaveChanges();
+                repo.UpdateBook(Book);
+
                 Correct.Content = "Редактировать";
                 Description.IsEnabled = false;
                 Genre.IsEnabled = false;

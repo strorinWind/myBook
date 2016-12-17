@@ -24,5 +24,9 @@ namespace myBOOK.data.Interfaces
         bool SearchInUserToBookOfCategory(Users user, Books book, UserToBook.Categories category);
         //PastReadBooks GetPastReadBooksTuple(Users user, Books book);
         UserToBook GetUserToBookTuple(Users user, Books book, UserToBook.Categories category);
+        bool GetBookFromAddingForm(Users user, Books book, UserToBook.Categories category);
+        void DeleteUserToBook(Users user, Books book, UserToBook.Categories category);
+        Books ActualBooks(Books book);
+        void UpdateBook(Books book);
     }
 }

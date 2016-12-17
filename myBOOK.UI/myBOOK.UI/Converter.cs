@@ -19,9 +19,6 @@ namespace myBOOK.UI
                 {
                     BookName = list[i].BookName,
                     Author = list[i].Author,
-                    Description = list[i].Description,
-                    Genre = list[i].Genre,
-                    LoadingLink = list[i].LoadingLink,
                     Rating = repo.ViewRatingForABook(list[i].BookName, list[i].Author)
                 });
             }
@@ -43,6 +40,16 @@ namespace myBOOK.UI
                 resultList.Add(b);
             }
             return resultList;
+        }
+
+        public Books ConvertToBook(BookView bv)
+        {
+            var b = new Books
+            {
+                BookName = bv.BookName,
+                Author = bv.Author,
+            };
+            return b;
         }
     }
 }

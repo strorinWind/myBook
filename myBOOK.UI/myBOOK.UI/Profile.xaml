@@ -30,7 +30,7 @@
                     </TextBlock>
                     <ListBox Name="PastBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="PastBookList_MouseDoubleClick">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="local:Books">
+                            <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -80,7 +80,7 @@
                     </TextBlock>
                     <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2" Grid.ColumnSpan="8">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="local:Books">
+                            <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -121,7 +121,7 @@
                     </TextBlock>
                     <ListBox Name="FavouriteBookList" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" HorizontalContentAlignment="Stretch" Padding="2">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="local:Books">
+                            <DataTemplate DataType="local:BookView">
                                 <Grid Margin="0 5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>

@@ -1,5 +1,6 @@
 ﻿using myBOOK.data;
 using myBOOK.data.EntityObjects;
+using myBOOK.data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +24,8 @@ namespace myBOOK.UI
     public partial class Profile : Window
     {
         public Users User { get; set; }
+        IRepository repo = Factory.Default.GetRepository();
+        Converter converter = new Converter();
 
         private void TabItemSizeRegulation()
         {
@@ -68,7 +71,6 @@ namespace myBOOK.UI
         private void AddPastRead_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddBookToList(User);
-            var repo = new Repository();
             w.AddFoundBook += (b) =>
             {
                 if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.PastRead))
@@ -87,7 +89,6 @@ namespace myBOOK.UI
         private void AddFavourite_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddBookToList(User);
-            var repo = new Repository();
             w.AddFoundBook += (b) =>
             {
                 if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.Favourite))
@@ -106,7 +107,6 @@ namespace myBOOK.UI
         private void AddFutureRead_Click(object sender, RoutedEventArgs e)
         {
             var w = new AddBookToList(User);
-            var repo = new Repository();
             w.AddFoundBook += (b) =>
             {
                 if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.FutureRead))
@@ -126,7 +126,9 @@ namespace myBOOK.UI
         {
             if (PastBookList.SelectedItem != null)
             {
-                var w = new BookInfo((Books)PastBookList.SelectedItem, User);
+                //var converter = new Converter();
+                var b = converter.ConvertToBook((BookView)PastBookList.SelectedItem);
+                var w = new BookInfo(b,User);
                 w.Show();
                 w.Closing += (a, a1) => { Updatebookboxes(); };
             }
@@ -136,13 +138,11 @@ namespace myBOOK.UI
         {
             var a = author.Text;
             var b = bookname.Text;
-            var repo = new Repository();
             BookList.ItemsSource = repo.SearchABook(b, a);
         }
 
         private void BookList_Selected(object sender, RoutedEventArgs e)
         {
-            var repo = new Repository();
             if (BookList.SelectedItem != null)
             {
                 var b = (Books)BookList.SelectedItem;
@@ -156,8 +156,8 @@ namespace myBOOK.UI
         {
             if (PastBookList.SelectedItem != null)
             {
-                var repo = new Repository();
-                repo.DeleteUserToBook(User, (Books)PastBookList.SelectedItem, UserToBook.Categories.PastRead);
+                var b = converter.ConvertToBook((BookView)PastBookList.SelectedItem);
+                repo.DeleteUserToBook(User, b, UserToBook.Categories.PastRead);
                 Updatebookboxes();
             }
         }
@@ -166,8 +166,8 @@ namespace myBOOK.UI
         {
             if (FutureBookList.SelectedItem != null)
             {
-                var repo = new Repository();
-                repo.DeleteUserToBook(User, (Books)FutureBookList.SelectedItem, UserToBook.Categories.FutureRead);
+                var b = converter.ConvertToBook((BookView)FutureBookList.SelectedItem);
+                repo.DeleteUserToBook(User, b, UserToBook.Categories.FutureRead);
                 Updatebookboxes();
             }
         }
@@ -176,8 +176,8 @@ namespace myBOOK.UI
         {
             if (FavouriteBookList.SelectedItem != null)
             {
-                var repo = new Repository();
-                repo.DeleteUserToBook(User, (Books)FavouriteBookList.SelectedItem, UserToBook.Categories.Favourite);
+                var b = converter.ConvertToBook((BookView)FavouriteBookList.SelectedItem);
+                repo.DeleteUserToBook(User, b, UserToBook.Categories.Favourite);
                 Updatebookboxes();
             }
         }

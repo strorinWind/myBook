@@ -316,5 +316,25 @@ namespace myBOOK.data
                 }
             }
         }
+
+        public Books ActualBooks(Books book)
+        {
+            using (Context c = new Context())
+            {
+                return c._Book.Find(book.BookName,book.Author);
+            }
+        }
+
+        public void UpdateBook(Books book)
+        {
+            using (Context c = new Context())
+            {
+                var b = c._Book.Find(book.BookName,book.Author);
+                b.Description = book.Description;
+                b.Genre = book.Genre;
+                b.LoadingLink = book.LoadingLink;
+                c.SaveChanges();
+            }
+        }
     }
 }
