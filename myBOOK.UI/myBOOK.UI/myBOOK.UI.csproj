@@ -79,7 +79,6 @@
     <Compile Include="BookInfo.xaml.cs">
       <DependentUpon>BookInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BookView.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
@@ -90,6 +89,7 @@
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transport.cs" />
     <Compile Include="WriteReview.xaml.cs">
       <DependentUpon>WriteReview.xaml</DependentUpon>
     </Compile>

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using myBOOK.data.Interfaces;
+using myBOOK.data.EntityObjects;
+using myBOOK.data;
 //using myBOOK.UI;
 
 namespace myBOOK.data
@@ -48,34 +50,14 @@ namespace myBOOK.data
             }
         }
 
-        public List<Books> ChooseUsersFavouriteBooks(string login)
+        //=========================НОВЫЙ МЕТОД===================
+        public List<Books> ChooseUserBooksOfCategory(string login,UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
-                var result = (from s in c._Favourite
+                var result = (from s in c.UserToBook
                               where s.User.Login == login
-                              select s.Book).ToList();
-                return result;
-            }
-        }
-
-        public List<Books> ChooseUsersFutureBooks(string login)
-        {
-            using (Context c = new Context())
-            {
-                var result = (from s in c._FutureReadBooks
-                              where s.User.Login == login
-                              select s.Book).ToList();
-                return result;
-            }
-        }
-
-        public List<Books> ChooseUsersPastBooks(string login)
-        {
-            using (Context c = new Context())
-            {
-                var result = (from s in c._PastReadBooks
-                              where s.User.Login == login
+                              && s.Category == category
                               select s.Book).ToList();
                 return result;
             }
@@ -130,102 +112,72 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-                var count_genres = (from s in c._PastReadBooks
-                                    where s.User.Login == login
-                                    group s by s.Book.Genre into g
-                                    select new
-                                    {
-                                        Count = g.Count(),
-                                        FavouriteGenre = g.Key
-                                    });
-                var favourite_genre = (from s in count_genres
-                                       where s.Count == count_genres.Max(p => p.Count)
-                                       select s.FavouriteGenre).FirstOrDefault();
-
-                var list_of_books = (from s in c._Book
-                                     where s.Genre == favourite_genre
-                                     select s).ToList();
-
-                count_genres = (from s in c._Favourite
-                                where s.User.Login == login
-                                group s by s.Book.Genre into g
-                                select new
-                                {
-                                    Count = g.Count(),
-                                    FavouriteGenre = g.Key
-                                });
-                var favourite_genre2 = (from s in count_genres
-                                        where s.Count == count_genres.Max(p => p.Count)
-                                        select s.FavouriteGenre).FirstOrDefault();
-                if (favourite_genre2 != favourite_genre)
+                var GenreList = new List<Books.Genres>();
+                foreach (var item in Enum.GetValues(typeof(UserToBook.Categories)))
                 {
-                    list_of_books.AddRange((from s in c._Book
-                                            where s.Genre == favourite_genre2
-                                            select s).ToList());
+                    var count_genre = from s in c.UserToBook
+                                  where s.User.Login == login
+                                  && s.Category == (UserToBook.Categories)item
+                                  group s by s.Book.Genre into g
+                                  select new
+                                  {
+                                      Count = g.Count(),
+                                      FavouriteGenre = g.Key
+                                  };
+                    GenreList.Add((from s in count_genre
+                                   where s.Count == count_genre.Max(p => p.Count)
+                                   select s.FavouriteGenre).FirstOrDefault());
                 }
-
-                count_genres = (from s in c._FutureReadBooks
-                                where s.User.Login == login
-                                group s by s.Book.Genre into g
-                                select new
-                                {
-                                    Count = g.Count(),
-                                    FavouriteGenre = g.Key
-                                });
-
-                var favourite_genre3 = (from s in count_genres
-                                        where s.Count == count_genres.Max(p => p.Count)
-                                        select s.FavouriteGenre).FirstOrDefault();
-                if ((favourite_genre3 != favourite_genre) && (favourite_genre3 != favourite_genre2))
+                GenreList = GenreList.Distinct().ToList();
+                var list_of_books = new List<Books>();
+                foreach (var item in GenreList)
                 {
                     list_of_books.AddRange((from s in c._Book
-                                            where s.Genre == favourite_genre3
+                                            where s.Genre == item
                                             select s).ToList());
                 }
                 Books b;
                 for (int i = 0; i < list_of_books.Count(); i++)
                 {
                     b = list_of_books[i];
-                    if ((c._PastReadBooks.Any(s => s.Book.BookName == b.BookName
-                                                   && s.Book.Author == b.Author)) ||
-                            (c._FutureReadBooks.Any(s => s.Book.BookName == b.BookName
-                                                   && s.Book.Author == b.Author)) ||
-                                                   (c._Favourite.Any(s => s.Book.BookName == b.BookName
-                                                  && s.Book.Author == b.Author)))
+                    foreach (var item in Enum.GetValues(typeof(UserToBook.Categories)))
                     {
-                        list_of_books.RemoveAt(i);
-                        i--;
+                        if (c.UserToBook.Any(s => s.Book.BookName == b.BookName
+                                                  && s.Book.Author == b.Author
+                                                  && s.Category == (UserToBook.Categories)item))
+                        {
+                            list_of_books.RemoveAt(i);
+                            i--;
+                            break;
+                        }
                     }
                 }
 
                 Random ran = new Random();
-
                 List<Books> RandomRecommentations = new List<Books>();
                 for (int i = 0; i < list_of_books.Count; i++)
                 {
                     int index = ran.Next(0, list_of_books.Count);
                     RandomRecommentations.Add(list_of_books[index]);
-
+                    list_of_books.RemoveAt(index);
+                    i--;
                     if (RandomRecommentations.Count == 7)
                     {
                         break;
                     }
-
                 }
-
                 return RandomRecommentations;
             }
         }
-        
-      
 
-        public bool SearchInPastBooks(Users user, Books book)
+        public bool SearchInUserToBookOfCategory(Users user,Books book,UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
-                if (c._PastReadBooks.Any(b => b.User.Login == user.Login
+                if (c.UserToBook.Any(b => b.User.Login == user.Login
                                             && b.Book.BookName == book.BookName
-                                            && b.Book.Author == book.Author))
+                                            && b.Book.Author == book.Author
+                                            && b.Category == category))
                 {
                     return true;
                 }
@@ -233,69 +185,21 @@ namespace myBOOK.data
             }
         }
 
-        public bool SearchInFutureBooks(Users user, Books book)
+        //=======================НОВЫЙ МЕТОД=============================
+        public UserToBook GetUserToBookTuple(Users user,Books book,UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
-                if (c._FutureReadBooks.Any(b => b.User.Login == user.Login
-                                            && b.Book.BookName == book.BookName
-                                            && b.Book.Author == book.Author))
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
-        public bool SearchInFavouriteBooks(Users user, Books book)
-        {
-            using (Context c = new Context())
-            {
-                if (c._Favourite.Any(b => b.User.Login == user.Login
-                                            && b.Book.BookName == book.BookName
-                                            && b.Book.Author == book.Author))
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
-        public PastReadBooks GetPastReadBooksTuple(Users user, Books book)
-        {
-            using (Context c = new Context())
-            {
-                var result = c._PastReadBooks.Where(b => b.User.Login == user.Login
+                var result = c.UserToBook.Where(b => b.User.Login == user.Login
                                                     && b.Book.BookName == book.BookName
-                                                    && b.Book.Author == book.Author)
-                                                    .First();
-                return result;
-            }
-        }
-        public FutureReadBooks GetFutureReadBooksTuple(Users user, Books book)
-        {
-            using (Context c = new Context())
-            {
-                var result = c._FutureReadBooks.Where(b => b.User.Login == user.Login
-                                                    && b.Book.BookName == book.BookName
-                                                    && b.Book.Author == book.Author)
+                                                    && b.Book.Author == book.Author
+                                                    && b.Category == category)
                                                     .First();
                 return result;
             }
         }
 
-        public Favourite GetFavouriteBooksTuple(Users user, Books book)
-        {
-            using (Context c = new Context())
-            {
-                var result = c._Favourite.Where(b => b.User.Login == user.Login
-                                                    && b.Book.BookName == book.BookName
-                                                    && b.Book.Author == book.Author)
-                                                    .First();
-                return result;
-            }
-        }
-
+        //возможно добавить Exits Score
         public void AddOrChangeScore(Users user, Books book, int score)
         {
             using (Context c = new Context())
@@ -321,6 +225,7 @@ namespace myBOOK.data
             }
         }
 
+        //преобразовать следующие два метода в один
         public List<Books> ChooseUserScores(Users user)
         {
             using (Context c = new Context())
@@ -375,6 +280,59 @@ namespace myBOOK.data
                 {
                     c._Review.Find(result.First().ID).ReviewText = reviewText;
                 }
+                c.SaveChanges();
+            }
+        }
+
+        public void DeleteUserToBook(Users user,Books book,UserToBook.Categories category)
+        {
+            using (Context c = new Context())
+            {
+                var bookToDelete = GetUserToBookTuple(user, book,category);
+                c.Entry(bookToDelete).State = EntityState.Deleted;
+                c.SaveChanges();
+            }
+        }
+
+        public bool GetBookFromAddingForm(Users user,Books book,UserToBook.Categories category)
+        {
+            using (Context c = new Context())
+            {
+                if (!SearchInUserToBookOfCategory(user, book, category))
+                {
+                    var b = new UserToBook
+                    {
+                        User = c.User.Find(user.Login),
+                        Book = c._Book.Find(book.BookName, book.Author),
+                        Category = category
+                    };
+                    c.UserToBook.Add(b);
+                    c.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public Books ActualBooks(Books book)
+        {
+            using (Context c = new Context())
+            {
+                return c._Book.Find(book.BookName,book.Author);
+            }
+        }
+
+        public void UpdateBook(Books book)
+        {
+            using (Context c = new Context())
+            {
+                var b = c._Book.Find(book.BookName,book.Author);
+                b.Description = book.Description;
+                b.Genre = book.Genre;
+                b.LoadingLink = book.LoadingLink;
                 c.SaveChanges();
             }
         }

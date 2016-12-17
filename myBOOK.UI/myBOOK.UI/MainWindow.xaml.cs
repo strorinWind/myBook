@@ -26,18 +26,7 @@ namespace myBOOK.UI
     {
         public MainWindow()
         {
-            using (Context c = new Context())
-            {
-            //    //c.User.ToList();
-            //    //c._Book.Add(new Books {Author="Булгаков", BookName="Мастер и Маргарита", Genre=Books.Genres.Fiction, Description="крутая книга" });
-            //    //c._User.Where(k => k.Login=="user").ToList();
-            //    //c._FutureReadBooks.Add(new FutureReadBooks {Book = c._Book.First(), User = c.User.First() });
-                //c._Book.Add(new Books {BookName= "Рассказы",Author= "Агата Кристи",Genre=Books.Genres.Action,Description="Здесь есть описание" });
-            //    //c._PastReadBooks.Add(new PastReadBooks { Book = c._Book.First(), User = c.User.First() });
-                //c.SaveChanges();
-            }
             InitializeComponent();
-            //InitialLoad();
         }
 
         IRepository repository = Factory.Default.GetRepository();
@@ -47,8 +36,7 @@ namespace myBOOK.UI
         {
             var login = Username.Text;
             var password = Password.Password;
-            //проверка корректности
-            
+            //проверка корректности    
             var user = await repository.IsUserDataCorrect(login, password);
             if (user!=null)
             {
