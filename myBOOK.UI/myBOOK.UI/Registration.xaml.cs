@@ -1,4 +1,5 @@
 ﻿using myBOOK.data;
+using myBOOK.data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace myBOOK.UI
             InitializeComponent();
         }
 
+        IRepository repo = Factory.Default.GetRepository();
+
         private void Registrarion_Click(object sender, RoutedEventArgs e)
         {
             if (Password.Password == PasswordRepeat.Password)
@@ -49,8 +52,7 @@ namespace myBOOK.UI
                     Gender = gender,
                     RegistrationDate = DateTime.Now,
                 };
-                var repo = new Repository();
-                using (Context c = new Context())
+                /*using (Context c = new Context())
                 {
                     if (repo.IsLoginRepeated(login))
                     {
@@ -62,6 +64,16 @@ namespace myBOOK.UI
                         c.SaveChanges();
                         Close();
                     }       
+                }*/
+                try
+                {
+                    repo.Registrate(user);
+                    MessageBox.Show("Вы успешно зарегистрированы!");
+                    Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Этот логин уже используется");
                 }
             }
             else

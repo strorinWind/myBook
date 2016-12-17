@@ -21,23 +21,7 @@ namespace myBOOK.data
                 return await c.User.FirstOrDefaultAsync(s => s.Login == login && s.Password == passwordnum);
             }
         }
-
-        public bool IsLoginRepeated(string login)
-        {
-            using (Context c = new Context())
-            {
-                var result = from s in c.User
-                             where s.Login == login
-                             select s;
-                if (result.Count() == 0)
-                {
-                    return false;
-                }
-                else
-                    return true;
-            }
-        }
-
+        
         public bool DoesBookExists(string bookname, string author)
         {
             using (Context c = new Context())
@@ -51,7 +35,7 @@ namespace myBOOK.data
         }
 
         //=========================НОВЫЙ МЕТОД===================
-        public List<Books> ChooseUserBooksOfCategory(string login,UserToBook.Categories category)
+        public List<Books> ChooseUserBooksOfCategory(string login, UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
@@ -68,12 +52,12 @@ namespace myBOOK.data
             using (Context c = new Context())
             {
                 var list = (from s in c._Review
-                              where s.Book.BookName == BookName && s.Book.Author == author
-                              select new ReviewView
-                              {
-                                  FullName = s.User.FullName,
-                                  ReviewText = s.ReviewText
-                              }).ToList();
+                            where s.Book.BookName == BookName && s.Book.Author == author
+                            select new ReviewView
+                            {
+                                FullName = s.User.FullName,
+                                ReviewText = s.ReviewText
+                            }).ToList();
                 return list;
             }
         }
@@ -116,14 +100,14 @@ namespace myBOOK.data
                 foreach (var item in Enum.GetValues(typeof(UserToBook.Categories)))
                 {
                     var count_genre = from s in c.UserToBook
-                                  where s.User.Login == login
-                                  && s.Category == (UserToBook.Categories)item
-                                  group s by s.Book.Genre into g
-                                  select new
-                                  {
-                                      Count = g.Count(),
-                                      FavouriteGenre = g.Key
-                                  };
+                                      where s.User.Login == login
+                                      && s.Category == (UserToBook.Categories)item
+                                      group s by s.Book.Genre into g
+                                      select new
+                                      {
+                                          Count = g.Count(),
+                                          FavouriteGenre = g.Key
+                                      };
                     GenreList.Add((from s in count_genre
                                    where s.Count == count_genre.Max(p => p.Count)
                                    select s.FavouriteGenre).FirstOrDefault());
@@ -144,7 +128,8 @@ namespace myBOOK.data
                     {
                         if (c.UserToBook.Any(s => s.Book.BookName == b.BookName
                                                   && s.Book.Author == b.Author
-                                                  && s.Category == (UserToBook.Categories)item))
+                                                  && s.Category == (UserToBook.Categories)item
+                                                  && s.User.Login == login))
                         {
                             list_of_books.RemoveAt(i);
                             i--;
@@ -170,7 +155,7 @@ namespace myBOOK.data
             }
         }
 
-        public bool SearchInUserToBookOfCategory(Users user,Books book,UserToBook.Categories category)
+        public bool SearchInUserToBookOfCategory(Users user, Books book, UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
@@ -186,7 +171,7 @@ namespace myBOOK.data
         }
 
         //=======================НОВЫЙ МЕТОД=============================
-        public UserToBook GetUserToBookTuple(Users user,Books book,UserToBook.Categories category)
+        public UserToBook GetUserToBookTuple(Users user, Books book, UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
@@ -225,26 +210,29 @@ namespace myBOOK.data
             }
         }
 
-        //преобразовать следующие два метода в один
-        public List<Books> ChooseUserScores(Users user)
+        //==========================НОВЫЙ МЕТОД
+        public List<BookView> ChooseUserScoresToShow(Users user)
         {
             using (Context c = new Context())
             {
-                var result = c._Score.Where(s => s.User.Login == user.Login)
-                             .Select(s => s.Book).ToList();
-                return result;
-            }
-        }
-
-        public int GetScore(Users user, Books book)
-        {
-            using (Context c = new Context())
-            {
-                var result = c._Score.Where(s => s.User.Login == user.Login
+                var resultList = new List<BookView>();
+                var list = c._Score.Where(s => s.User.Login == user.Login)
+                                 .Select(s => s.Book).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    var book = list[i];
+                    var score = c._Score.Where(s => s.User.Login == user.Login
                                 && s.Book.Author == book.Author
-                                && s.Book.BookName == book.BookName).First();
-
-                return result.Value;
+                                && s.Book.BookName == book.BookName).First().Value;
+                    var b = new BookView
+                    {
+                        BookName = list[i].BookName,
+                        Author = list[i].Author,
+                        Rating = score,
+                    };
+                    resultList.Add(b);
+                }
+                return resultList;
             }
         }
 
@@ -284,17 +272,17 @@ namespace myBOOK.data
             }
         }
 
-        public void DeleteUserToBook(Users user,Books book,UserToBook.Categories category)
+        public void DeleteUserToBook(Users user, Books book, UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
-                var bookToDelete = GetUserToBookTuple(user, book,category);
+                var bookToDelete = GetUserToBookTuple(user, book, category);
                 c.Entry(bookToDelete).State = EntityState.Deleted;
                 c.SaveChanges();
             }
         }
 
-        public bool GetBookFromAddingForm(Users user,Books book,UserToBook.Categories category)
+        public bool GetBookFromAddingForm(Users user, Books book, UserToBook.Categories category)
         {
             using (Context c = new Context())
             {
@@ -321,7 +309,7 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-                return c._Book.Find(book.BookName,book.Author);
+                return c._Book.Find(book.BookName, book.Author);
             }
         }
 
@@ -337,7 +325,7 @@ namespace myBOOK.data
         {
             using (Context c = new Context())
             {
-                var b = c._Book.Find(book.BookName,book.Author);
+                var b = c._Book.Find(book.BookName, book.Author);
                 b.Description = book.Description;
                 b.Genre = book.Genre;
                 b.LoadingLink = book.LoadingLink;
@@ -356,6 +344,25 @@ namespace myBOOK.data
                     return true;
                 }
                 return false;
+            }
+        }
+
+        public void Registrate(Users user)
+        {
+            using (Context c = new Context())
+            {
+                var IsLoginRepeated = (from s in c.User
+                                       where s.Login == user.Login
+                                       select s).FirstOrDefault();
+                if (IsLoginRepeated != null)
+                {
+                    throw new ArgumentException("Этот логин уже используется");
+                }
+                else
+                {
+                    c.User.Add(user);
+                    c.SaveChanges();
+                }
             }
         }
     }

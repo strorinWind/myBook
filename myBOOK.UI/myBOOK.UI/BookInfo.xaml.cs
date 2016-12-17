@@ -29,7 +29,6 @@ namespace myBOOK.UI
         IRepository repo = Factory.Default.GetRepository();
         public Users User { get; set; }
 
-
         public BookInfo(Books book, Users user)
         {
             InitializeComponent();
@@ -110,7 +109,6 @@ namespace myBOOK.UI
             {
                 score = 10;
             }
-            //var repo = new Repository();
             repo.AddOrChangeScore(User,Book,score);
             MessageBox.Show("Спасибо, что оценили книгу!");
         }

@@ -39,7 +39,6 @@ namespace myBOOK.UI
         private void Updatebookboxes()
         {
             var converter = new Converter();
-            var repo = new Repository();
             var res = converter.ConvertToBookView(repo.ChooseUserBooksOfCategory(User.Login, UserToBook.Categories.PastRead));
             PastBookList.ItemsSource = res;
 
@@ -49,7 +48,8 @@ namespace myBOOK.UI
             res = converter.ConvertToBookView(repo.ChooseUserBooksOfCategory(User.Login, UserToBook.Categories.Favourite));
             FavouriteBookList.ItemsSource = res;
 
-            res = converter.ConvertToScore(repo.ChooseUserScores(User), User);
+            //res = converter.ConvertToScore(repo.ChooseUserScores(User), User);
+            res = repo.ChooseUserScoresToShow(User);
             ScoreList.ItemsSource = res;
 
             res = converter.ConvertToBookView(repo.ShowRecommendations(User.Login));
