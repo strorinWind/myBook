@@ -29,7 +29,6 @@ namespace myBOOK.UI
         {
                 if (repo.AddBookToDatabase(book))
                 {
-                    //MessageBox.Show("Книга успешно добавлена");
                     AddFoundBook?.Invoke(book);
                     Close();
                 }
@@ -44,11 +43,11 @@ namespace myBOOK.UI
         {
             InitializeComponent();
             User = user;
+            BookList.ItemsSource = repo.AllBooks();
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            var repo = new Repository();
             BookList.ItemsSource = repo.SearchABook(bookname.Text,author.Text);
             
         }

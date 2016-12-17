@@ -25,5 +25,8 @@ namespace myBOOK.data.Interfaces
         Users ActualUser(Users user);
         void Registrate(Users user);
         List<BookView> ChooseUserScoresToShow(Users user);
+        Reviews ExistsReview(Users user, Books book);
+        void AddOrChangeReview(Users user, Books book, string reviewText);
+        List<Books> AllBooks();
     }
 }

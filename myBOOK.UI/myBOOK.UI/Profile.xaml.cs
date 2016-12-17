@@ -48,7 +48,6 @@ namespace myBOOK.UI
             res = converter.ConvertToBookView(repo.ChooseUserBooksOfCategory(User.Login, UserToBook.Categories.Favourite));
             FavouriteBookList.ItemsSource = res;
 
-            //res = converter.ConvertToScore(repo.ChooseUserScores(User), User);
             res = repo.ChooseUserScoresToShow(User);
             ScoreList.ItemsSource = res;
 

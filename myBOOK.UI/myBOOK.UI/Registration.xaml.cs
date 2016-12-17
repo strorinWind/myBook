@@ -52,39 +52,21 @@ namespace myBOOK.UI
                     Gender = gender,
                     RegistrationDate = DateTime.Now,
                 };
-                /*using (Context c = new Context())
-                {
-                    if (repo.IsLoginRepeated(login))
-                    {
-                        MessageBox.Show("Этот логин уже используется");
-                    }
-                    else
-                    {
-                        c.User.Add(user);
-                        c.SaveChanges();
-                        Close();
-                    }       
-                }*/
                 try
                 {
                     repo.Registrate(user);
                     MessageBox.Show("Вы успешно зарегистрированы!");
                     Close();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Этот логин уже используется");
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
             {
                 MessageBox.Show("Пароли не совпадают");
             }
-        }
-
-        private void Female_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

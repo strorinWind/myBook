@@ -365,5 +365,13 @@ namespace myBOOK.data
                 }
             }
         }
+
+        public List<Books> AllBooks()
+        {
+            using (Context c = new Context())
+            {
+                return c._Book.ToList();
+            }
+        }
     }
 }

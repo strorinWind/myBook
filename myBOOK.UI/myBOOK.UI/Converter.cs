@@ -1,4 +1,5 @@
 ﻿using myBOOK.data;
+using myBOOK.data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace myBOOK.UI
 {
     class Converter
     {
+        IRepository repo = Factory.Default.GetRepository();
+
         public List<BookView> ConvertToBookView(List<Books> list)
         {
-            var repo = new Repository();
             var resultList = new List<BookView>();
             for (int i = 0; i < list.Count; i++)
             {
@@ -33,9 +35,6 @@ namespace myBOOK.UI
                 Author = bv.Author,
             };
             return b;
-        }
-
-
-        
+        }    
     }
 }

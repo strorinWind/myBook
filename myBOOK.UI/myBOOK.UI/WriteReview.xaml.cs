@@ -1,4 +1,5 @@
 ﻿using myBOOK.data;
+using myBOOK.data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace myBOOK.UI
     {
         public Users User { get; set; }
         public Books Book { get; set; }
+        IRepository repo = Factory.Default.GetRepository();
 
         public WriteReview(Users user, Books book)
         {
@@ -30,7 +32,6 @@ namespace myBOOK.UI
             Book = book;
             Author.Text = Book.Author;
             Bookname.Text = Book.BookName;
-            var repo = new Repository();
             if (repo.ExistsReview(user,book) != null)
             {
                 Review.Text = repo.ExistsReview(user, book).ReviewText;
@@ -39,7 +40,6 @@ namespace myBOOK.UI
 
         private void SendReview_Click(object sender, RoutedEventArgs e)
         {
-            var repo = new Repository();
             repo.AddOrChangeReview(User, Book, Review.Text);
             MessageBox.Show("Ваш отзыв сохранен");
             Close();
