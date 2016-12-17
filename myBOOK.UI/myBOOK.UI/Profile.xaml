@@ -73,7 +73,7 @@
                         <ColumnDefinition Width="7*" MinWidth="200"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16"  Foreground="White">
+                    <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16"  Foreground="White" Margin="91,0,92,9">
             Хочу прочитать
                     </TextBlock>
                     <ListBox Name="FutureBookList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="FutureBookList_MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk" Margin="10,0">
