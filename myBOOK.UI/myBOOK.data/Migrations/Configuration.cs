@@ -21,7 +21,7 @@ namespace myBOOK.data.Migrations
         {
 
             Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourceName = "myBook.data.Books.csv";
+            string resourceName = "myBOOK.data.Books.csv";
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
 
@@ -40,7 +40,7 @@ namespace myBOOK.data.Migrations
                             {
                                 BookName = a[0],
                                 Author = a[1],
-                                Genre = (Books.Genres)(Convert.ToInt32(a[2]))
+                                Genre = (Genres)(Convert.ToInt32(a[2]))
 
                             };
                             context._Book.AddOrUpdate(book);
