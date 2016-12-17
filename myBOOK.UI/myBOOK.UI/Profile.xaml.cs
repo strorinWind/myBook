@@ -242,7 +242,7 @@ namespace myBOOK.UI
             }
         }
 
-       /*private void MarkAsFavourite_Click(object sender, RoutedEventArgs e) //не работает, исключение выдает
+       private void MarkAsFavourite_Click(object sender, RoutedEventArgs e) //не работает, исключение выдает
         {
             if (PastBookList.SelectedItem != null)
             {
@@ -263,7 +263,7 @@ namespace myBOOK.UI
 
             }
         }
-        */
+        
         private void MoveToFutureBooks_Click(object sender, RoutedEventArgs e)
         {
 
