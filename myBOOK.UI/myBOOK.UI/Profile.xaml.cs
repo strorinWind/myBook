@@ -27,6 +27,7 @@ namespace myBOOK.UI
         public Users User { get; set; }
         IRepository repo = Factory.Default.GetRepository();
         Converter converter = new Converter();
+        Task<List<Books>> lst;
 
         private void TabItemSizeRegulation()
         {
@@ -52,7 +53,7 @@ namespace myBOOK.UI
             res = repo.ChooseUserScoresToShow(User);
             ScoreList.ItemsSource = res;
 
-            var lst = Task.Run(() => repo.ShowRecommendations(User.Login));
+            lst = Task.Run(() => Recomendations.Show(User.Login));
             while (!lst.IsCompleted)
             {
                 await Task.Delay(1000);
