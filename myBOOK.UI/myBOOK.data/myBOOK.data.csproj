@@ -54,12 +54,8 @@
     <Compile Include="Encryption.cs" />
     <Compile Include="EntityObjects\Books.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="EntityObjects\Favourite.cs" />
-    <Compile Include="EntityObjects\FutureReadBooks.cs" />
-    <Compile Include="EntityObjects\PastReadBooks.cs" />
     <Compile Include="EntityObjects\UserToBook.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="Interfaces\IUserBooks.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Migrations\201612121035051_InitialCreate.cs" />
     <Compile Include="Migrations\201612121035051_InitialCreate.Designer.cs">
@@ -77,6 +73,10 @@
     <Compile Include="Migrations\201612170636457_AddedUserToBookClass.Designer.cs">
       <DependentUpon>201612170636457_AddedUserToBookClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612171652402_DeleteOldTables.cs" />
+    <Compile Include="Migrations\201612171652402_DeleteOldTables.Designer.cs">
+      <DependentUpon>201612171652402_DeleteOldTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -86,6 +86,9 @@
     <Compile Include="ReviewView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612171652402_DeleteOldTables.resx">
+      <DependentUpon>201612171652402_DeleteOldTables.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <EmbeddedResource Include="Books.csv" />
     <None Include="packages.config" />

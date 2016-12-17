@@ -7,26 +7,35 @@ namespace myBOOK.data.Interfaces
 {
    public interface IRepository
     {
-        Task<Users> IsUserDataCorrect(string login, string password);
+        //Searching requests
         bool DoesBookExists(string bookname, string author);
-        List<Books> ChooseUserBooksOfCategory(string login, UserToBook.Categories category);
-        List<ReviewView> ChooseReviewForABook(string BookName,string Author);
-        double ViewRatingForABook(string name, string author);
-        List<Books> SearchABook(string name, string author);
-        List<Books> ShowRecommendations(string login);
         bool SearchInUserToBookOfCategory(Users user, Books book, UserToBook.Categories category);
-        UserToBook GetUserToBookTuple(Users user, Books book, UserToBook.Categories category);
-        bool GetBookFromAddingForm(Users user, Books book, UserToBook.Categories category);
-        void DeleteUserToBook(Users user, Books book, UserToBook.Categories category);
+        double ViewRatingForABook(string name, string author);
+
         Books ActualBooks(Books book);
+        Users ActualUser(Users user);
+        Reviews ExistsReview(Users user, Books book);
+        UserToBook GetUserToBookTuple(Users user, Books book, UserToBook.Categories category);
+        Task<Users> IsUserDataCorrect(string login, string password);
+
+        List<Books> AllBooks();
+        List<ReviewView> ChooseReviewForABook(string BookName, string Author);
+        List<Books> ChooseUserBooksOfCategory(string login, UserToBook.Categories category);
+        List<BookView> ChooseUserScoresToShow(Users user);
+        List<Books> SearchABook(string name, string author);
+
+        //Search with logic
+        List<Books> ShowRecommendations(string login);
+
+        //Updating requests
+        void AddOrChangeReview(Users user, Books book, string reviewText);
+        void AddOrChangeScore(Users user, Books book, int score);
+        void Registrate(Users user);
         void UpdateBook(Books book);
         bool AddBookToDatabase(Books book);
-        void AddOrChangeScore(Users user, Books book, int score);
-        Users ActualUser(Users user);
-        void Registrate(Users user);
-        List<BookView> ChooseUserScoresToShow(Users user);
-        Reviews ExistsReview(Users user, Books book);
-        void AddOrChangeReview(Users user, Books book, string reviewText);
-        List<Books> AllBooks();
+        bool GetBookFromAddingForm(Users user, Books book, UserToBook.Categories category);
+
+        //Deleting requests
+        void DeleteUserToBook(Users user, Books book, UserToBook.Categories category);
     }
 }
