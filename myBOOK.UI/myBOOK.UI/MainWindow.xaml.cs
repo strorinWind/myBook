@@ -29,17 +29,14 @@ namespace myBOOK.UI
         public MainWindow()
         {
             //first request to make faster others
-            //repository.DoesBookExists("","");
+            repository.DoesBookExists("","");
             InitializeComponent();
         }
-
-        //IUserBooks userbooks = Factory.Default.GetUserBooks(); понадобится в другом месте мб
 
         private async void Enter_Click(object sender, RoutedEventArgs e)
         {
             var login = Username.Text;
             var password = Password.Password;
-          //  ((Button)sender).Background = new SolidColorBrush(Colors.Red); эта фигня не хочет красить кнопку(((((
                 //проверка корректности    
             var user = await repository.IsUserDataCorrect(login, password);
             if (user!=null)

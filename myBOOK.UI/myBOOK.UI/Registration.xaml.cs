@@ -40,9 +40,14 @@ namespace myBOOK.UI
                 {
                     gender = Gender.Male;
                 }
-                else
+                else if (Female.IsChecked.Value)
                 {
                     gender = Gender.Female;
+                }
+                else
+                {
+                    MessageBox.Show("Укажите пол");
+                    return;
                 }
                 try
                 {

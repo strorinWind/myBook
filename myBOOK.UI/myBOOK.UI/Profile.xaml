@@ -178,7 +178,7 @@
                     </ListBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Мои отзывы"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+            <TabItem Header="Отзывы"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*" MinWidth="200"/>
@@ -238,7 +238,7 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="15*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"  >Отзывы на выбранную книгу</TextBlock>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White">Отзывы на выбранную книгу</TextBlock>
                         <ListBox Name="ReviewList" Grid.Row="1" BorderBrush="BurlyWood" Background="Cornsilk" Margin="15,24,10,20">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="local:ReviewView">
