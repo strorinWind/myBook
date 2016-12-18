@@ -237,7 +237,7 @@ namespace myBOOK.UI
 
         private void DeleteFutureRead_Click(object sender, RoutedEventArgs e)
         {
-            DeleteButton_Click(FutureBookList,UserToBook.Categories.Favourite);
+            DeleteButton_Click(FutureBookList,UserToBook.Categories.FutureRead);
         }
     }
 }
