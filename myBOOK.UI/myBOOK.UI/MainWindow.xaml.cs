@@ -50,7 +50,7 @@ namespace myBOOK.UI
             }
             else
             {
-                MessageBox.Show("Invalid data");
+                MessageBox.Show("Некорректные данные!");
             }
         }
 

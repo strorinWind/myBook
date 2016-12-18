@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="AddOwnBook" Height="300" Width="500">
+        Title="Добавить книгу" Height="300" Width="500" MinHeight="300" MinWidth="500">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
     </Window.Background>

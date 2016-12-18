@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="Registration" Height="322" Width="263">
+        Title="Регистрация" Height="322" Width="263" MinWidth="263" MinHeight="322">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
     </Window.Background>

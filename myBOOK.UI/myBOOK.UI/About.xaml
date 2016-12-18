@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="About" Height="390" Width="600">
+        Title="О приложении" Height="390" Width="600" MinHeight="390" MinWidth="600">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/image/cats_book.jpg"/>
     </Window.Background>
