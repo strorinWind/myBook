@@ -2,8 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Windows;
 
 namespace myBOOK.data
 {
@@ -41,17 +40,12 @@ namespace myBOOK.data
                 for (int i = 0; i < list_of_books.Count(); i++)
                 {
                     b = list_of_books[i];
-                    foreach (var item in Enum.GetValues(typeof(UserToBook.Categories)))
-                    {
-                        if (c.UserToBook.Any(s => s.Book.BookName == b.BookName
+                    if (c.UserToBook.Any(s => s.Book.BookName == b.BookName
                                                   && s.Book.Author == b.Author
-                                                  && s.Category == (UserToBook.Categories)item
                                                   && s.User.Login == login))
-                        {
-                            list_of_books.RemoveAt(i);
-                            i--;
-                            break;
-                        }
+                    {
+                        list_of_books.RemoveAt(i);
+                        i--;
                     }
                 }
                 Random ran = new Random();
