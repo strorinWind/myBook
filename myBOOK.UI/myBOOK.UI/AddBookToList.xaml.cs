@@ -27,16 +27,16 @@ namespace myBOOK.UI
 
         private void AddBookToDatabase(Books book)
         {
-                if (repo.AddBookToDatabase(book))
-                {
-                    AddFoundBook?.Invoke(book);
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show("Такая книга этого автора уже есть в базе, воспользуйтесь поиском, чтобы найти ее.");
-                    return;
-                }
+            if (repo.AddBookToDatabase(book))
+            {
+                AddFoundBook?.Invoke(book);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Такая книга этого автора уже есть в базе, воспользуйтесь поиском, чтобы найти ее.");
+                return;
+            }
         }
 
         public AddBookToList(Users user)
@@ -48,8 +48,8 @@ namespace myBOOK.UI
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            BookList.ItemsSource = repo.SearchABook(bookname.Text,author.Text);
-            
+            BookList.ItemsSource = repo.SearchABook(bookname.Text, author.Text);
+
         }
 
         private void Choose_Click(object sender, RoutedEventArgs e)

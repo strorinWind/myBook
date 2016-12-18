@@ -272,7 +272,7 @@
                     <TextBlock Grid.Row="1" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" Margin="5" Foreground="White" Height="21">
              Рекомендации для вас
                     </TextBlock>
-                    <TextBlock Name="LoadingInfo" Visibility="Hidden" Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="12">Идет загрузка рекомендаций...</TextBlock>
+                    <TextBlock Name="LoadingInfo" Visibility="Hidden" Grid.Row="0" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="12" Foreground="White">Идет загрузка рекомендаций...</TextBlock>
                     <ListBox Name="RecomendationList" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Stretch" Padding="2" MouseDoubleClick="ListBox__MouseDoubleClick" BorderBrush="BurlyWood" Background="Cornsilk">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="local:BookView">
