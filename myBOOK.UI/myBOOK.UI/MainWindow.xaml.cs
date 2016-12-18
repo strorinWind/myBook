@@ -39,7 +39,8 @@ namespace myBOOK.UI
         {
             var login = Username.Text;
             var password = Password.Password;
-            //проверка корректности    
+          //  ((Button)sender).Background = new SolidColorBrush(Colors.Red); эта фигня не хочет красить кнопку(((((
+                //проверка корректности    
             var user = await repository.IsUserDataCorrect(login, password);
             if (user!=null)
             {
