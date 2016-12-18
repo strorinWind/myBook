@@ -28,6 +28,7 @@ namespace myBOOK.UI
         IRepository repo = Factory.Default.GetRepository();
         Converter converter = new Converter();
         Task<List<Books>> lst;
+        Dictionary<ListBox,UserToBook.Categories> dict = new Dictionary<ListBox, UserToBook.Categories>();
 
         private void TabItemSizeRegulation()
         {
@@ -54,18 +55,23 @@ namespace myBOOK.UI
             ScoreList.ItemsSource = res;
 
             lst = Task.Run(() => Recomendations.Show(User.Login));
+            LoadingInfo.Visibility = Visibility.Visible;
             while (!lst.IsCompleted)
             {
                 await Task.Delay(1000);
             }
             res = converter.ConvertToBookView(lst.Result);
             RecomendationList.ItemsSource = res;
+            LoadingInfo.Visibility = Visibility.Hidden;
         }
 
         public Profile(Users user)
         {
             InitializeComponent();
             User = user;
+            dict.Add(PastBookList, UserToBook.Categories.PastRead);
+            dict.Add(FutureBookList, UserToBook.Categories.FutureRead);
+            dict.Add(FavouriteBookList, UserToBook.Categories.Favourite);
             Updatebookboxes();
         }
 
@@ -74,12 +80,12 @@ namespace myBOOK.UI
             TabItemSizeRegulation();
         }
 
-        private void AddPastRead_Click(object sender, RoutedEventArgs e)
+        private void AddBook(UserToBook.Categories category)
         {
             var w = new AddBookToList(User);
             w.AddFoundBook += (b) =>
             {
-                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.PastRead))
+                if (repo.GetBookFromAddingForm(User, b, category))
                 {
                     MessageBox.Show("Книга успешно добавлена");
                     Updatebookboxes();
@@ -90,42 +96,21 @@ namespace myBOOK.UI
                 }
             };
             w.Show();
+        }
+
+        private void AddPastRead_Click(object sender, RoutedEventArgs e)
+        {
+            AddBook(UserToBook.Categories.PastRead);
         }
 
         private void AddFavourite_Click(object sender, RoutedEventArgs e)
         {
-            var w = new AddBookToList(User);
-            w.AddFoundBook += (b) =>
-            {
-                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.Favourite))
-                {
-                    MessageBox.Show("Книга успешно добавлена");
-                    Updatebookboxes();
-                }
-                else
-                {
-                    MessageBox.Show("Эта книга уже есть в вашем списке");
-                }
-            };
-            w.Show();
+            AddBook(UserToBook.Categories.Favourite);
         }
 
         private void AddFutureRead_Click(object sender, RoutedEventArgs e)
         {
-            var w = new AddBookToList(User);
-            w.AddFoundBook += (b) =>
-            {
-                if (repo.GetBookFromAddingForm(User, b, UserToBook.Categories.FutureRead))
-                {
-                    MessageBox.Show("Книга успешно добавлена");
-                    Updatebookboxes();
-                }
-                else
-                {
-                    MessageBox.Show("Эта книга уже есть в вашем списке");
-                }
-            };
-            w.Show();
+            AddBook(UserToBook.Categories.FutureRead);
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
@@ -146,32 +131,14 @@ namespace myBOOK.UI
 
         }
 
-        private void DeletePastRead_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PastBookList.SelectedItem != null)
+            Grid grid = (Grid)VisualTreeHelper.GetParent((Button)sender);
+            var box = grid.Children.OfType<ListBox>().FirstOrDefault();
+            if (box.SelectedItem != null)
             {
-                var b = converter.ConvertToBook((BookView)PastBookList.SelectedItem);
-                repo.DeleteUserToBook(User, b, UserToBook.Categories.PastRead);
-                Updatebookboxes();
-            }
-        }
-
-        private void DeleteFutureBook_Click(object sender, RoutedEventArgs e)
-        {
-            if (FutureBookList.SelectedItem != null)
-            {
-                var b = converter.ConvertToBook((BookView)FutureBookList.SelectedItem);
-                repo.DeleteUserToBook(User, b, UserToBook.Categories.FutureRead);
-                Updatebookboxes();
-            }
-        }
-
-        private void DeleteFavourite_Click(object sender, RoutedEventArgs e)
-        {
-            if (FavouriteBookList.SelectedItem != null)
-            {
-                var b = converter.ConvertToBook((BookView)FavouriteBookList.SelectedItem);
-                repo.DeleteUserToBook(User, b, UserToBook.Categories.Favourite);
+                var b = converter.ConvertToBook((BookView)box.SelectedItem);
+                repo.DeleteUserToBook(User, b, dict[box]);
                 Updatebookboxes();
             }
         }
@@ -217,38 +184,16 @@ namespace myBOOK.UI
             w.Closing += (a, a1) => { Updatebookboxes(); };
         }
 
-        private void PastBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ListBox__MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (PastBookList.SelectedItem != null)
+            var box = (ListBox)sender;
+            if (box.SelectedItem != null)
             {
-                var b = converter.ConvertToBook((BookView)PastBookList.SelectedItem);
+                var b = converter.ConvertToBook((BookView)box.SelectedItem);
                 ShowBookInfo(b);
             }
         }
 
-        private void FutureBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var b = converter.ConvertToBook((BookView)FutureBookList.SelectedItem);
-            ShowBookInfo(b);
-        }
-
-        private void FavouriteBookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var b = converter.ConvertToBook((BookView)FavouriteBookList.SelectedItem);
-            ShowBookInfo(b);
-        }
-
-        private void ScoreList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var b = converter.ConvertToBook((BookView)ScoreList.SelectedItem);
-            ShowBookInfo(b);
-        }
-
-        private void RecomendationList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var b = converter.ConvertToBook((BookView)RecomendationList.SelectedItem);
-            ShowBookInfo(b);
-        }
         private void MenuHelp_Click(object sender, RoutedEventArgs e)
         {
             Help help = new Help();
@@ -269,7 +214,7 @@ namespace myBOOK.UI
             Authors authors = new Authors();
             authors.ShowDialog();
         }
-
+        
         private void tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
