@@ -207,7 +207,12 @@ namespace myBOOK.UI
         
         private void tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            var t = (TabControl)sender;
+            foreach (var item in t.Items)
+            {
+                ((TabItem)item).Foreground = new SolidColorBrush(Colors.White);
+            }
+            ((TabItem)t.SelectedItem).Foreground = new SolidColorBrush(Colors.Black);
         }
 
         private void DeleteButton_Click(ListBox listbox, UserToBook.Categories category)

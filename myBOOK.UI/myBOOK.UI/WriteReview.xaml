@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myBOOK.UI"
         mc:Ignorable="d"
-        Title="WriteReview" Height="600" Width="800">
+        Title="WriteReview" Height="600" Width="800" MinHeight="500" MinWidth="700">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/image/background.jpg"/>
     </Window.Background>
