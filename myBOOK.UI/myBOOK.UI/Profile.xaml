@@ -12,7 +12,7 @@
     </Window.Background>
     <Grid Name="grid">
         <TabControl Name="tabcontrol" Margin="0,40,0,0" Background="Transparent" SelectionChanged="tabcontrol_SelectionChanged">    
-            <TabItem Header="PastRead"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+            <TabItem Header="Прочитано"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -47,17 +47,17 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddPastRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddPastRead_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">Добавить прочитанную книгу
+                    <Button Name="AddPastRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddPastRead_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">Добавить прочитанную книгу
                     </Button>
-                    <Button Name="DeletePastRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="DeleteButton_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+                    <Button Name="DeletePastRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="DeleteButton_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Удалить
                     </Button>
-                    <Button Name="MarkAsFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="MarkAsFavourite_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+                    <Button Name="MarkAsFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="MarkAsFavourite_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Отметить как любимую
                     </Button>
                 </Grid>
             </TabItem>     
-            <TabItem Header="FutureRead"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+            <TabItem Header="Хочу прочитать"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -92,14 +92,14 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20" Click="AddFutureRead_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">Добавить книгу в список желаний
+                    <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20" Click="AddFutureRead_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">Добавить книгу в список желаний
                     </Button>
-                    <Button Name="DeleteFutureRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 20" Click="DeleteButton_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+                    <Button Name="DeleteFutureRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 20" Click="DeleteButton_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Удалить книгу из списка желаний
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Favourite Books"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+            <TabItem Header="Любимые книги"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -134,15 +134,15 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="AddFavourite" Grid.Row="4" Grid.Column="1" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Right" Click="AddFavourite_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+                    <Button Name="AddFavourite" Grid.Row="4" Grid.Column="1" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Right" Click="AddFavourite_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Добавить любимую книгу
                     </Button>
-                    <Button Name="DeleteFavourite" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Left" Click="DeleteButton_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+                    <Button Name="DeleteFavourite" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Left" Click="DeleteButton_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Удалить любимую книгу
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Scores" HorizontalAlignment="Right" Width="52"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+            <TabItem Header="Мои оценки" HorizontalAlignment="Right" Width="52"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -178,7 +178,7 @@
                     </ListBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Reviews"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+            <TabItem Header="Мои отзывы"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
@@ -256,7 +256,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Recomendations"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+            <TabItem Header="Рекомендации"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -289,29 +289,29 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="MoveToFutureRead" Grid.Column="1" Grid.Row="3" Height="30" VerticalAlignment="Top" Margin="339,21,335,0" Click="MoveToFutureBooks_Click"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
+                    <Button Name="MoveToFutureRead" Grid.Column="1" Grid.Row="3" Height="30" VerticalAlignment="Top" Margin="339,21,335,0" Click="MoveToFutureBooks_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Переместить в список желаний
                     </Button>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Menu x:Name="menu" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="333" Background="Transparent" BorderBrush="Chocolate">
-            <MenuItem Header="About" Width="83" Click="MenuAbout_Click" InputGestureText="Ctrl+A">
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="400" Background="Transparent" BorderBrush="Chocolate">
+            <MenuItem Header="Информация" Width="113" Click="MenuAbout_Click" InputGestureText="Ctrl+A">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/info.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Help" Width="83" InputGestureText="Ctrl+h" Click="MenuHelp_Click">
+            <MenuItem Header="Помощь" Width="95" InputGestureText="Ctrl+h" Click="MenuHelp_Click">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/help.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Authors" Width="83" Click="MenuAuthors_Click">
+            <MenuItem Header="Авторы" Width="95" Click="MenuAuthors_Click">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/author.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Close" Width="83" InputGestureText="Ctrl+Q" Click="MenuClose_Click">
+            <MenuItem Header="Закрыть" Width="95" InputGestureText="Ctrl+Q" Click="MenuClose_Click">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/close.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>

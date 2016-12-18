@@ -87,22 +87,22 @@
             </Button>
         </Grid>
         <Menu x:Name="menu" Height="31" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Chocolate" HorizontalAlignment="Left" Width="395">
-            <MenuItem Header="About" Width="98" Click="MenuAbout_Click" InputGestureText="Ctrl+A">
+            <MenuItem Header="Информация" Width="113" Click="MenuAbout_Click" InputGestureText="Ctrl+A">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/info.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Help" Width="98" InputGestureText="Ctrl+h" Click="MenuHelp_Click">
+            <MenuItem Header="Помощь" Width="93" InputGestureText="Ctrl+h" Click="MenuHelp_Click">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/help.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Authors" Width="98" Click="MenuAuthors_Click">
+            <MenuItem Header="Авторы" Width="93" Click="MenuAuthors_Click">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/author.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Close" Width="98" InputGestureText="Ctrl+Q" Click="MenuClose_Click">
+            <MenuItem Header="Закрыть" Width="93" InputGestureText="Ctrl+Q" Click="MenuClose_Click">
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/image/close.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
                 </MenuItem.Icon>
