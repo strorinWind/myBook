@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using myBOOK.data.Interfaces;
 using myBOOK.data.EntityObjects;
-using myBOOK.data;
-//using myBOOK.UI;
 
 namespace myBOOK.data
 {
@@ -188,8 +185,32 @@ namespace myBOOK.data
             c.SaveChanges();
         }
 
-        public void Registrate(Users user)
+        public void Registrate(string login,string fullname,string password,Gender gender)
         {
+            if (login.Count() < 3 || login.Count() > 100)
+            {
+                throw new ArgumentException("Логин должен быть от 3 до 100 символов");
+            }
+            if (password.Count() < 3 || password.Count() > 100)
+            {
+                throw new ArgumentException("Пароль должен быть от 3 до 100 символов");
+            }
+            if (password.Count() < 3 || password.Count() > 100)
+            {
+                throw new ArgumentException("Пароль должен быть от 3 до 100 символов");
+            }
+            if (fullname.Count() < 5 || fullname.Count() > 100)
+            {
+                throw new ArgumentException("Полное имя должно быть от 5 до 100 символов");
+            }
+            Users user = new Users
+            {
+                Login = login,
+                FullName = fullname,
+                Password = Encryption.GetHashString(password),
+                Gender = gender,
+                RegistrationDate = DateTime.Now,
+            };
             var IsLoginRepeated = (from s in c.User
                                    where s.Login == user.Login
                                    select s).FirstOrDefault();

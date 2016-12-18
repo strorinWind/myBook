@@ -27,7 +27,7 @@ namespace myBOOK.data.Interfaces
         //Updating requests
         void AddOrChangeReview(Users user, Books book, string reviewText);
         void AddOrChangeScore(Users user, Books book, int score);
-        void Registrate(Users user);
+        void Registrate(string login, string fullname, string password, Gender gender);
         void UpdateBook(Books book);
         bool AddBookToDatabase(Books book);
         bool GetBookFromAddingForm(Users user, Books book, UserToBook.Categories category);

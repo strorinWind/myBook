@@ -19,7 +19,6 @@ namespace myBOOK.data.Migrations
 
         protected override void Seed(Context context)
         {
-
             Assembly assembly = Assembly.GetExecutingAssembly();
             string resourceName = "myBOOK.data.Books.csv";
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
@@ -50,8 +49,6 @@ namespace myBOOK.data.Migrations
                         {
                             book = bookCheck.First();
                         }
-
-
                     }
                 }
             }
