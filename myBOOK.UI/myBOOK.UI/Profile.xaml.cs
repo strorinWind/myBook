@@ -88,7 +88,6 @@ namespace myBOOK.UI
                 if (repo.GetBookFromAddingForm(User, b, category))
                 {
                     MessageBox.Show("Книга успешно добавлена");
-                    Updatebookboxes();
                 }
                 else
                 {
@@ -96,6 +95,7 @@ namespace myBOOK.UI
                 }
             };
             w.Show();
+            w.Closing += (a,b) => Updatebookboxes();
         }
 
         private void AddPastRead_Click(object sender, RoutedEventArgs e)
@@ -131,17 +131,7 @@ namespace myBOOK.UI
 
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            Grid grid = (Grid)VisualTreeHelper.GetParent((Button)sender);
-            var box = grid.Children.OfType<ListBox>().FirstOrDefault();
-            if (box.SelectedItem != null)
-            {
-                var b = converter.ConvertToBook((BookView)box.SelectedItem);
-                repo.DeleteUserToBook(User, b, dict[box]);
-                Updatebookboxes();
-            }
-        }
+
 
         private void MarkAsFavourite_Click(object sender, RoutedEventArgs e)
         {
@@ -218,6 +208,31 @@ namespace myBOOK.UI
         private void tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void DeleteButton_Click(ListBox listbox, UserToBook.Categories category)
+        {
+            if (listbox.SelectedItem != null)
+            {
+                var b = converter.ConvertToBook((BookView)listbox.SelectedItem);
+                repo.DeleteUserToBook(User, b, category);
+                Updatebookboxes();
+            }
+        }
+
+        private void DeletePastRead_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteButton_Click(PastBookList, UserToBook.Categories.PastRead);
+        }
+
+        private void DeleteFavourite_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteButton_Click(FavouriteBookList,UserToBook.Categories.Favourite);
+        }
+
+        private void DeleteFutureRead_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteButton_Click(FutureBookList,UserToBook.Categories.Favourite);
         }
     }
 }

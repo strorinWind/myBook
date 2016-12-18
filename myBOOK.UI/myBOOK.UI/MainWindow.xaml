@@ -23,33 +23,33 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,10,59,41" Foreground="White" RenderTransformOrigin="0.535,-1.615">Логин:</TextBlock>
-        <TextBox Name="Username" Grid.Row="1" Height="20" Width="130" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,11,0,36" Grid.Column="1" BorderBrush="BurlyWood" Background="Cornsilk" />
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,47,52,4" Foreground="White">Пароль:</TextBlock>
-        <PasswordBox Name="Password" Grid.Row="2" Height="20" Width="130" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,47,0,0" Grid.Column="1" BorderBrush="BurlyWood" Background="Cornsilk"/>
-        <Button Name="Enter" Grid.Row="4" Grid.Column="1" Height="30" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="46,21,0,0" Foreground="White" Click="Enter_Click" Background="Tan" BorderBrush="Chocolate" >Войти
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Margin="20 0">Логин:</TextBlock>
+        <TextBox Name="Username" Grid.Row="1" Height="20" Width="130" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Column="1" BorderBrush="BurlyWood" Background="Cornsilk" />
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right"  Foreground="White"  Margin="20 0">Пароль:</TextBlock>
+        <PasswordBox Name="Password" Grid.Row="2" Height="20" Width="130" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" BorderBrush="BurlyWood" Background="Cornsilk"/>
+        <Button Name="Enter" Grid.Row="4" Grid.Column="1" Height="30" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" Click="Enter_Click" Background="Tan" BorderBrush="Chocolate" >Войти
         </Button>
-        <Button Name="Registration" Grid.Row="5" Width="90"  HorizontalAlignment="Left" Margin="46,0,0,50" Click="Registration_Click" Grid.Column="1" Foreground="White" Background="Tan" BorderBrush="Chocolate" Height="30" VerticalAlignment="Bottom" Grid.RowSpan="2">Регистрация
+        <Button Name="Registration" Grid.Row="5" Width="90"  HorizontalAlignment="Left" Click="Registration_Click" Grid.Column="1" Foreground="White" Background="Tan" BorderBrush="Chocolate" Height="30" VerticalAlignment="Center" Grid.RowSpan="2">Регистрация
         </Button>
-        <Menu x:Name="menu" Height="20" VerticalAlignment="Top" RenderTransformOrigin="0.497,0.538" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Chocolate">
-            <MenuItem Header="Инфо" Width="73" Click="MenuAbout_Click" InputGestureText="Ctrl+A" RenderTransformOrigin="0.496,0.467">
+        <Menu x:Name="menu" Height="20" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Chocolate">
+            <MenuItem Header="Инфо" Width="73" Click="MenuAbout_Click" InputGestureText="Ctrl+A">
                 <MenuItem.Icon>
-                    <Image Source="pack://application:,,,/image/info.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                    <Image Source="pack://application:,,,/image/info.png" Height="16" Width="16"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Помощь" Width="88" InputGestureText="Ctrl+H" Click="MenuHelp_Click">
                 <MenuItem.Icon>
-                    <Image Source="pack://application:,,,/image/help.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                    <Image Source="pack://application:,,,/image/help.png" Height="16" Width="16"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Авторы" Width="82" Click="MenuAuthors_Click">
                 <MenuItem.Icon>
-                    <Image Source="pack://application:,,,/image/author.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                    <Image Source="pack://application:,,,/image/author.png" Height="16" Width="16"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Закрыть" Width="86" InputGestureText="Ctrl+Q" Click="MenuClose_Click">
                 <MenuItem.Icon>
-                    <Image Source="pack://application:,,,/image/close.png" Height="16" Width="16" RenderTransformOrigin="0.513,0.513"/>
+                    <Image Source="pack://application:,,,/image/close.png" Height="16" Width="16"/>
                 </MenuItem.Icon>
             </MenuItem>
             <Menu.BitmapEffect>

@@ -49,7 +49,7 @@
                     </ListBox>
                     <Button Name="AddPastRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="AddPastRead_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">Добавить прочитанную книгу
                     </Button>
-                    <Button Name="DeletePastRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="DeleteButton_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
+                    <Button Name="DeletePastRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="DeletePastRead_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Удалить
                     </Button>
                     <Button Name="MarkAsFavourite" Grid.Column="2" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" Click="MarkAsFavourite_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
@@ -94,7 +94,7 @@
                     </ListBox>
                     <Button Name="AddFutureRead" Grid.Column="1" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20" Click="AddFutureRead_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">Добавить книгу в список желаний
                     </Button>
-                    <Button Name="DeleteFutureRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 20" Click="DeleteButton_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
+                    <Button Name="DeleteFutureRead" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 20" Click="DeleteFutureRead_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Удалить книгу из списка желаний
                     </Button>
                 </Grid>
@@ -137,7 +137,7 @@
                     <Button Name="AddFavourite" Grid.Row="4" Grid.Column="1" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Right" Click="AddFavourite_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Добавить любимую книгу
                     </Button>
-                    <Button Name="DeleteFavourite" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Left" Click="DeleteButton_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
+                    <Button Name="DeleteFavourite" Grid.Column="3" Grid.Row="4" Width="200" Height="30" VerticalAlignment="Top" Margin="0 20" HorizontalAlignment="Left" Click="DeleteFavourite_Click"  Foreground="White"  Background="Tan" BorderBrush="Chocolate">
                         Удалить любимую книгу
                     </Button>
                 </Grid>
@@ -181,10 +181,10 @@
             <TabItem Header="Мои отзывы"  Foreground="White" Background="Transparent" BorderBrush="Chocolate">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*" MinWidth="200"/>
+                        <ColumnDefinition Width="3*" MinWidth="200"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,27,578,4" RenderTransformOrigin="0.5,0.5">
+                    <Grid Grid.Column="0">
                         <Grid.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -194,23 +194,23 @@
                             </TransformGroup>
                         </Grid.RenderTransform>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="27*"/>
-                            <RowDefinition Height="35*"/>
-                            <RowDefinition Height="24*"/>
-                            <RowDefinition Height="38*"/>
-                            <RowDefinition Height="42*"/>
-                            <RowDefinition Height="23*"/>
-                            <RowDefinition Height="378*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="15*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Margin="174,1,174,10" Width="56"  Foreground="White">Название:</TextBlock>
-                        <TextBox Name="bookname" Grid.Row="1" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="BurlyWood" Background="Cornsilk" Margin="152,9,152,6">
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Foreground="White">Название:</TextBlock>
+                        <TextBox Name="bookname" Grid.Row="1" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="BurlyWood" Background="Cornsilk">
                         </TextBox>
-                        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Margin="186,0,174,0" Width="44"  Foreground="White">Автор:</TextBlock>
-                        <TextBox Name="author" Grid.Row="3" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="BurlyWood" Background="Cornsilk" Margin="152,10,152,8"/>
-                        <Button Name="Search" Grid.Row="4" Width="80" HorizontalAlignment="Center"  Height="22" VerticalAlignment="Center" Click="Search_Click" Margin="162,10"  Foreground="White" Background="Tan" BorderBrush="Chocolate">Поиск
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Foreground="White">Автор:</TextBlock>
+                        <TextBox Name="author" Grid.Row="3" Height="20" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="BurlyWood" Background="Cornsilk"/>
+                        <Button Name="Search" Grid.Row="4" Width="80" HorizontalAlignment="Center"  Height="22" VerticalAlignment="Center" Click="Search_Click" Foreground="White" Background="Tan" BorderBrush="Chocolate">Поиск
                         </Button>
-                        <TextBlock Grid.Row="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="21" Margin="72,0" Width="260"  Foreground="White">Результаты поиска. Выберите книгу</TextBlock>
-                        <ListBox Name="BookList" Grid.Row="6" Padding="2" Margin="0,5,0,30" MouseDoubleClick="BookList_Selected" BorderBrush="BurlyWood" Background="Cornsilk" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock Grid.Row="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="21" Foreground="White">Результаты поиска. Выберите книгу</TextBlock>
+                        <ListBox Name="BookList" Grid.Row="6" Padding="2" MouseDoubleClick="BookList_Selected" BorderBrush="BurlyWood" Background="Cornsilk">
                             <ListBox.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
