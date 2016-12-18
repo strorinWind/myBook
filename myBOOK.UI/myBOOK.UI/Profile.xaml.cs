@@ -28,7 +28,6 @@ namespace myBOOK.UI
         IRepository repo = Factory.Default.GetRepository();
         Converter converter = new Converter();
         Task<List<Books>> lst;
-        Dictionary<ListBox,UserToBook.Categories> dict = new Dictionary<ListBox, UserToBook.Categories>();
 
         private void TabItemSizeRegulation()
         {
@@ -69,9 +68,6 @@ namespace myBOOK.UI
         {
             InitializeComponent();
             User = user;
-            dict.Add(PastBookList, UserToBook.Categories.PastRead);
-            dict.Add(FutureBookList, UserToBook.Categories.FutureRead);
-            dict.Add(FavouriteBookList, UserToBook.Categories.Favourite);
             Updatebookboxes();
         }
 
