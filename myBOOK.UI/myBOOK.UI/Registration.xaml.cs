@@ -44,37 +44,9 @@ namespace myBOOK.UI
                 {
                     gender = Gender.Female;
                 }
-                if (login.Count() < 3 || login.Count() > 100)
-                {
-                    MessageBox.Show("Логин должен быть от 3 до 100 символов");
-                    return;
-                }
-                if (password.Count() < 3 || password.Count() > 100)
-                {
-                    MessageBox.Show("Пароль должен быть от 3 до 100 символов");
-                    return;
-                }
-                if (password.Count() < 3 || password.Count() > 100)
-                {
-                    MessageBox.Show("Пароль должен быть от 3 до 100 символов");
-                    return;
-                }
-                if (fullname.Count() < 5 || fullname.Count() > 100)
-                {
-                    MessageBox.Show("Полное имя должно быть от 5 до 100 символов");
-                    return;
-                }
-                Users user = new Users
-                {
-                    Login = login,
-                    FullName = fullname,
-                    Password = Encryption.GetHashString(password),
-                    Gender = gender,
-                    RegistrationDate = DateTime.Now,
-                };
                 try
                 {
-                    repo.Registrate(user);
+                    repo.Registrate(login,fullname,password,gender);
                     MessageBox.Show("Вы успешно зарегистрированы!");
                     Close();
                 }

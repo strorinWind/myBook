@@ -15,7 +15,6 @@ namespace myBOOK.data
 
     public class Users
     {
-        //public int ID { get; set; }
         [Key]
         public string Login { get; set; }
         public string FullName { get; set; }
