@@ -40,9 +40,16 @@ namespace myBOOK.UI
 
         private void SendReview_Click(object sender, RoutedEventArgs e)
         {
-            repo.AddOrChangeReview(User, Book, Review.Text);
-            MessageBox.Show("Ваш отзыв сохранен");
-            Close();
+            try
+            {
+                repo.AddOrChangeReview(User, Book, Review.Text);
+                MessageBox.Show("Ваш отзыв сохранен");
+                Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void MenuHelp_Click(object sender, RoutedEventArgs e)
         {

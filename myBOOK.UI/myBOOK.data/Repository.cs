@@ -143,6 +143,10 @@ namespace myBOOK.data
         #region Adding and spdating requests
         public void AddOrChangeReview(Users user, Books book, string reviewText)
         {
+            if (reviewText == "")
+            {
+                throw new ArithmeticException("Отзыв не может быть пустым!");
+            }
             var result = c._Review.Where(s => s.User.Login == user.Login
                                         && s.Book.Author == book.Author
                                         && s.Book.BookName == book.BookName);
