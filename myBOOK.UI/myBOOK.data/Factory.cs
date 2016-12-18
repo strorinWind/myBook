@@ -16,7 +16,6 @@ namespace myBOOK.data
             }
         }
 
-        //private IUserBooks _userbooks;
         private IRepository _repository;
 
         public IRepository GetRepository()
@@ -25,26 +24,5 @@ namespace myBOOK.data
                 _repository = new Repository();
             return _repository;
         }
-        /*
-        public IUserBooks GetUserBooks()
-        {
-            if (_userbooks == null)
-                _userbooks = new PastReadBooks();
-            return _userbooks;
-        }
-        public IUserBooks GetFutureBooks()
-        {
-            if (_userbooks == null)
-                _userbooks = new FutureReadBooks();
-            return _userbooks;
-        }
-
-        public IUserBooks GetFavouriteBooks()
-        {
-            if (_userbooks == null)
-                _userbooks = new Favourite();
-            return _userbooks;
-        }
-        */
     }
 }

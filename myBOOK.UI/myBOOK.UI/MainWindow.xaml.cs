@@ -29,7 +29,7 @@ namespace myBOOK.UI
         public MainWindow()
         {
             //first request to make faster others
-            repository.DoesBookExists("","");
+            //repository.DoesBookExists("","");
             InitializeComponent();
         }
 
